@@ -4,4 +4,4 @@ I am working on research that makes multi-layer perceptrons (MLP) faster in infe
 
 *This website is under development.*
 
-Contact me at [mailto:quickmlmodels@gmail.com](quickmlmodels@gmail.com) if you want to get in touch.
+Contact me at [quickmlmodels@gmail.com](mailto:quickmlmodels@gmail.com) if you want to get in touch.
