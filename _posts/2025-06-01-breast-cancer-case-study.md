@@ -1,8 +1,3 @@
-layout: post
-title: "Multilayer Perceptron Speedup Breast Cancer Dataset"
-date: 2025-06-01 16:39:00 -0000
-categories: compression machine-learning
-
 ## Multilayer Perceptron Speedup
 
 Accelerating Wide MLPs with Early Exit Inference: A Case Study on Breast Cancer Classification
