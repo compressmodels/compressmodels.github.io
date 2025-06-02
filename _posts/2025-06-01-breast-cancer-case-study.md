@@ -2,6 +2,7 @@
 layout: post
 title: "MLP"
 date: 2025-06-01
+author: "Sam Randall"
 ---
 
 ## Multilayer Perceptron Speedup
