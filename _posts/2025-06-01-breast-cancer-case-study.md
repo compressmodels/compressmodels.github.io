@@ -32,6 +32,7 @@ Hidden layer width (H): Varied from 16 to 8192
 We take a model, define early-exit geometric based rules, and then at inference time check whether any of the pre-defined rules contains the datapoint being evaluated. If it does, we output a prediction specific to that rule. If no rules contain the datapoint being evaluated, we run the model as usual.
 
 ### Results
+<div style="overflow-x: auto">
 |h   |ONNX    |ONNX + Early Exit|Improvement|Baseline  Accuracy (Train)|Experimental Accuracy (Train) |Baseline Accuracy (Test) |Experimental Accuracy (Test)|
 |----|--------|-----------------|-----------|-----------------------|--------------|----------------------|-------------|
 |16  |0.004465|0.003064         |1.4573     |0.9187                 |0.9099        |0.9649                |0.9649       |
@@ -44,6 +45,7 @@ We take a model, define early-exit geometric based rules, and then at inference 
 |2048|0.007553|0.004979         |1.5168     |0.9121                 |0.9033        |0.9298                |0.9123       |
 |4096|0.00918 |0.005332         |1.7215     |0.8835                 |0.8747        |0.9123                |0.9123       |
 |8192|0.012255|0.007714         |1.5887     |0.9319                 |0.9209        |0.9649                |0.9649       |
+</div>
 
 ### Key Observations
 - Significant latency reduction (up to 1.67×) was observed at high hidden dimensions (H ≥ 1024), where computational complexity is highest.
