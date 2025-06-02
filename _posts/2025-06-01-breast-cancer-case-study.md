@@ -1,3 +1,9 @@
+---
+layout: post
+title: "MLP"
+date: 2025-06-01
+---
+
 ## Multilayer Perceptron Speedup
 
 Accelerating Wide MLPs with Early Exit Inference: A Case Study on Breast Cancer Classification
