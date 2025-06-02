@@ -12,7 +12,7 @@ Accelerating Wide MLPs with Early Exit Inference: A Case Study on Breast Cancer 
 We present an empirical evaluation of a custom ONNX-based inference acceleration framework applied to wide multilayer perceptrons (MLPs). Our method integrates early exit mechanisms within ONNX-exported MLP classifiers to significantly reduce inference time without compromising accuracy.
 
 ### Dataset
-We evaluate our method on the Breast Cancer Wisconsin (Diagnostic) dataset, a well-known benchmark for binary classification of tabular medical data. The dataset contains 30 continuous features.
+We evaluate our method on the [Breast Cancer Wisconsin (Diagnostic) dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html), a well-known benchmark for binary classification of tabular medical data. The dataset contains 569 data points and 30 features.
 
 ### Experimental Setup
 
