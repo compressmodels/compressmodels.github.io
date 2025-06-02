@@ -49,5 +49,10 @@ We take a model, define early-exit geometric based rules, and then at inference 
 
 ### Key Observations
 - Significant latency reduction (up to 1.67×) was observed at high hidden dimensions (H ≥ 1024), where computational complexity is highest.
+- ONNX was low computational cost in low H regime that overhead of geometric rules did not offset performance.
 - No degradation in test accuracy across most model sizes.
 - Our method performs best with very wide architectures, confirming its suitability for deployment scenarios involving large-capacity models.
+
+### Future Work
+- Run this on other MLP model latency use cases (edge AI, malware detection, text).
+- Optimize algorithm so that it achieves lateny improvement in smaller H settings. 
