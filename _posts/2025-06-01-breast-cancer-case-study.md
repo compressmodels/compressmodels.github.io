@@ -56,4 +56,4 @@ We take a model, define early-exit geometric based rules, and then at inference 
 
 ### Future Work
 - Run this on other MLP model latency use cases (edge AI, malware detection, text).
-- Optimize algorithm so that it achieves lateny improvement in smaller H settings. 
+- Optimize algorithm so that it achieves latency improvement in smaller H settings. 
