@@ -16,7 +16,7 @@ We evaluate our method on the [Breast Cancer Wisconsin (Diagnostic) dataset](htt
 
 ### Experimental Setup
 
-Model: `MLPClassifier` (scikit-learn)
+Model: One-Layer `MLPClassifier` (scikit-learn)
 
 Export format: ONNX
 
@@ -24,7 +24,7 @@ Baseline: Standard ONNX runtime inference
 
 Accelerated: ONNX + Early Exit (custom acceleration logic)
 
-Metrics: Inference latency (ms), training/test accuracy
+Metrics: Inference latency (s), training/test accuracy
 
 Hidden layer width (H): Varied from 16 to 8192
 
@@ -57,3 +57,4 @@ We take a model, define early-exit geometric based rules, and then at inference 
 ### Future Work
 - Run this on other MLP model latency use cases (edge AI, malware detection, text).
 - Optimize algorithm so that it achieves latency improvement in smaller H settings. 
+- Add a notebook so you can see the software in use to achieve this gain.s
