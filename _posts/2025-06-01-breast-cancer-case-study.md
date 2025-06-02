@@ -33,6 +33,11 @@ We take a model, define early-exit geometric based rules, and then at inference 
 
 ### Results
 
+| a | b |
+|---|---|
+| 1 | 2 |
+| 3 | 4 |
+
 |h   |ONNX    |ONNX + Early Exit|Improvement|Baseline Accuracy (Test) |Experimental Accuracy (Test)|
 |----|--------|-----------------|-----------|-------------------------|----------------------------|
 |16  |0.004465|0.003064         |1.4573     |0.9649                   |0.9649                      |
