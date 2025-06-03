@@ -37,17 +37,12 @@ If it does, we output a prediction specific to the relevant rule. If no rules co
 
 ### Results
 
-<div style="overflow-x: auto;">
-  <table>
-    |Hidden Layer Size   |ONNX (s)|ONNX + Early Exit (s) |Improvement|ONNX Accuracy (Test) |ONNX + Early Exit Accuracy (Test)|
+|Hidden Layer Size   |ONNX (s)|ONNX + Early Exit (s) |Improvement|ONNX Accuracy (Test) |ONNX + Early Exit Accuracy (Test)|
 |--------------------|--------|----------------------|-----------|---------------------|---------------------------------|
 |1024                |0.006377|0.004472              |1.4258x    |0.9386               |0.9386                           |
 |2048                |0.007553|0.004979              |1.5168x    |0.9298               |0.9123                           |
 |4096                |0.00918 |0.005332              |1.7215x    |0.9123               |0.9123                           |
 |8192                |0.012255|0.007714              |1.5887x    |0.9649               |0.9649                           | 
-
-  </table>
-</div>
 
 
 ### Key Observations
