@@ -46,7 +46,7 @@ If it does, we output a prediction specific to the relevant rule. If no rules co
 
 
 ### Key Observations
-- Significant latency reduction (up to 1.67×) was observed at high hidden dimensions (H ≥ 1024), where computational complexity is highest.
+- Significant latency reduction was observed at high hidden dimensions (H ≥ 1024), where computational complexity is highest.
 - Algorithm did not universally result in speedups in low H regime.
 - Minimal degradation in test accuracy across most model sizes.
 - Our method performs best with very wide architectures, confirming its suitability for deployment scenarios involving large-capacity models.
