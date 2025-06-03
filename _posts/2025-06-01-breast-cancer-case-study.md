@@ -26,7 +26,7 @@ Accelerated: ONNX + Early Exit (custom acceleration logic)
 
 Metrics: Inference latency (s), training/test accuracy
 
-Hidden layer width (H): Varied from 16 to 8192
+Hidden layer size (H): Varied from 16 to 8192
 
 ### Methods
 
@@ -37,18 +37,18 @@ If it does, we output a prediction specific to the relevant rule. If no rules co
 
 ### Results
 
-|h   |ONNX (s)|ONNX + Early Exit (s) |Improvement|Baseline Accuracy (Test) |Experimental Accuracy (Test)|
-|----|--------|----------------------|-----------|-------------------------|----------------------------|
-|1024|0.006377|0.004472              |1.4258x    |0.9386                   |0.9386                      |
-|2048|0.007553|0.004979              |1.5168x    |0.9298                   |0.9123                      |
-|4096|0.00918 |0.005332              |1.7215x    |0.9123                   |0.9123                      |
-|8192|0.012255|0.007714              |1.5887x    |0.9649                   |0.9649                      | 
+|Hidden Layer Size   |ONNX (s)|ONNX + Early Exit (s) |Improvement|ONNX Accuracy (Test) |ONNX + Early Exit Accuracy (Test)|
+|--------------------|--------|----------------------|-----------|---------------------|---------------------------------|
+|1024                |0.006377|0.004472              |1.4258x    |0.9386               |0.9386                           |
+|2048                |0.007553|0.004979              |1.5168x    |0.9298               |0.9123                           |
+|4096                |0.00918 |0.005332              |1.7215x    |0.9123               |0.9123                           |
+|8192                |0.012255|0.007714              |1.5887x    |0.9649               |0.9649                           | 
 
 
 ### Key Observations
 - Significant latency reduction (up to 1.67×) was observed at high hidden dimensions (H ≥ 1024), where computational complexity is highest.
-- Algorithm did not result in speedups in low H regime.
-- No degradation in test accuracy across most model sizes.
+- Algorithm did not universally result in speedups in low H regime.
+- Minimal degradation in test accuracy across most model sizes.
 - Our method performs best with very wide architectures, confirming its suitability for deployment scenarios involving large-capacity models.
 
 ### Stay Tuned For:
