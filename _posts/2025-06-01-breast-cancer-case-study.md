@@ -44,7 +44,7 @@ If it does, we output a prediction specific to the relevant rule. If no rules co
 |4096                |0.00918 |0.005332              |1.7215x    |0.9123               |0.9123                           |
 |8192                |0.012255|0.007714              |1.5887x    |0.9649               |0.9649                           | 
 
-For a given hidden layer size, we compute the average time of running inference on a single sample. For 1000 samples, with ONNX, a MLP with h = 4096 to run would take 9.18 seconds to run and with ONNX and the custom acceleration, that same model would take 5.33 seconds to run 1000 samples.
+For a given hidden layer size, we compute the average time of running inference on a single sample. For 1000 samples, with ONNX, a MLP with h = 4096 to run would take 9.18 seconds to run. With ONNX and the custom acceleration, it would take 5.33 seconds to run 1000 samples.
 
 ### Key Observations
 - Significant latency reduction was observed at high hidden dimensions (H ≥ 1024), where computational complexity is highest.
