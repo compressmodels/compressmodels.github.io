@@ -74,4 +74,7 @@ The central idea here is to train a simple model to predict non fraud with perfe
 We averaged total latency over 5 runs of the dataset, and then rounded to six digits.
 
 ### Key Observations & Significance
-- For this particular dataset, we see consistent improvements for all commonly employed MLP architectures for this problem.
+- For this particular dataset, we see consistent improvements for wide and deep MLP architectures. 
+
+If you're interested in seeing how this works on your MLP, get in touch at [quickmlmodels@gmail.com](quickmlmodels@gmail.com)
+
