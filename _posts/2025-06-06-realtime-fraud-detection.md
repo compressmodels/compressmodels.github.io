@@ -12,7 +12,7 @@ Accelerating Wide MLPs with Early Exit Inference: A Case Study on a Credit Card 
 We present an empirical evaluation of a custom sklearn inference acceleration framework applied to wide multilayer perceptrons (MLPs), responsible for detecting fraud. Our method integrates early exit mechanisms and achieves a 1.27x speed-up, resulting in potentially being able to examine 1.27x more cases of fraud if the MLP is the bottleneck.
 
 ### Dataset
-We evaluate our method on the [Credit Fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) available on Kaggle, a benchmark for binary classification for fraud. The dataset contains 284807 data points and 28 features. We split it into train (80%) and test (20%).
+We evaluate our method on the [Credit Fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) available on Kaggle, a benchmark for binary classification for fraud. The dataset contains 284807 data points and 28 features. We split it into train (80%), val 12% and test (12%).
 
 ### Experimental Setup
 
@@ -32,9 +32,9 @@ Various Hidden Layer Architectures:
 
 #### Model Training
 
-The critical item for fraud detection classification model is to achieve sufficiently high recall. For each model we choose the maximal precision that we can get while achieving a minimal recall of 75%. We do this because the cost of missing a fraudulent transaction is higher than the cost of incorrectly labeling a safe transaction as fraudulent.
+The critical item for fraud detection classification model is to achieve sufficiently high recall. For each model we choose the maximal precision that we can get while achieving a minimal recall of 75% on our validation set. We do this because the cost of missing a fraudulent transaction is higher than the cost of incorrectly labeling a safe transaction as fraudulent.
 
-We achieve the following precision and recall for our various model architectures:
+We achieve the following precision and recall for our various model architectures (on a withheld test set):
 
 |    | Architecture   |   Precision |   Recall |
 |---:|:---------------|------------:|---------:|
