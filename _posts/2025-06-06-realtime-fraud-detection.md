@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Real Time Fraud Detection MLP"
-date: 2025-06-09
+date: 2025-06-06
 author: "Sam Randall"
 ---
 
