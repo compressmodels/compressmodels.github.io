@@ -55,7 +55,7 @@ The main aim is to locate obviously safe data with geometric methods, and classi
 For both the baseline and experimental approaches, we will measure the total latency observed over the entire dataset. We define adherence to be the proportion of data points that have the same predicted value across the baseline model and the experimental system. A value of 1 is perfect, a value of 0 means every prediction is wrong (worse than random).
 
 #### Methods
-We train a simple model to predict non fraud with perfect certainty. This gives us a halfspace in which we are sure that anything within that half space is NOT fraudulent. Thus, for a given data point, we can evaluate the simple model. If the simple model evaluates to True, then output 0. If and only if the simple model outputs 1, then we run the original model.
+We train a logistic regression model to predict non fraud, and choose a threshold such that only non fraudulent data is included. Then, for a given transaction, we can evaluate the simple model. If the simple model evaluates to True, then output NOT FRAUD. If and only if the simple model outputs 1, then we run the original model, and output whatever it predicts.
 
 ### Results
 
