@@ -25,8 +25,8 @@ Accelerated: sklearn + early exit acceleration.
 Metrics: Inference latency (s), training/test accuracy
 
 Various Hidden Layer Architectures:
-    - One-layer MLP (32, 64, 128)
-    - Two-layer MLP (32, 16), (32, 8), (64, 32), (64, 16), (128, 64), (128, 32)
+- One-layer MLP (Hidden Sizes = 32, 64, 128)
+- Two-layer MLP (Hidden Sizes = (32, 16), (32, 8), (64, 32), (64, 16), (128, 64), (128, 32))
 
 ### Methods
 
