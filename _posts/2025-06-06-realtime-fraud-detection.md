@@ -9,7 +9,7 @@ author: "Sam Randall"
 
 Accelerating Wide MLPs with Early Exit Inference: A Case Study on a Credit Card transaction dataset.
 
-We present an empirical evaluation of a custom sklearn inference acceleration framework applied to wide multilayer perceptrons (MLPs), responsible for detecting fraud. Our method integrates early exit mechanisms and achieves a 1.27x speed-up, resulting in potentially being able to examine 1.27x more cases of fraud if the MLP is the bottleneck.
+We present an empirical evaluation of a custom sklearn inference acceleration framework applied to wide multilayer perceptrons (MLPs), responsible for detecting fraud. Our method integrates early exit mechanisms and achieves a 1.27x speed-up, resulting able to examine 1.27x more cases of fraud if the MLP is the bottleneck.
 
 ### Dataset
 We evaluate our method on the [Credit Fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) available on Kaggle, a benchmark for binary classification for fraud. The dataset contains 284807 data points and 28 features. We split it into train (80%), val 12% and test (12%).
@@ -25,8 +25,8 @@ Accelerated: sklearn + early exit acceleration.
 Metrics: Inference latency (s), training/test accuracy
 
 Various Hidden Layer Architectures:
-- One-layer MLP (Hidden Sizes = 32, 64, 128)
-- Two-layer MLP (Hidden Sizes = (32, 16), (32, 8), (64, 32), (64, 16), (128, 64), (128, 32))
+- One-layer MLP: an MLP with one hidden layer. We use values of 32, 64, 128 for the hidden size.
+- Two-layer MLP: an MLP with two hidden layers. We use values of (32, 16), (32, 8), (64, 32), (64, 16), (128, 64), (128, 32) for the first and second layer size, respectively.
 
 ### Methods
 
@@ -48,11 +48,14 @@ We achieve the following precision and recall for our various model architecture
 |  7 | (128, 64)      |    0.878049 | 0.679245 |
 |  8 | (256, 128)     |    0.90625  | 0.54717  |
 
-#### Model Inference
+#### Improving Model Latency at Inference Time
 
-The main aim is to locate obviously safe data with geometric methods, and classify those quickly.
+The main aim is to locate obviously safe data, and classify those quickly.
 
-For both the baseline and experimental approaches, we will measure the total latency observed over the entire dataset. We define adherence to be the proportion of data points that have the same predicted value across the baseline model and the experimental system. A value of 1 is perfect, a value of 0 means every prediction is wrong (worse than random).
+##### Evaluation
+For both the baseline and experimental approaches, we will measure the total latency observed over the entire dataset.
+
+We define adherence to be the proportion of data points that have the same predicted value across the baseline model and the experimental system. A value of 1 is perfect, a value of 0 means every prediction is wrong (worse than random).
 
 #### Methods
 We train a logistic regression model to predict non fraud, and choose a threshold such that only non fraudulent data is included. Then, for a given transaction, we can evaluate the simple model. If the simple model evaluates to True, then output NOT FRAUD. If and only if the simple model outputs 1, then we run the original model, and output whatever it predicts.
