@@ -78,5 +78,5 @@ We averaged total latency over 5 runs of the dataset, and then rounded to six di
 
 If you're interested in seeing how this works on your MLP, get in touch at [quickmlmodels@gmail.com](quickmlmodels@gmail.com)
 
-Notebook: [Raw notebook on GitHub](https://github.com/compressmodels.github.io/compressmodels.github.io/blob/main/_posts/experiment_fraud.ipynb)
+Notebook: [Notebook on GitHub](https://github.com/compressmodels.github.io/compressmodels.github.io/blob/main/notebooks/experiment-0606-fraud.ipynb)
 
