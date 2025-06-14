@@ -9,7 +9,7 @@ author: "Sam Randall"
 
 Accelerating Wide MLPs with Early Exit Inference: A Case Study on a Credit Card transaction dataset.
 
-We present an empirical evaluation of a custom sklearn inference acceleration framework applied to wide multilayer perceptrons (MLPs), responsible for detecting fraud. Our method integrates early exit mechanisms and achieves a 1.27x speed-up, resulting able to examine 1.27x more cases of fraud if the MLP is the bottleneck.
+We present an empirical evaluation of a custom sklearn inference acceleration framework applied to wide multilayer perceptrons (MLPs), responsible for detecting fraud. Our method integrates early exit mechanisms and achieves a 1.27x speed-up, able to examine 1.27x more cases of fraud if the MLP is the bottleneck.
 
 ### Dataset
 We evaluate our method on the [Credit Fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) available on Kaggle, a benchmark for binary classification for fraud. The dataset contains 284807 data points and 28 features. We split it into train (80%), val 12% and test (12%).
@@ -81,5 +81,5 @@ We averaged total latency over 5 runs of the dataset, and then rounded to six di
 
 If you're interested in seeing how this works on your MLP, get in touch at [quickmlmodels@gmail.com](quickmlmodels@gmail.com)
 
-Notebook: [Notebook on GitHub](https://compressmodels.github.io/notebooks/experiment-0606-fraud.ipynb)
+[Link to notebook](https://nbviewer.org/github/compressmodels/compressmodels.github.io/blob/main/notebooks/experiment-0606-fraud.ipynb)
 
