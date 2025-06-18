@@ -54,16 +54,16 @@ eem.predict(test_x)
 
 When we do this we observe minimal accuracy degradation.
 
-|    |   MLP Hidden Layer Size |   test_accuracy_baseline |   test_accuracy_experimental |
-|----|-------------------------|--------------------------|------------------------------|
-|  0 |                      32 |                 0.938596 |                     0.929825 |
-|  1 |                      64 |                 0.929825 |                     0.929825 |
-|  2 |                     128 |                 0.929825 |                     0.929825 |
-|  3 |                     256 |                 0.929825 |                     0.929825 |
-|  4 |                     512 |                 0.921053 |                     0.921053 |
-|  5 |                    1024 |                 0.921053 |                     0.921053 |
-|  6 |                    2048 |                 0.921053 |                     0.921053 |
-|  7 |                    4096 |                 0.921053 |                     0.921053 |
+|  | Hidden Layer Size | Accuracy (Baseline) |Accuracy (Experimental) |
+|--|-------------------|---------------------|------------------------|
+| 0|                32 |            0.938596 |               0.929825 |
+| 1|                64 |            0.929825 |               0.929825 |
+|2 |               128 |            0.929825 |               0.929825 |
+| 3|             256   |            0.929825 |               0.929825 |
+| 4|             512   |            0.921053 |               0.921053 |
+| 5|            1024   |            0.921053 |               0.921053 |
+| 6|            2048   |            0.921053 |               0.921053 |
+| 7|            4096   |            0.921053 |               0.921053 |
 
 Note how the accuracies are very nearly identical between the two runs. We are explicitly controlling that tradeoff.
 #### Latency 🔥 
