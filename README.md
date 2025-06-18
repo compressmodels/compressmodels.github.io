@@ -2,9 +2,8 @@
 
 I am working on research that makes multi-layer perceptrons (MLP) faster in inference (low latency) as well as less energy-intensive.
 
-Right now, I have two methods:
-`add_linear_predict_rule` featured in the fraud notebook.
-`add_hypersphere_prediction_grouping_rule` featured in the breast cancer notebook.
+The current vision is for it to be instantiated as an API, either available on the cloud or via `pip`. Regardless, it will have two functions available for use by the user:
+`add_linear_predict_rule` featured in the fraud dataset notebook example and `add_hypersphere_prediction_grouping_rule` featured in the breast cancer dataset notebook example.
 
 
 Software Usage:
