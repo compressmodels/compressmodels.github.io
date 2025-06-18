@@ -2,6 +2,11 @@
 
 I am working on research that makes multi-layer perceptrons (MLP) faster in inference (low latency) as well as less energy-intensive.
 
+Right now, I have two methods:
+`add_linear_predict_rule` featured in the fraud notebook.
+`add_hypersphere_prediction_grouping_rule` featured in the breast cancer notebook.
+
+
 Software Usage:
 ```[python]
 from sklearn.neural_network import MLPClassifier
