@@ -80,14 +80,9 @@ We show results for parallel latency in seconds on average for the entire datase
 
 For a given hidden layer size, we compute the average time of running inference on a single sample. For 1000 samples, with sklearn, an MLP with a hidden layer size of 4096 would take XXX seconds to run. With custom acceleration, it would take YYY seconds to run those 1000 samples.
 
-
 ### Key Observations
 - Significant latency reduction was observed for nearly all hidden layer sizes, in sequence.
 - Significant latency reduction was observed at high hidden dimensions (H ≥ 1024), where computational complexity is highest.
 - Algorithm did not universally result in speedups in low H regime.
 - Minimal degradation in test accuracy across most model sizes.
 - Our method performs best with very wide architectures, confirming its suitability for deployment scenarios involving large-capacity models.
-
-### Stay Tuned For:
-- An optimized algorithm so that it achieves latency improvement in smaller H settings. 
-- A notebook demo so you can see the software in use to achieve this gains.
