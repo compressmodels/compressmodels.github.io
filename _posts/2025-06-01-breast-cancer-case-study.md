@@ -68,7 +68,7 @@ When we do this we observe minimal accuracy degradation.
 Note how the accuracies are very nearly identical between the two runs. We are explicitly controlling that tradeoff.
 #### Latency 🔥 
 
-We show results for parallel latency in seconds on average for the entire dataset as well as real-time average latency in seconds for the entire dataset.
+We show results for parallel latency  on average for the entire dataset as well as real-time average latency improvement in seconds for the entire dataset. This is computed as `baseline_time / experimental_time` so numbers greater than 1 mean time is being saved.
 
 |    |   MLP Hidden Layer Size |   Parallel Improvement |   Sequential Improvement |
 |---:|------------------------:|-----------------------:|-------------------------:|
@@ -81,13 +81,10 @@ We show results for parallel latency in seconds on average for the entire datase
 |  6 |                    2048 |               2.3913   |                  1.36833 |
 |  7 |                    4096 |               1.45186  |                  1.32986 |
 
-For a given hidden layer size, we compute the average time of running inference on a single sample. For 1000 samples, with sklearn, an MLP with a hidden layer size of 4096 would take XXX seconds to run. With custom acceleration, it would take YYY seconds to run those 1000 samples.
 
 ### Key Observations
 - Significant latency reduction was observed for nearly all hidden layer sizes, in sequence.
 - Significant latency reduction was observed at high hidden dimensions (H ≥ 1024), where computational complexity is highest.
-- Algorithm did not universally result in speedups in low H regime.
-- Minimal degradation in test accuracy across most model sizes.
 - Our method performs best with very wide architectures, confirming its suitability for deployment scenarios involving large-capacity models.
 
 ### Next Steps
