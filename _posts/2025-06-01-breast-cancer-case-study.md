@@ -56,17 +56,16 @@ When we do this we observe minimal accuracy degradation.
 
 We show results for parallel latency in seconds on average for the entire dataset as well as real-time average latency in seconds for the entire dataset.
 
-
-|    |   MLP Hidden Layer Size |   Parallel Improvement |   Baseline Latency (in Parallel) |   test_accuracy_experimental |   test_accuracy_baseline |   Early-Exit Latency (in Parallel) |   Baseline Latency (Sequential) |   Baseline Latency (Sequential) |   Sequential Improvement |
-|----|-------------------------|------------------------|----------------------------------|------------------------------|-------------------------|------------------------------------|---------------------------------|---------------------------------|--------------------------|
-|  0 |                      32 |               0.765409 |                      7.63893e-05 |                     0.938596 |                 0.938596 |                        9.9802e-05  |                       0.0163752 |                       0.0137328 |                 1.19241  |
-|  1 |                      64 |               0.786558 |                      8.25882e-05 |                     0.921053 |                 0.929825 |                        0.000105    |                       0.0165251 |                       0.0122609 |                 1.34779  |
-|  2 |                     128 |               0.929282 |                      0.000124693 |                     0.929825 |                 0.929825 |                        0.000134182 |                       0.0167072 |                       0.0155337 |                 1.07555  |
-|  3 |                     256 |               0.933253 |                      0.000166678 |                     0.938596 |                 0.938596 |                        0.000178599 |                       0.0168818 |                       0.0140476 |                 1.20175  |
-|  4 |                     512 |               1.0645   |                      0.000258899 |                     0.921053 |                 0.921053 |                        0.000243211 |                       0.0174249 |                       0.0143654 |                 1.21298  |
-|  5 |                    1024 |               0.981411 |                      0.000570202 |                     0.815789 |                 0.815789 |                        0.000581002 |                       0.0208043 |                       0.0266069 |                 0.781913 |
-|  6 |                    2048 |               1.98646  |                      0.0011297   |                     0.938596 |                 0.947368 |                        0.0005687   |                       0.0214002 |                       0.0161236 |                 1.32726  |
-|  7 |                    4096 |               1.70216  |                      0.00223529  |                     0.912281 |                 0.921053 |                        0.00131321  |                       0.0237825 |                       0.0187043 |                 1.2715   |
+|    |   MLP Hidden Layer Size |   Parallel Improvement |   Sequential Improvement |
+|---:|------------------------:|-----------------------:|-------------------------:|
+|  0 |                      32 |               0.726136 |                  1.09331 |
+|  1 |                      64 |               0.514278 |                  1.09343 |
+|  2 |                     128 |               1.09549  |                  1.32097 |
+|  3 |                     256 |               1.05646  |                  1.22204 |
+|  4 |                     512 |               1.32636  |                  1.40272 |
+|  5 |                    1024 |               1.82886  |                  1.32009 |
+|  6 |                    2048 |               2.3913   |                  1.36833 |
+|  7 |                    4096 |               1.45186  |                  1.32986 |
 
 For a given hidden layer size, we compute the average time of running inference on a single sample. For 1000 samples, with ONNX, an MLP with a hidden layer size of 4096 would take 9.18 seconds to run. With ONNX and the custom acceleration, it would take 5.33 seconds to run those 1000 samples.
 
