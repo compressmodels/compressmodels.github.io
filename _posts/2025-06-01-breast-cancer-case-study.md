@@ -51,18 +51,18 @@ eem.predict(test_x)
 ### Results
 
 When we do this we observe minimal accuracy degradation.
+|    |   MLP Hidden Layer Size |   test_accuracy_baseline |   test_accuracy_experimental |
+|---:|------------------------:|-------------------------:|-----------------------------:|
+|  0 |                      32 |                 0.938596 |                     0.929825 |
+|  1 |                      64 |                 0.929825 |                     0.929825 |
+|  2 |                     128 |                 0.929825 |                     0.929825 |
+|  3 |                     256 |                 0.929825 |                     0.929825 |
+|  4 |                     512 |                 0.921053 |                     0.921053 |
+|  5 |                    1024 |                 0.921053 |                     0.921053 |
+|  6 |                    2048 |                 0.921053 |                     0.921053 |
+|  7 |                    4096 |                 0.921053 |                     0.921053 |
 
-|    |   MLP Hidden Layer Size |   Parallel Improvement |   Sequential Improvement |
-|---:|------------------------:|-----------------------:|-------------------------:|
-|  0 |                      32 |               0.726136 |                  1.09331 |
-|  1 |                      64 |               0.514278 |                  1.09343 |
-|  2 |                     128 |               1.09549  |                  1.32097 |
-|  3 |                     256 |               1.05646  |                  1.22204 |
-|  4 |                     512 |               1.32636  |                  1.40272 |
-|  5 |                    1024 |               1.82886  |                  1.32009 |
-|  6 |                    2048 |               2.3913   |                  1.36833 |
-|  7 |                    4096 |               1.45186  |                  1.32986 |
-
+Note how the accuracies are very nearly identical between the two runs. We are explicitly controlling that tradeoff.
 #### Latency 🔥 
 
 We show results for parallel latency in seconds on average for the entire dataset as well as real-time average latency in seconds for the entire dataset.
