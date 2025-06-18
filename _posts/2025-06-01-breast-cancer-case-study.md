@@ -49,6 +49,14 @@ eem.predict(test_x)
 ```
 
 ### Results
+
+When we do this we observe minimal accuracy degradation.
+
+#### Latency 🔥 
+
+We show results for parallel latency in seconds on average for the entire dataset as well as real-time average latency in seconds for the entire dataset.
+
+
 |    |   MLP Hidden Layer Size |   Parallel Improvement |   Baseline Latency (in Parallel) |   test_accuracy_experimental |   test_accuracy_baseline |   Early-Exit Latency (in Parallel) |   Baseline Latency (Sequential) |   Baseline Latency (Sequential) |   Sequential Improvement |
 |----|-------------------------|------------------------|----------------------------------|------------------------------|-------------------------|------------------------------------|---------------------------------|---------------------------------|--------------------------|
 |  0 |                      32 |               0.765409 |                      7.63893e-05 |                     0.938596 |                 0.938596 |                        9.9802e-05  |                       0.0163752 |                       0.0137328 |                 1.19241  |
