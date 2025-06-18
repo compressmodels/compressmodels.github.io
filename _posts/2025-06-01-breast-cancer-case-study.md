@@ -53,6 +53,7 @@ eem.predict(test_x)
 ### Results
 
 When we do this we observe minimal accuracy degradation.
+
 |    |   MLP Hidden Layer Size |   test_accuracy_baseline |   test_accuracy_experimental |
 |---:|------------------------:|-------------------------:|-----------------------------:|
 |  0 |                      32 |                 0.938596 |                     0.929825 |
