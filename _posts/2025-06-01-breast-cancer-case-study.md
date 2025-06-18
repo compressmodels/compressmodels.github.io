@@ -26,6 +26,8 @@ Hidden layer size (H): Varied from 16 to 8192
 
 ### Methods
 
+We first note that, in terms of latency, ONNX outperforms in parallel, but lags behind sklearn significantly in real-time, one-at-a-time inference.
+
 We take a model and consider its training dataset, define geometry-based rules.
 At inference time given a *single* data point, the new algorithm first checks
 whether the datapoint satisfies any of the geometry-based rules (is within a hypersphere, is within a halfspace, etc.).
@@ -86,3 +88,6 @@ For a given hidden layer size, we compute the average time of running inference 
 - Algorithm did not universally result in speedups in low H regime.
 - Minimal degradation in test accuracy across most model sizes.
 - Our method performs best with very wide architectures, confirming its suitability for deployment scenarios involving large-capacity models.
+
+### Next Steps
+- Show this example with ONNX enabled.
