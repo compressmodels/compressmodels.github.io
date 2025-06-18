@@ -31,6 +31,23 @@ At inference time given a *single* data point, the new algorithm first checks
 whether the datapoint satisfies any of the geometry-based rules (is within a hypersphere, is within a halfspace, etc.).
 If it does, we output a prediction specific to the relevant rule. If no rules contain the datapoint being evaluated, we run the model as usual.
 
+## Usage
+
+```
+# Train a normal sklearn MLP model.
+mlp = MLPClassifier(hidden_layer_sizes=(512,))
+mlp.fit(X_train, y_train)
+
+# Wrap it as an early exit model.
+eem = EarlyExitModel(mlp)
+
+# Let the algorithm do its thing.
+eem.add_hypersphere_prediction_grouping_rule(X_train)
+
+# It's as simple as:
+eem.predict(test_x)
+```
+
 ### Results
 |    |   MLP Hidden Layer Size |   Parallel Improvement |   Baseline Latency (in Parallel) |   test_accuracy_experimental |   test_accuracy_baseline |   Early-Exit Latency (in Parallel) |   Baseline Latency (Sequential) |   Baseline Latency (Sequential) |   Sequential Improvement |
 |---:|------------------------:|-----------------------:|---------------------------------:|-----------------------------:|-------------------------:|-----------------------------------:|--------------------------------:|--------------------------------:|-------------------------:|
