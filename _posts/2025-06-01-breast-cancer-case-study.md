@@ -52,6 +52,17 @@ eem.predict(test_x)
 
 When we do this we observe minimal accuracy degradation.
 
+|    |   MLP Hidden Layer Size |   Parallel Improvement |   Sequential Improvement |
+|---:|------------------------:|-----------------------:|-------------------------:|
+|  0 |                      32 |               0.726136 |                  1.09331 |
+|  1 |                      64 |               0.514278 |                  1.09343 |
+|  2 |                     128 |               1.09549  |                  1.32097 |
+|  3 |                     256 |               1.05646  |                  1.22204 |
+|  4 |                     512 |               1.32636  |                  1.40272 |
+|  5 |                    1024 |               1.82886  |                  1.32009 |
+|  6 |                    2048 |               2.3913   |                  1.36833 |
+|  7 |                    4096 |               1.45186  |                  1.32986 |
+
 #### Latency 🔥 
 
 We show results for parallel latency in seconds on average for the entire dataset as well as real-time average latency in seconds for the entire dataset.
@@ -67,7 +78,7 @@ We show results for parallel latency in seconds on average for the entire datase
 |  6 |                    2048 |               2.3913   |                  1.36833 |
 |  7 |                    4096 |               1.45186  |                  1.32986 |
 
-For a given hidden layer size, we compute the average time of running inference on a single sample. For 1000 samples, with ONNX, an MLP with a hidden layer size of 4096 would take 9.18 seconds to run. With ONNX and the custom acceleration, it would take 5.33 seconds to run those 1000 samples.
+For a given hidden layer size, we compute the average time of running inference on a single sample. For 1000 samples, with sklearn, an MLP with a hidden layer size of 4096 would take XXX seconds to run. With custom acceleration, it would take YYY seconds to run those 1000 samples.
 
 
 ### Key Observations
