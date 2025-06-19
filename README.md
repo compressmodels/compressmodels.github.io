@@ -4,7 +4,7 @@ Problem Statement: MLPs are common place in tabular models to predict stock mark
 
 On the edge, or situations where data is sufficiently high-volume, these models must operate fast or pay the price. In critical applications, this "price" can be huge, for autonomous vehicles it can be a crash, it can be lost revenue due to fraud, or failing to make a decision fast enough on a fleeting opportunity (in the case of algorithmic trading).
 
-I am working on research that makes multi-layer perceptrons (MLP) faster in inference (low latency) as well as less energy-intensive.
+I am building practical methods that reduce the latency of multi-layer perceptrons (MLP) in inference as well as their energy-intensivity.
 
 
 The software package has two functions available. Both functions construct early-exit rules that allow that model to branch given easy inputs.
