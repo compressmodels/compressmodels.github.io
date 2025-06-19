@@ -3,8 +3,8 @@
 I am working on research that makes multi-layer perceptrons (MLP) faster in inference (low latency) as well as less energy-intensive.
 
 The software package has two functions available. Both functions construct early-exit rules that allow that model to branch given easy inputs.
-- `add_linear_predict_rule` featured in the fraud dataset notebook example outputs a hyperplane (dividing the data space into two halfspaces). This hyperplane is defined such that all data in the + halfspace is one class. 
-- `add_hypersphere_prediction_grouping_rule` featured in the breast cancer dataset notebook example uses various clustering techniques to detect groups with a high prevalence of a predicted class and then construct rules, defined as hyperspheres to detect membership within that group.
+- `add_linear_predict_rule` featured in the fraud dataset notebook example outputs a hyperplane (dividing the data space into two halfspaces). This hyperplane is defined such that all data in the + halfspace is one class. At inference time, when a data point occurs on the + side of the hyperplane, we early exit with the correct predicted class.
+- `add_hypersphere_prediction_grouping_rule` featured in the breast cancer dataset notebook example uses various clustering techniques to detect groups with a high prevalence of a predicted class and then construct rules, defined as hyperspheres to detect membership within that group, and then early-exit.
 
 In both cases, the success (resulting time-savings) of the algorithm depends on the shape of the data.
 
