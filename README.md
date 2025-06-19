@@ -1,6 +1,6 @@
-# Project Page
+# moco
 
-Problem Statement: MLPs are common place in tabular models to predict stock market prices, click-through rates in advertising, as well as in the text domain based on their involvement in transformers.
+MLPs are common place in tabular models to predict stock market prices, click-through rates in advertising, as well as in the text domain based on their involvement in transformers.
 
 On the edge, or situations where data is sufficiently high-volume, these models must operate fast or pay the price. In critical applications, this "price" can be huge, for autonomous vehicles it can be a crash, it can be lost revenue due to fraud, or failing to make a decision fast enough on a fleeting opportunity (in the case of algorithmic trading).
 
