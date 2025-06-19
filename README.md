@@ -39,4 +39,4 @@ Posts:
 - [Breast Cancer Dataset Blog Post](https://compressmodels.github.io/2025/06/01/breast-cancer-case-study.html): Achieving a 2.4x speed-up on a wide MLP, `h = 2048` in-parallel, as well as >1.5 cost-savings across model sizes in the real-time setting.
 
 
-Contact me at [quickmlmodels@gmail.com](mailto:quickmlmodels@gmail.com) if you want to get in touch.
+We invite you to explore the detailed findings in our blog posts and consider integrating moco into your projects. Feel free to contact me at [quickmlmodels@gmail.com](mailto:quickmlmodels@gmail.com) for collaborations or inquiries.
