@@ -29,7 +29,8 @@ At inference time, decide with $m_{decision}$ whether the data point is easy or 
 Thus when we segment data by easy/hard status,
 
 Define:
-Let $N_{easy}$ be the number of points classified as "easy" by $m_{decision}$. Let $N_{hard}$ be the number of points classified as "hard" by $m_{decision}$, so $N = N_{easy} + N_{hard}$.
+- Let $N_{easy}$ be the number of points classified as "easy" by $m_{decision}$.
+- Let $N_{hard}$ be the number of points classified as "hard" by $m_{decision}$, so $N = N_{easy} + N_{hard}$.
 
 $\sum_{i}^{N} t(m_{new}, X_i) = \sum_{i}^{N_{easy}} t(m_{decision}, X_i) + \sum_{i}^{N_{hard}} t(m, X_i) + t(m_{decision}, X_i)$.
 
@@ -43,7 +44,7 @@ To minimize this, we need to maximize $N_{easy}$, minimize $t(m_{decision}, x)$,
 
 #### Conditions for acceleration.
 
-$N_{easy} t(m_{decision}, x) + (N - N_{easy}) (t(m, x) + t(m_{decision}, x))$
+$N_{easy}\ t(m_{decision}, x) + (N - N_{easy})\ (t(m, x) + t(m_{decision}, x)) < N\ t(m, x)$
 
 Note that within the hard set, we need to evaluate the decision model, and only if it outputs hard do we need to evaluate the whole model.
 
@@ -65,11 +66,4 @@ The algorithms I have implemented so far are:
 ### Results
 
 See notebooks for empirical results.
-
-
-
-
-
-
-
 
