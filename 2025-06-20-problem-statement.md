@@ -55,7 +55,7 @@ Note that within the hard set, we need to evaluate the decision model, and only 
 
 A decision rule must be simple (low time complexity), maximize the number of points $N_{easy}$, and contain only one predicted class (so as to preserve accuracy)
 
-There is a trade-off between these three concepts.
+There is a trade-off (and a fundamental optimization problem) between these three concepts.
 1. Choose a hypersphere around a single point yields a simple model with one class, but it suffers from the number of points (1) within it.
 2. At another extreme, you can choose the entire dataset and have an extremely simple model, a large number of points, but low purity.
 3. At the final extreme, you can overfit the model to be extremely high degree and include all the data points from one class and you have a large number of points, good purity but a highly complex and thus inefficient model.
