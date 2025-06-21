@@ -3,11 +3,12 @@
 ## Problem Statement
 
 Inputs:
-- Trained MLP model, $m$,  with $l$ hidden layers, each of hidden size $h_i$, where $0 \leq i < l$.
-- $X_{train} \in \mathbb{R}^{N_{train} \times D}$
+1. Trained MLP model, $m$,  with $l$ hidden layers, each of hidden size $h_i$, where $0 \leq i < l$.
+2. $X_{train} \in \mathbb{R}^{N_{train} \times D}$
 
 Define: 
-- $t(m, x)$ to be the time it takes model $m$ to process $x$.
+
+$t(m, x)$ to be the time it takes model $m$ to process $x$.
 
 Objective: 
 
