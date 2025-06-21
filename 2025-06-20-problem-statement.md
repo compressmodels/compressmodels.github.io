@@ -30,13 +30,21 @@ Thus when we segment data by easy/hard status,
 
 $\sum_{i}^{N} t(m_{new}, X_i) = \sum_{i}^{N_{easy}} t(m_{decision}, X_i) + \sum_{i}^{N_{hard}} t(m, X_i) + t(m_{decision}, X_i)$.
 
-where $N = N_{easy} + N_{hard}$
+Assuming $t(m, X_i)$ is constant for all $i$, this simplifies to:
+
+= $N_{easy} t(m_{decision}, X_i) + N_{hard} (t(m, X_i) + t(m_{decision}, X_i))$
+
+where $N = N_{easy} + N_{hard}$.
+
+= $N_{easy} t(m_{decision}, X_i) + (N - N_{easy}) (t(m, X_i) + t(m_{decision}, X_i))$
+
+To minimize this, we need to maximize $N_{easy}$, minimize $t(m_{decision}, X_i)$, all while maintaining accuracy.
 
 Note that within the hard set, we need to evaluate the decision model, and only if it outputs hard do we need to evaluate the whole model.
 
-Now, at this point, it becomes clear that the art is choosing decision rules that are simple (low time complexity), number of points (to achieve high bang for your buck) and contain only one predicted class (so as to preserve accuracy)
+Now, at this point, the art is choosing decision rules that are simple (low time complexity), number of points (to achieve high bang for your buck) and contain only one predicted class (so as to preserve accuracy)
 
-There is of a trade-off between these three concepts. Choose a hypersphere around a single point and you have a simple model with one class, but it suffers from the number of points within it. At another extreme, you can choose the entire dataset and have an extremely simple model, a large number of points, and awful purity. At the final extreme, you can overfit the model to be extremely high degree and include all the data points from one class and you have a large number of points, good purity but a highly complex and thus inefficient model.
+There is a trade-off between these three concepts. Choose a hypersphere around a single point yields a simple model with one class, but it suffers from the number of points (1) within it. At another extreme, you can choose the entire dataset and have an extremely simple model, a large number of points, but low purity. At the final extreme, you can overfit the model to be extremely high degree and include all the data points from one class and you have a large number of points, good purity but a highly complex and thus inefficient model.
 
 ##
 
