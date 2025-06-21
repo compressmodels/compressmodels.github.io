@@ -23,7 +23,7 @@ The core insight to formulating an algorithm results from two critical hypothese
 
 With these two hypotheses in place, we create the following algorithm to solve this problem. 
 
-At inference time, decide with $m_{decision}$ whether the data point is easy or hard. If it's easy, early exit and output a predicted class. If it's hard run the model as normal.
+At inference time, decide with $m_{decision}$ whether the data point is easy or hard. If it's easy, early exit and output a predicted class. If it's hard run the model as normal. We define this early-exit system as $m_{new}$.
 
 Define:
 - Let $N_{easy}$ be the number of points classified as "easy" by $m_{decision}$.
