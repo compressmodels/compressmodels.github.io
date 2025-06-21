@@ -32,6 +32,7 @@ Define:
 - Let $N_{easy}$ be the number of points classified as "easy" by $m_{decision}$.
 - Let $N_{hard}$ be the number of points classified as "hard" by $m_{decision}$, so $N = N_{easy} + N_{hard}$.
 
+Thus we can break the total time computation into the easy group and the hard group: 
 $\sum_{i}^{N} t(m_{new}, X_i) = \sum_{i}^{N_{easy}} t(m_{decision}, X_i) + \sum_{i}^{N_{hard}} t(m, X_i) + t(m_{decision}, X_i)$.
 
 Assuming $t(m, X_i)$ is constant for all $i$, we define $x$ to be an arbitrary $X_i$ this simplifies to:
