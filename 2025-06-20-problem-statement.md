@@ -21,7 +21,7 @@ Achieving the following condition $\sum_{i}^{N} t(m_{new}, X_i) < \sum_i^N t(m, 
 The core insight to formulating an algorithm results from two critical hypotheses.
 
 1. Some data is harder to classify than others.
-2. The decision to classify *some* data *can be* easier than that of the classification itself.
+2. The decision to classify *some* data as easy *can be* faster than that of the classification itself.
 
 With these two hypotheses in place, we create the following algorithm to solve this problem. 
 
