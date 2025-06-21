@@ -20,11 +20,11 @@ Hypotheses driving solutions:
 To achieve a result, there are two critical hypotheses.
 
 1. Some data is harder to classify than others.
-2. The decision to classify data as easy/hard is easier than that of the classification itself.
+2. The decision to classify *some* data as easy is easier than that of the classification itself.
 
 With these two hypotheses in place, we create the following algorithm to solve this problem: 
 
-At inference time, decide whether the data point is easy or hard. If it's easy, early exit and output a predicted class. If it's hard run the model as normal.
+At inference time, decide with $m_{decision}$ whether the data point is easy or hard. If it's easy, early exit and output a predicted class. If it's hard run the model as normal.
 
 Thus when we segment data by easy/hard status,
 
@@ -35,17 +35,15 @@ $\sum_{i}^{N} t(m_{new}, X_i) = \sum_{i}^{N_{easy}} t(m_{decision}, X_i) + \sum_
 
 Assuming $t(m, X_i)$ is constant for all $i$, this simplifies to:
 
-= $N_{easy} t(m_{decision}, X_i) + N_{hard} (t(m, X_i) + t(m_{decision}, X_i))$
+= $N_{easy} t(m_{decision}, x) + N_{hard} (t(m, x) + t(m_{decision}, x))$
 
+= $N_{easy} t(m_{decision}, x) + (N - N_{easy}) (t(m, x) + t(m_{decision}, x))$
 
-
-= $N_{easy} t(m_{decision}, X_i) + (N - N_{easy}) (t(m, X_i) + t(m_{decision}, X_i))$
-
-To minimize this, we need to maximize $N_{easy}$, minimize $t(m_{decision}, X_i)$, all while maintaining accuracy.
+To minimize this, we need to maximize $N_{easy}$, minimize $t(m_{decision}, x)$, all while maintaining accuracy.
 
 #### Conditions for acceleration.
 
-$N_{easy} t(m_{decision}, X_i) + (N - N_{easy}) (t(m, X_i) + t(m_{decision}, X_i))$
+$N_{easy} t(m_{decision}, x) + (N - N_{easy}) (t(m, x) + t(m_{decision}, x))$
 
 Note that within the hard set, we need to evaluate the decision model, and only if it outputs hard do we need to evaluate the whole model.
 
