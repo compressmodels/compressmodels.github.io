@@ -28,17 +28,24 @@ At inference time, decide whether the data point is easy or hard. If it's easy, 
 
 Thus when we segment data by easy/hard status,
 
+Define:
+Let $N_{easy}$ be the number of points classified as "easy" by $m_{decision}$. Let $N_{hard}$ be the number of points classified as "hard" by $m_{decision}$, so $N = N_{easy} + N_{hard}$.
+
 $\sum_{i}^{N} t(m_{new}, X_i) = \sum_{i}^{N_{easy}} t(m_{decision}, X_i) + \sum_{i}^{N_{hard}} t(m, X_i) + t(m_{decision}, X_i)$.
 
 Assuming $t(m, X_i)$ is constant for all $i$, this simplifies to:
 
 = $N_{easy} t(m_{decision}, X_i) + N_{hard} (t(m, X_i) + t(m_{decision}, X_i))$
 
-where $N = N_{easy} + N_{hard}$.
+
 
 = $N_{easy} t(m_{decision}, X_i) + (N - N_{easy}) (t(m, X_i) + t(m_{decision}, X_i))$
 
 To minimize this, we need to maximize $N_{easy}$, minimize $t(m_{decision}, X_i)$, all while maintaining accuracy.
+
+#### Conditions for acceleration.
+
+$N_{easy} t(m_{decision}, X_i) + (N - N_{easy}) (t(m, X_i) + t(m_{decision}, X_i))$
 
 Note that within the hard set, we need to evaluate the decision model, and only if it outputs hard do we need to evaluate the whole model.
 
