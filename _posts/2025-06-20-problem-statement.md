@@ -3,8 +3,8 @@
 ## Problem Statement
 
 Inputs:
-- Trained MLP model, $m$,  with $l$ hidden layers, each of hidden size $h_i$, where $0 \leq i < l$.
-- $X_{train} \in \mathbb{R}^{N_{train} \times D}$
+- Trained MLP model, $$m$$,  with $$l$$ hidden layers, each of hidden size $$h_i$$, where $$0 \leq i < l$$.
+- $$X_{train} \in \mathbb{R}^{N_{train} \times D}$$
 
 Define: 
 - $t(m, x)$ to be the time it takes model $m$ to process $x$.
@@ -43,6 +43,10 @@ There is of a trade-off between these three concepts. Choose a hypersphere aroun
 ### Methods
 
 With the extremes of the problem stated for context, what we're doing is defining geometric rules (at the most simple (degree 1), hyperplanes, degree 2 conic sections) that achieve these objectives sufficiently for latency reduction. I use various methodologies to define these geometric rules. 
+
+The algorithms I have implemented so far are:
+- `add_linear_predict_rule`
+- `add_hypersphere_prediction_grouping_rule`
 
 
 ### Results
