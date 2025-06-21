@@ -15,7 +15,7 @@ Minimize $\sum_i^N t(m_{new}, X_i)$ by designing $m_{new}$.
 
 To achieve model speed up $\sum_{i}^{N} t(m_{new}, X_i) < \sum_i^N t(m, X_i)$.
 
-#
+Hypotheses driving solutions:
 
 To achieve a result, there are two critical hypotheses.
 
