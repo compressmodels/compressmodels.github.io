@@ -16,6 +16,8 @@ Minimize $\sum_i^N t(m_{new}, X_i)$ by designing $m_{new}$.
 
 Achieving the following condition $\sum_{i}^{N} t(m_{new}, X_i) < \sum_i^N t(m, X_i)$ amounts to achieving an average latency speedup in inference.
 
+## Algorithm
+
 The core insight to formulating an algorithm results from two critical hypotheses.
 
 1. Some data is harder to classify than others.
@@ -24,6 +26,8 @@ The core insight to formulating an algorithm results from two critical hypothese
 With these two hypotheses in place, we create the following algorithm to solve this problem. 
 
 At inference time, decide with $m_{decision}$ whether the data point is easy or hard. If it's easy, early exit and output a predicted class. If it's hard, run the model as normal. We define this early-exit system as $m_{new}$.
+
+## Algorithm Analysis
 
 Define:
 - Let $N_{easy}$ be the number of points classified as "easy" by $m_{decision}$.
@@ -40,8 +44,7 @@ Assuming $t(m, X_i)$ is constant for all $i$, we define $x$ to be an arbitrary $
 
 To minimize this, we need to maximize $N_{easy}$, minimize $t(m_{decision}, x)$, all while maintaining accuracy.
 
-#### Conditions for acceleration.
-
+Thus the condition for acceleration is: 
 $$N_{easy}\ t(m_{decision}, x) + (N - N_{easy})\ (t(m, x) + t(m_{decision}, x)) < N\ t(m, x)$$
 
 subject to all points within the easy group $m(x) = m_{decision}(x)$ to preserve accuracy.
