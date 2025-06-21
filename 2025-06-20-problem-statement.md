@@ -2,28 +2,26 @@
 
 ## Problem Statement
 
-Inputs:
+### Inputs
 1. Trained MLP model, $m$,  with $l$ hidden layers, each of hidden size $h_i$, where $0 \leq i < l$.
 2. $X_{train} \in \mathbb{R}^{N_{train} \times D}$
 
-Define: 
+### Define
 
 $t(m, x)$ to be the time it takes model $m$ to process $x$.
 
-Objective: 
+### Objective
 
 Minimize $\sum_i^N t(m_{new}, X_i)$ by designing $m_{new}$.
 
 Achieving the following condition $\sum_{i}^{N} t(m_{new}, X_i) < \sum_i^N t(m, X_i)$ amounts to achieving an average latency speedup in inference.
 
-Hypotheses driving solutions:
-
-To achieve a result, there are two critical hypotheses.
+The core insight to formulating an algorithm results from two critical hypotheses.
 
 1. Some data is harder to classify than others.
-2. The decision to classify *some* data as easy is easier than that of the classification itself.
+2. The decision to classify *some* data *can be* easier than that of the classification itself.
 
-With these two hypotheses in place, we create the following algorithm to solve this problem: 
+With these two hypotheses in place, we create the following algorithm to solve this problem. 
 
 At inference time, decide with $m_{decision}$ whether the data point is easy or hard. If it's easy, early exit and output a predicted class. If it's hard run the model as normal.
 
