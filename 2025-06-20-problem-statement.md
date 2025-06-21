@@ -34,7 +34,7 @@ Define:
 
 $\sum_{i}^{N} t(m_{new}, X_i) = \sum_{i}^{N_{easy}} t(m_{decision}, X_i) + \sum_{i}^{N_{hard}} t(m, X_i) + t(m_{decision}, X_i)$.
 
-Assuming $t(m, X_i)$ is constant for all $i$, this simplifies to:
+Assuming $t(m, X_i)$ is constant for all $i$, we define $x$ to be an arbitrary $X_i$ this simplifies to:
 
 = $N_{easy} t(m_{decision}, x) + N_{hard} (t(m, x) + t(m_{decision}, x))$
 
@@ -44,7 +44,7 @@ To minimize this, we need to maximize $N_{easy}$, minimize $t(m_{decision}, x)$,
 
 #### Conditions for acceleration.
 
-$N_{easy}\ t(m_{decision}, x) + (N - N_{easy})\ (t(m, x) + t(m_{decision}, x)) < N\ t(m, x)$
+$$N_{easy}\ t(m_{decision}, x) + (N - N_{easy})\ (t(m, x) + t(m_{decision}, x)) < N\ t(m, x)$$
 
 Note that within the hard set, we need to evaluate the decision model, and only if it outputs hard do we need to evaluate the whole model.
 
