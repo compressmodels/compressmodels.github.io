@@ -13,7 +13,7 @@ Objective:
 
 Minimize $\sum_i^N t(m_{new}, X_i)$ by designing $m_{new}$.
 
-To achieve model speed up $\sum_{i}^{N} t(m_{new}, X_i) < \sum_i^N t(m, X_i)$.
+Achieving the following condition $\sum_{i}^{N} t(m_{new}, X_i) < \sum_i^N t(m, X_i)$ amounts to achieving an average latency speedup in inference.
 
 Hypotheses driving solutions:
 
@@ -48,11 +48,9 @@ $$N_{easy}\ t(m_{decision}, x) + (N - N_{easy})\ (t(m, x) + t(m_{decision}, x)) 
 
 Note that within the hard set, we need to evaluate the decision model, and only if it outputs hard do we need to evaluate the whole model.
 
-Now, at this point, the art is choosing decision rules that are simple (low time complexity), number of points (to achieve high bang for your buck) and contain only one predicted class (so as to preserve accuracy)
+Now, at this point, the art is choosing decision rules that are simple (low time complexity), maximize the number of points $N_{easy}, and contain only one predicted class (so as to preserve accuracy)
 
 There is a trade-off between these three concepts. Choose a hypersphere around a single point yields a simple model with one class, but it suffers from the number of points (1) within it. At another extreme, you can choose the entire dataset and have an extremely simple model, a large number of points, but low purity. At the final extreme, you can overfit the model to be extremely high degree and include all the data points from one class and you have a large number of points, good purity but a highly complex and thus inefficient model.
-
-##
 
 ### Methods
 
@@ -61,7 +59,6 @@ With the extremes of the problem stated for context, what we're doing is definin
 The algorithms I have implemented so far are:
 - `add_linear_predict_rule`
 - `add_hypersphere_prediction_grouping_rule`
-
 
 ### Results
 
