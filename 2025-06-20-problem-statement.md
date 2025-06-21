@@ -49,7 +49,7 @@ $$N_{easy}\ t(m_{decision}, x) + (N - N_{easy})\ (t(m, x) + t(m_{decision}, x)) 
 
 Note that within the hard set, we need to evaluate the decision model, and only if it outputs hard do we need to evaluate the whole model.
 
-Now, at this point, the art is choosing decision rules that are simple (low time complexity), maximize the number of points $N_{easy}, and contain only one predicted class (so as to preserve accuracy)
+Now, at this point, the art is choosing decision rules that are simple (low time complexity), maximize the number of points $N_{easy}$, and contain only one predicted class (so as to preserve accuracy)
 
 There is a trade-off between these three concepts. Choose a hypersphere around a single point yields a simple model with one class, but it suffers from the number of points (1) within it. At another extreme, you can choose the entire dataset and have an extremely simple model, a large number of points, but low purity. At the final extreme, you can overfit the model to be extremely high degree and include all the data points from one class and you have a large number of points, good purity but a highly complex and thus inefficient model.
 
