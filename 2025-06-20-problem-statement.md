@@ -36,7 +36,7 @@ Define:
 Thus we can break the total time computation into the easy group and the hard group: 
 $\sum_{i}^{N} t(m_{new}, X_i) = \sum_{i}^{N_{easy}} t(m_{decision}, X_i) + \sum_{i}^{N_{hard}} t(m, X_i) + t(m_{decision}, X_i)$.
 
-Assuming $t(m, X_i)$ is constant for all $i$, we define $x$ to be an arbitrary $X_i$ this simplifies to:
+Assuming $t(m, X_i)$ is constant for all $i$, we define $x$ to be an arbitrary $X_i$. Removing the sum, the above simplifies to:
 
 = $N_{easy} t(m_{decision}, x) + N_{hard} (t(m, x) + t(m_{decision}, x))$
 
