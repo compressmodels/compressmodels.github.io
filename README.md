@@ -7,7 +7,7 @@ On the edge, or situations where data is sufficiently high-volume, these models 
 I am building practical methods that reduce the latency of multi-layer perceptrons (MLP) in inference as well as their energy-intensivity.
 
 
-The software package has two functions available. Both functions construct early-exit rules that allow that model to branch given easy inputs.
+The software package has two functions available. Both functions construct early-exit rules that allow the model to branch given easy inputs.
 - `add_linear_predict_rule`
 - `add_hypersphere_prediction_grouping_rule` 
 
@@ -40,7 +40,6 @@ assert baseline_time > experimental_time
 ```
 
 Posts:
-- [Problem Statement Blog Post](https://compressmodels.github.io/2025-06-20-problem-statement.pdf): Scientific Statement describing the problem I'm solving and how I'm solving it.
 - [Credit Card Fraud Detection Blog Post](https://compressmodels.github.io/2025/06/06/realtime-fraud-detection.html): Achieving a 1.27x speed-up on wide and deep MLPs, sklearn, batched.
 - [Breast Cancer Dataset Blog Post](https://compressmodels.github.io/2025/06/01/breast-cancer-case-study.html): Achieving a 2.4x speed-up on a wide MLP, `h = 2048` in-parallel, as well as >1.5 cost-savings across model sizes in the real-time setting.
 
