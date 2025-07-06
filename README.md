@@ -1,17 +1,26 @@
 # moco
 
-MLPs are common place in tabular models to predict stock market prices, click-through rates in advertising, as well as in the text domain based on their involvement in transformers.
+Machine learning models are common place in tabular models to predict stock market prices, click-through rates in advertising, as well as in the text domain based on their involvement in transformers.
 
-On the edge, or situations where data is sufficiently high-volume, these models must operate fast or pay the price. In critical applications, this "price" can be huge, for autonomous vehicles it can be a crash, it can be lost revenue due to fraud, or failing to make a decision fast enough on a fleeting opportunity (in the case of algorithmic trading).
+On the edge, or situations where data is sufficiently high-volume, these models must operate fast. In critical applications, this "price" can be huge, for autonomous vehicles it can be a crash, it can be lost revenue due to fraud, or failing to make a decision fast enough on a fleeting opportunity (in the case of algorithmic trading).
 
-I am building practical methods that reduce the latency of multi-layer perceptrons (MLP) in inference as well as their energy-intensivity.
+I am building practical methods that reduce the latency and energy-intensivity of these prediction tasks in inference.
 
+The inputs into the system are simple:
+    - the training data
+    - the model's predictions
+
+The output:
+    - model-agnostic rules that are consistent with the model's predictions.
+
+The success (resulting time-savings) of the algorithm depends on the data distribution.
+
+I've demonstrated the software's success on multi-layer perceptrons (MLPs), but this approach is general enough to be applied to other model architectures.
 
 The software package has two functions available. Both functions construct early-exit rules that allow the model to branch given easy inputs.
-- `add_linear_predict_rule`
+- `add_linear_definite_class_rule`
 - `add_hypersphere_prediction_grouping_rule` 
 
-In both cases, the success (resulting time-savings) of the algorithm depends on the shape of the data.
 
 Software Usage:
 ```python
