@@ -32,7 +32,7 @@ model = MLPClassifier()
 model.fit(X_train, y_train)
 
 eem = EarlyExitModel(model)
-eem.add_linear_predict_rule(X_train)
+eem.add_linear_definite_class_rule(X_train)
 
 start = time.time()
 eem.predict(X_test)
