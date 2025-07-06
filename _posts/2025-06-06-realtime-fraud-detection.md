@@ -32,9 +32,9 @@ Various Hidden Layer Architectures:
 
 #### Model Training
 
-The critical item for fraud detection classification model is to achieve sufficiently high recall. For each model we choose the maximal precision that we can get while achieving a minimal recall of 75% on our validation set. We do this because the cost of missing a fraudulent transaction is higher than the cost of incorrectly labeling a safe transaction as fraudulent.
+The exact balance of acceptable false positives versus acceptable false negatives is up to a business. Both missing a fraudulent transaction and incorrectly labeling a safe transaction as fraudulent are expensive, but in a system where manual review occurs if a model predicts fraud, missing a fraudulent transaction (a false negative) is far more expensive. One reasonable approach is to threshold recall at a threshold (for this example: 75%), and choose the model with the best precision, where that recall is exceeded. 
 
-We achieve the following precision and recall for our various model architectures (on a withheld test set):
+With this approach, we achieve the following precision and recall for our various model architectures (on a withheld test set):
 
 |    | Architecture   |   Precision |   Recall |
 |---:|:---------------|------------:|---------:|
@@ -50,15 +50,16 @@ We achieve the following precision and recall for our various model architecture
 
 #### Improving Model Latency at Inference Time
 
-The main aim is to locate obviously safe data, and classify those quickly.
-
 ##### Evaluation
-For both the baseline and experimental approaches, we will measure the total latency observed over the entire dataset.
+For both the baseline and experimental approaches, we measure the total latency observed over the entire dataset.
 
 We define adherence to be the proportion of data points that have the same predicted value across the baseline model and the experimental system. A value of 1 is perfect, a value of 0 means every prediction is wrong (worse than random).
 
 #### Methods
-We train a logistic regression model to predict non fraud, and choose a threshold such that only non fraudulent data is included. Then, for a given transaction, we can evaluate the simple model. If the simple model evaluates to True, then output NOT FRAUD. If and only if the simple model outputs 1, then we run the original model, and output whatever it predicts.
+
+The main aim is to locate obviously safe data, and classify those quickly.
+
+We use the software package to find a linear classification rule to detect when a transaction is definitely safe. If this rule evaluates to `True`, then the system outputs "NOT FRAUD", and does not evaluate the original model. If the rule evaluates to `False`, indicating that the transaction is not "definitely safe", then we run the original model, and use its prediction as the system's output.
 
 ### Results
 
