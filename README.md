@@ -6,12 +6,13 @@ On the edge, or situations where data is sufficiently high-volume, these models 
 
 I am building practical methods that reduce the latency and energy-intensivity of these prediction tasks in inference.
 
-The inputs into the system are simple:
-    - the training data
-    - the model's predictions
+The inputs into the system are:
+- the training data
+- the model's predictions
+- Optionally: the model itself or intermediate embeddings extracted from the model
 
 The output:
-    - model-agnostic rules that are consistent with the model's predictions.
+- model-agnostic rules that are consistent with the model's predictions.
 
 The success (resulting time-savings) of the algorithm depends on the data distribution.
 
