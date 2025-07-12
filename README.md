@@ -1,10 +1,10 @@
 # moco
 
-Machine learning models are common place in tabular models to predict stock market prices, and click-through rates in advertising.
+Machine learning models are common place in tabular models to predict stock market prices, credit card fraud detection, click-through rates in advertising, predict equipment failure given sensor data, and more.
 
-On the edge, or situations where data is sufficiently high-volume, these models must operate fast. In critical applications, this "price" can be huge, for autonomous vehicles it can be a crash, it can be lost revenue due to fraud, or failing to make a decision fast enough on a fleeting opportunity (in the case of algorithmic trading).
+On the edge, or situations where data is sufficiently high-volume, these models must operate fast. Teams work to make their systems low-latency because failure to do so can be huge, for autonomous vehicles it can be a crash, it can be lost revenue due to fraud, or failing to make a decision fast enough on a fleeting opportunity (in the case of algorithmic trading).
 
-I am building practical methods that reduce the latency and energy-intensivity of these prediction tasks in inference.
+I am building practical off-the-shelf software methods that reduce the latency, increase the throughput and and decrease the energy-intensivity of these prediction tasks in inference (while they serve customers).
 
 The inputs into the system are:
 - the training data
@@ -16,12 +16,9 @@ The output:
 
 The success (resulting time-savings) of the algorithm depends on the data distribution.
 
-I've demonstrated the software's success on multi-layer perceptrons (MLPs), but this approach is general enough to be applied to other model architectures.
+I've demonstrated the software's success on XGBoost and multi-layer perceptrons (MLPs), but this approach is general enough to be applied to other model architectures, as rules are defined on the data itself.
 
-The software package has two functions available. Both functions construct early-exit rules that allow the model to branch given easy inputs.
-- `add_linear_definite_class_rule`
-- `add_hypersphere_prediction_grouping_rule` 
-
+The software package has two functions available. Both functions construct early-exit rules that allow the model to branch given easy inputs. 
 
 Software Usage:
 ```python
