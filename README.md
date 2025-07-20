@@ -8,6 +8,12 @@ There are two big problems that are receiving little corrective attention.
 - Machine learning models are black boxes
     - We are scientifically limited in our ability to understand how they make decisions. This means they are high-risk inherently in safety-critical or otherwise high stakes scenarios.
 
+### A network representing a transformer internal representation of the texts it classifies.
+![Image](images/graph.png)
+- red is negative label
+- green is positive label
+
+
 My aim is to solve both problems, yielding interpretable and controllable models that have low energy costs.
 
 I bring my background from graph theory, geometry, machine learning and software engineering to conduct practical, impactful research to solve these real-world problems.
