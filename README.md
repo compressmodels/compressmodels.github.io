@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 # moco
 
 AI is growing fast. LLMs are commonplace. 
