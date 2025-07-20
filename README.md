@@ -16,8 +16,10 @@ I have started small and am building towards acheiving energy reductions for LLM
 - [Breast Cancer Dataset Blog Post](https://compressmodels.github.io/2025/06/01/breast-cancer-case-study.html): Achieving a 2.4x speed-up on a wide MLP, `h = 2048` in-parallel, as well as >1.5 cost-savings across model sizes in the real-time setting.
 - [Credit Card Fraud Detection XGBoost Case Study](https://compressmodels.github.io/research_report.pdf) Achieve ~-20% latency on XGBoost models.
 
-Efficiency improvement in TinyBERT 
-- [TinyBERT IMDB Case Study](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve 21.5% reduction in latency & throughput, with no accuracy tradeoff, by early exiting.
+Recently, I've made the jump to transformers. 
+
+Efficiency improvement in TinyBERT Classification
+- [TinyBERT IMDB Case Study](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve 21.5% reduction in latency & throughput on the IMDB movie review dataset, with no accuracy tradeoff, by early exiting.
 
 
 I invite you to explore the detailed findings in the blog posts and consider integrating `moco` into your projects. Feel free to contact me at [quickmlmodels@gmail.com](mailto:quickmlmodels@gmail.com) if you have a model you want to try this out on.
