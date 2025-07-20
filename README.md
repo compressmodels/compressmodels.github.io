@@ -4,9 +4,9 @@ AI is growing fast. LLMs are commonplace.
 
 There are two big problems that are receiving little corrective attention.
 - LLMs are extremely energy-intensive.
-    This exacerbates climate change by increasing our dependence on fossil fuels.
+    - This exacerbates climate change by increasing our dependence on fossil fuels.
 - Machine learning models are black boxes
-    We are scientifically limited in our ability to understand how they make decisions. This means they are high-risk inherently in safety-critical or otherwise high stakes scenarios.
+    - We are scientifically limited in our ability to understand how they make decisions. This means they are high-risk inherently in safety-critical or otherwise high stakes scenarios.
 
 My aim is to solve both problems, yielding interpretable and controllable models that have low energy costs.
 
