@@ -17,7 +17,7 @@ I have started small and am building towards acheiving energy reductions for LLM
 - [Credit Card Fraud Detection XGBoost Case Study](https://compressmodels.github.io/research_report.pdf) Achieve ~-20% latency on XGBoost models.
 
 Efficiency improvement in TinyBERT 
-- [TinyBERT IMDB Case Study](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve -21.5% improvement in efficient: translates to improvement for latency, throughput, energy usage with no accuracy tradeoff.
+- [TinyBERT IMDB Case Study](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve 21.5% reduction in latency & throughput, with no accuracy tradeoff, by early exiting.
 
 
 I invite you to explore the detailed findings in the blog posts and consider integrating `moco` into your projects. Feel free to contact me at [quickmlmodels@gmail.com](mailto:quickmlmodels@gmail.com) if you have a model you want to try this out on.
