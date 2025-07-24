@@ -2,6 +2,5 @@ theme: jekyll-theme-minimal
 title: Low-Latency, Low-Energy Models
 description: Bookmark this to keep an eye on my project updates!
 markdown: kramdown
-google_analytics: G-3KNZ8JQG78
 kramdown:
   input: GFM
