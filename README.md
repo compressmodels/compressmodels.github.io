@@ -5,8 +5,6 @@ Low-Latency, Low-Energy AI Models — With No Accuracy Tradeoff ⚡
 
 
 
-I use my background in graph theory and topological data analysis to develop algorithms built into software that data scientists and ML performance engineers can use to optimize latency-critical models.
-
 ![image](./images/graph.png)
 
 
@@ -35,3 +33,8 @@ Use `moco` to find subsets of data that are easy to classify early in the model,
 📢 Stay Tuned: I am building a software package. Indicate interest [here](https://forms.gle/TAYoxmpHGVZzrjiU6).
 
 🚀 Try it on your model — <a href="mailto:quickmlmodels@gmail.com">Contact me</a>
+
+## About Me
+
+
+I use my background in graph theory and topological data analysis to develop algorithms built into software that data scientists and ML performance engineers can use to optimize latency-critical models.
