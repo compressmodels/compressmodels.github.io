@@ -8,7 +8,7 @@ Low-Latency, Low-Energy AI Models — With No Accuracy Loss ⚡
 ## Use Cases
 
 
-### Text 
+### Natural Language Processing (NLP)
 - [Accelerating TinyBERT Classification on IMDB dataset](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve 21.5% reduction in latency & throughput on the IMDB movie review dataset with the transformer architecture, with no accuracy loss.
 
 ### Tabular 
@@ -17,7 +17,7 @@ Low-Latency, Low-Energy AI Models — With No Accuracy Loss ⚡
 - [Credit Card Fraud Detection XGBoost](https://compressmodels.github.io/research_report.pdf) Achieve ~-20% latency on XGBoost models.
 - [Rapid Breast Cancer Diagnosis with sensor data](https://compressmodels.github.io/2025/06/01/breast-cancer-case-study.html): Achieving a 2.4x speed-up on a wide MLP, `h = 2048` in-parallel, as well as >1.5 cost-savings across model sizes in the real-time setting.
 
-### Images
+### Computer Vision (CV)
 - MNIST CNN Classification: Coming Soon!
 
 ## Achieving Faster Models
