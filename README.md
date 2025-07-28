@@ -1,9 +1,7 @@
 
 
 # ⚡ moco
-Low-Latency, Low-Energy AI Models — With No Accuracy Tradeoff ⚡
-
-
+Low-Latency, Low-Energy AI Models — With No Accuracy Loss ⚡
 
 ![image](./images/graph.png)
 
@@ -24,7 +22,7 @@ Low-Latency, Low-Energy AI Models — With No Accuracy Tradeoff ⚡
 
 ## Achieving Faster Models
 
-[Quantization](https://arxiv.org/abs/1712.05877), [pruning](https://arxiv.org/pdf/2308.06767), and knowledge distillation all involve an accuracy tradeoff.
+[Quantization](https://arxiv.org/abs/1712.05877), [pruning](https://arxiv.org/pdf/2308.06767), and knowledge distillation all involve achieving acceleration at the cost of accuracy.
 
 Hardware acceleration with GPUs, faster CPUs or parallelizing ML models on many machines involve more money, infrastructure cost and energy cost.
 
