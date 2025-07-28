@@ -3,7 +3,7 @@
 # ⚡ moco
 Low-Latency, Low-Energy AI Models — With No Accuracy Tradeoff ⚡
 
-Optimizing for speed of machine learning means paying more for hardware, sacrificing accuracy, or hiring performance engineers to optimize models (custom CUDA kernels, pruning, etc.)
+
 
 I use my background in graph theory and topological data analysis to develop algorithms built into software that data scientists and ML performance engineers can use to optimize latency-critical models.
 
@@ -20,6 +20,17 @@ I use my background in graph theory and topological data analysis to develop alg
 
 ### Text Domain
 - [Accelerating TinyBERT Classification on IMDB dataset](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve 21.5% reduction in latency & throughput on the IMDB movie review dataset, with no accuracy tradeoff.
+
+### Image Domain
+- MNIST CNN Classification: Coming Soon!
+
+## Achieving Faster Models
+
+[Quantization](https://arxiv.org/abs/1712.05877), [pruning](https://arxiv.org/pdf/2308.06767), and knowledge distillation all involve an accuracy tradeoff.
+
+Hardware acceleration with GPUs, faster CPUs or parallelizing ML models on many machines involve more money, infrastructure cost and energy cost.
+
+Use `moco` to find subsets of data that are easy to classify early in the model, so the model does not need to execute fully for every single data point.
 
 📢 Stay Tuned: I am building a software package. Indicate interest [here](https://forms.gle/TAYoxmpHGVZzrjiU6).
 
