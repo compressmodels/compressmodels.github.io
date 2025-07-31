@@ -18,7 +18,8 @@ Low-Latency, Low-Energy AI Models — With No Accuracy Loss ⚡
 - [Rapid Breast Cancer Diagnosis with sensor data](https://compressmodels.github.io/2025/06/01/breast-cancer-case-study.html): Achieving a 2.4x speed-up on a wide MLP, `h = 2048` in-parallel, as well as >1.5 cost-savings across model sizes in the real-time setting.
 
 ### Computer Vision (CV)
-- MNIST CNN Classification: Coming Soon!
+- [Rapid Handwritten Digit Classification](https://compressmodels.github.io/mnist_report.pdf)
+Achieves a 20% latency improvement on the canonical MNIST dataset with a CNN model architecture.
 
 ## Achieving Faster Models
 
