@@ -3,11 +3,13 @@
 # ⚡ moco
 Efficient ML
 
-Problem: Machine learning models can be too slow, require a lot of energy, and thus expensive in inference. 
+Problem: Machine learning models can be too slow, require a lot of energy, and are thus expensive in inference. 
 
 Root Problem: Machine Learning Models are far from computationally efficient on their expected data distribution.
 
 Solution: I am building algorithms to take trained machine learning models and make them more computationally efficient when running in inference. This results in more energy-efficient models, faster models, and models that require less infra, resulting in cheaper systems.
+
+Results: I've achieved **20% reductions in inference speed** on image, text and tabular  classification models. 
 
 
 ![image](./images/graph.png)
