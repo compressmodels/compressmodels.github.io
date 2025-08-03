@@ -1,12 +1,18 @@
 
 
 # ⚡ moco
-Low-Latency, Low-Energy AI Models — With No Accuracy Loss ⚡
+Efficient ML
+
+Problem: Machine learning models can be too slow, require a lot of energy, and thus expensive in inference. 
+
+Root Problem: Machine Learning Models are far from computationally efficient on their expected data distribution.
+
+Solution: I am building algorithms to take trained machine learning models and make them more computationally efficient when running in inference. This results in more energy-efficient models, faster models, and models that require less infra, resulting in cheaper systems.
+
 
 ![image](./images/graph.png)
 
 ## Use Cases
-
 
 ### Natural Language Processing (NLP)
 - [Accelerating TinyBERT Classification on IMDB dataset](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve 21.5% reduction in latency & throughput on the IMDB movie review dataset with the transformer architecture, with no accuracy loss.
