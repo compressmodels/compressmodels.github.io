@@ -41,6 +41,8 @@ Use `moco` to find subsets of data that are easy to classify early in the model,
 
 🚀 Try it on your model — <a href="mailto:quickmlmodels@gmail.com">Contact me</a>
 
+View the project on GitHub at [moco-client](https://github.com/sam-randall/moco-client). PyPi package coming soon for you to try out.
+
 ## About Me
 
 
