@@ -2,7 +2,7 @@
 `moco`: makes rate-limited and energy-limited ML models 15-30% more efficient.
 
 ## Use Cases
-  - [Cybersecurity Network Intrusion]((https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
+  - [Cybersecurity Network Intrusion](https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
   - [Financial Fraud Detection](https://compressmodels.github.io/one_pagers/fraud_detection.pdf)
   - [Sentiment Analysis](https://compressmodels.github.io/tiny_bert_imdb.pdf)
 
