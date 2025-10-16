@@ -1,5 +1,5 @@
 
-`moco`: makes rate-limited and energy-limited ML models 15-30% more efficient.
+`moco`: makes rate-limited and energy-limited classification ML models 15-30% more efficient.
 
 ## Use Cases
   - [Cybersecurity Network Intrusion](https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
@@ -7,13 +7,15 @@
   - [Sentiment Analysis](https://compressmodels.github.io/tiny_bert_imdb.pdf)
 
 How it works:
-  - `moco` takes your data and the decision-making system's predictions and analyzes your data to find and group data points that
-  it's certain about their prediction.
+  - As input, `moco` takes data and the model's classifications.
+  - In turn, it clusters the data and identifies groups of data points that
+  have the same prediction.
+  - Then, classifiers are fit on these clusters.
+  - At runtime, the new system first checks if a data point is within any of the clusters. If it is, the model outputs the relevant prediction. If not, the model runs as usual.
 
 The basic Python usage (with an explanation) is the following:
 
 ```[python]
-
 
 from sklearn.neural_network import MLPClassifier
 from moco import LoggedFunction
