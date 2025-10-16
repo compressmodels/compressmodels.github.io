@@ -1,15 +1,13 @@
 
 `moco`: makes rate-limited and energy-limited ML models 15-30% more efficient.
 
-Use Cases
-  -> [Cybersecurity Network Intrusion]((https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
-  -> [Financial Fraud Detection](https://compressmodels.github.io/one_pagers/fraud_detection.pdf)
-  -> [Sentiment Analysis](https://compressmodels.github.io/tiny_bert_imdb.pdf)
-      - sentiment analysis is critical in high frequency algorithm trading domains, as well as flagging
-      toxic / hate speech on social media.
+## Use Cases
+  - [Cybersecurity Network Intrusion]((https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
+  - [Financial Fraud Detection](https://compressmodels.github.io/one_pagers/fraud_detection.pdf)
+  - [Sentiment Analysis](https://compressmodels.github.io/tiny_bert_imdb.pdf)
 
-How it works
-  -> `moco` takes your data and the decision-making system's predictions and analyzes your data to find and group data points that
+How it works:
+  - `moco` takes your data and the decision-making system's predictions and analyzes your data to find and group data points that
   it's certain about their prediction.
 
 The basic Python usage (with an explanation) is the following:
@@ -45,7 +43,7 @@ lf(X)
 
 ![image](./images/graph.png)
 
-## Use Cases
+## Notebooks
 
 ### Natural Language Processing (NLP)
 - [Accelerating TinyBERT Classification on IMDB dataset](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve 21.5% reduction in latency & throughput on the IMDB movie review dataset with the transformer architecture, with no accuracy loss.
@@ -62,12 +60,6 @@ Achieves a 20% latency improvement on the canonical MNIST dataset with a CNN mod
 
 ## Achieving Faster Models
 
-[Quantization](https://arxiv.org/abs/1712.05877), [pruning](https://arxiv.org/pdf/2308.06767), and knowledge distillation all involve achieving acceleration at the cost of accuracy.
-
-Hardware acceleration with GPUs, faster CPUs or parallelizing ML models on many machines involve more money, infrastructure cost and energy cost.
-
-Use `moco` to find subsets of data that are easy to classify early in the model, so the model does not need to execute fully for every single data point.
-
 📢 Stay Tuned: I am building a software package. Indicate interest [here](https://forms.gle/TAYoxmpHGVZzrjiU6).
 
 🚀 Try it on your model — <a href="mailto:quickmlmodels@gmail.com">Contact me</a>
@@ -76,5 +68,6 @@ View the project on GitHub at [moco-client](https://github.com/sam-randall/moco-
 
 ## About Me
 
+My name is Sam Randall. I attended Stanford University for my MS in Computational and Mathematical Engineering and my Bachelors in Applied Mathematics and Public Health from Johns Hopkins University. My research interests are in computational geometry, graph theory and their applications to machine learning.
 
-I use my background in graph theory and topological data analysis to develop algorithms built into software that data scientists and ML performance engineers can use to optimize latency-critical models.
+I seek to make sustainability profitable and our world healthier so I am especially interested in partnering with organizations that are working to deploy models in very resource-constrained settings on edge devices to promote health and sustainability.
