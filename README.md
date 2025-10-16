@@ -1,15 +1,46 @@
 
+`moco`: makes rate-limited and energy-limited ML models 15-30% more efficient.
 
-# ⚡ moco
-Efficient ML
+Use Cases
+  -> [Cybersecurity Network Intrusion]((https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
+  -> [Financial Fraud Detection](https://compressmodels.github.io/one_pagers/fraud_detection.pdf)
+  -> [Sentiment Analysis](https://compressmodels.github.io/tiny_bert_imdb.pdf)
+      - sentiment analysis is critical in high frequency algorithm trading domains, as well as flagging
+      toxic / hate speech on social media.
 
-Problem: Machine learning models can be too slow, require a lot of energy, and are thus expensive in inference. 
+How it works
+  -> `moco` takes your data and the decision-making system's predictions and analyzes your data to find and group data points that
+  it's certain about their prediction.
 
-Root Problem: Machine Learning Models are far from computationally efficient on their expected data distribution.
+The basic Python usage (with an explanation) is the following:
 
-Solution: I am building algorithms to take trained machine learning models and make them more computationally efficient when running in inference. This results in more energy-efficient models, faster models, and models that require less infra, resulting in cheaper systems.
+```[python]
 
-Results: I've achieved **20% reductions in inference speed** on image, text and tabular  classification models. 
+
+from sklearn.neural_network import MLPClassifier
+from moco import LoggedFunction
+
+# Train your model.
+m = MLPClassifier()
+m.fit(X, y)
+
+# Wrap your predictor
+lf = LoggedFunction(m.predict)
+
+# Run your data through the wrapped model prediction function.
+# Internally, we collect the input data as well as the output.
+out = lf(X)
+
+# We identify natural clusters in X that are entirely one class or another
+# and construct rules based on these clusters.
+rules = lf.optimize()
+
+# Now when we run,
+lf(X)
+
+# the original model is only run when none of the rules indicate certainty in prediction.
+
+```
 
 
 ![image](./images/graph.png)
@@ -19,7 +50,7 @@ Results: I've achieved **20% reductions in inference speed** on image, text and 
 ### Natural Language Processing (NLP)
 - [Accelerating TinyBERT Classification on IMDB dataset](https://compressmodels.github.io/tiny_bert_imdb.pdf) Achieve 21.5% reduction in latency & throughput on the IMDB movie review dataset with the transformer architecture, with no accuracy loss.
 
-### Tabular 
+### Tabular
 
 - [Credit Card Fraud Detection Latency improvement](https://compressmodels.github.io/2025/06/06/realtime-fraud-detection.html): Achieving a 1.27x speed-up on wide and deep MLPs, sklearn, batched.
 - [Credit Card Fraud Detection XGBoost](https://compressmodels.github.io/research_report.pdf) Achieve ~-20% latency on XGBoost models.
