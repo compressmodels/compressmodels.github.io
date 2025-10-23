@@ -3,7 +3,8 @@
 
 ## Use Cases
   - [Cybersecurity Network Intrusion](https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
-  - [Financial Fraud Detection](https://compressmodels.github.io/one_pagers/fraud_detection.pdf)
+  - [Edge Deployment](https://compressmodels.github.io/one_pagers/moco-for-edge.pdf)
+  - [Financial Fraud Detection](https://compressmodels.github.io/research_report.pdf)
   - [Sentiment Analysis](https://compressmodels.github.io/tiny_bert_imdb.pdf)
 
 How it works:
