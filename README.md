@@ -2,17 +2,10 @@
 `moco`: makes rate-limited and energy-limited classification ML models 15-30% more efficient.
 
 ## Use Cases
+  - [Embedded Systems](https://compressmodels.github.io/one_pagers/moco-embedded-systems.pdf)
   - [Cybersecurity Network Intrusion](https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
-  - [Edge Deployment](https://compressmodels.github.io/one_pagers/moco-for-edge.pdf)
   - [Financial Fraud Detection](https://compressmodels.github.io/research_report.pdf)
   - [Sentiment Analysis](https://compressmodels.github.io/tiny_bert_imdb.pdf)
-
-How it works:
-  - As input, `moco` takes data and the model's classifications.
-  - In turn, it clusters the data and identifies groups of data points that
-  have the same prediction.
-  - Then, classifiers are fit on these clusters.
-  - At runtime, the new system first checks if a data point is within any of the clusters. If it is, the model outputs the relevant prediction. If not, the model runs as usual.
 
 The basic Python usage (with an explanation) is the following:
 
@@ -43,8 +36,12 @@ lf(X)
 
 ```
 
+## Benchmarked Results
+
+Coming soon! For now, take a look at the notebooks.
 
 ![image](./images/graph.png)
+
 
 ## Notebooks
 
