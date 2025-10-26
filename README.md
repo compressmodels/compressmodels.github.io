@@ -10,7 +10,6 @@
 The basic Python usage (with an explanation) is the following:
 
 ```[python]
-
 from sklearn.neural_network import MLPClassifier
 from moco import LoggedFunction
 
