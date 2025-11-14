@@ -37,6 +37,12 @@ lf(X)
 
 ## Benchmarked Results
 
+| Dataset                                 |   Latency Improvement (Seq) |   Latency Improvement (Raced) |   Latency Improvement |   FLOPs Reduction |   Accuracy Change |
+|:----------------------------------------|----------------------------:|------------------------------:|----------------------:|------------------:|------------------:|
+| MNIST 8x8 Optical Character Recognition |                    0.508093 |                      0.142589 |              0.508093 |          0.843397 |      -0.00166945  |
+| Iris Flower Classification              |                    0.265535 |                      0.225376 |              0.265535 |          0.668571 |       0           |
+| Credit Card Fraud Detection             |                    0.116625 |                      0.584913 |              0.584913 |          0.31885  |      -3.51115e-06 |
+
 | Dataset   |   Number of Datapoints |   Number of Features |   Hidden Layer |   Number of Classes |
 |:----------|-----------------------:|---------------------:|---------------:|--------------------:|
 | MNIST 8x8 Optical Character Recognition |                   1797 |                   64 |            100 |                  10 |
@@ -44,11 +50,11 @@ lf(X)
 | Credit Card Fraud prediction   |                 284807 |                   28 |            100 |                   2 |
 
 
-| Dataset   |   Latency (Baseline) |   Latency (Seq) |   Latency (Raced) |   Accuracy (Baseline) |   Accuracy (New) |   FLOPS (Baseline) |   FLOPS (New) |
-|---:|:----------|---------------------:|----------------:|------------------:|----------------------:|-----------------:|-------------------:|--------------:|
-| MNIST 8x8 Optical Character Recognition    |          5.9592e-05  |     2.96408e-05 |       5.06691e-05 |              1        |         0.998331 |           13297800 |       2082480 |
-| Iris flower classification      |          2.95659e-05 |     2.22301e-05 |       2.35114e-05 |              0.98     |         0.98     |             105000 |         36900 |
-| Credit Card Fraud prediction      |          5.50101e-05 |     5.14726e-05 |       2.37914e-05 |              0.999765 |         0.999761 |          854421000 |     611775596 |
+| Dataset                                 |   Latency (Baseline) |   Latency (Seq) |   Latency (Raced) |   Accuracy (Baseline) |   Accuracy (New) |   FLOPS (Baseline) |   FLOPS (New) |
+|:----------------------------------------|---------------------:|----------------:|------------------:|----------------------:|-----------------:|-------------------:|--------------:|
+| MNIST 8x8 Optical Character Recognition |          5.95014e-05 |     2.92691e-05 |       5.10171e-05 |              1        |         0.998331 |           13297800 |       2082480 |
+| Iris Flower Classification              |          2.93296e-05 |     2.15416e-05 |       2.27195e-05 |              0.973333 |         0.973333 |             105000 |         34800 |
+| Credit Card Fraud Detection             |          5.5073e-05  |     4.86502e-05 |       2.28601e-05 |              0.999709 |         0.999705 |          854421000 |     581988596 |
 
 ![image](./images/graph.png)
 
