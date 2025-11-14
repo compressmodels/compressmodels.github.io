@@ -39,9 +39,9 @@ lf(X)
 
 | Dataset                                 |   Latency Improvement (Seq) |   Latency Improvement (Raced) |   Latency Improvement |   FLOPs Reduction |   Accuracy Change |
 |:----------------------------------------|----------------------------:|------------------------------:|----------------------:|------------------:|------------------:|
-| MNIST 8x8 Optical Character Recognition |                    0.508093 |                      0.142589 |              0.508093 |          0.843397 |      -0.00166945  |
-| Iris Flower Classification              |                    0.265535 |                      0.225376 |              0.265535 |          0.668571 |       0           |
-| Credit Card Fraud Detection             |                    0.116625 |                      0.584913 |              0.584913 |          0.31885  |      -3.51115e-06 |
+| MNIST 8x8 Optical Character Recognition |                    50.8% |                      14.3% |              50.8% |          84.3% |      -0.0017  |
+| Iris Flower Classification              |                    26.6% |                      22.5% |              26.6% |          66.9% |       0           |
+| Credit Card Fraud Detection             |                    11.7% |                      58.5% |              58.5% |          31.9% |      -3.5e-06 |
 
 | Dataset   |   Number of Datapoints |   Number of Features |   Hidden Layer |   Number of Classes |
 |:----------|-----------------------:|---------------------:|---------------:|--------------------:|
@@ -53,8 +53,8 @@ lf(X)
 | Dataset                                 |   Latency (Baseline) |   Latency (Seq) |   Latency (Raced) |   Accuracy (Baseline) |   Accuracy (New) |   FLOPS (Baseline) |   FLOPS (New) |
 |:----------------------------------------|---------------------:|----------------:|------------------:|----------------------:|-----------------:|-------------------:|--------------:|
 | MNIST 8x8 Optical Character Recognition |          5.95014e-05 |     2.92691e-05 |       5.10171e-05 |              1        |         0.998331 |           13297800 |       2082480 |
-| Iris Flower Classification              |          2.93296e-05 |     2.15416e-05 |       2.27195e-05 |              0.973333 |         0.973333 |             105000 |         34800 |
-| Credit Card Fraud Detection             |          5.5073e-05  |     4.86502e-05 |       2.28601e-05 |              0.999709 |         0.999705 |          854421000 |     581988596 |
+|  1 | Iris Flower Classification              |          2.93296e-05 |     2.15416e-05 |       2.27195e-05 |              0.973333 |         0.973333 |             105000 |         34800 |
+|  2 | Credit Card Fraud Detection             |          5.5073e-05  |     4.86502e-05 |       2.28601e-05 |              0.999709 |         0.999705 |          854421000 |     581988596 |
 
 ![image](./images/graph.png)
 
