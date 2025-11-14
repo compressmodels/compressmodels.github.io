@@ -39,15 +39,15 @@ lf(X)
 
 | Dataset   |   Number of Datapoints |   Number of Features |   Hidden Layer |   Number of Classes |
 |:----------|-----------------------:|---------------------:|---------------:|--------------------:|
-| digits    |                   1797 |                   64 |            100 |                  10 |
-| iris      |                    150 |                    4 |            100 |                   3 |
-| fraud     |                 284807 |                   28 |            100 |                   2 |
+| MNIST 8x8 Optical Character Recognition |                   1797 |                   64 |            100 |                  10 |
+| Iris flower classification    |                    150 |                    4 |            100 |                   3 |
+| Credit Card Fraud    |                 284807 |                   28 |            100 |                   2 |
 
 
 | Dataset | Latency (Baseline) |   Latency (New) |   Accuracy (Baseline) |   Accuracy (New) |   FLOPS (Baseline) |   FLOPS (New) |
 |---------|---------------------:|----------------:|--------------------:|-----------------:|-------------------:|--------------:|
-| MNIST8x8| 5.50766              |        5.17639  |              1      |         0.998331 |           13M      | 2,082,480     |
-| iris.   |             0.439866 |        0.357155 |            0.973333 |         0.966667 |             105000 |         36200 |
+| MNIST8x8 OCR| 5.50766              |        5.17639  |              1      |         0.998331 |           13M      | 2,082,480     |
+| Iris flower classification   |             0.439866 |        0.357155 |            0.973333 |         0.966667 |             105000 |         36200 |
 | Credit Card Fraud|  5.31037    |        2.31736  |            0.99967  |         0.99967  |          854421000 |     561069596 |
 
 ![image](./images/graph.png)
