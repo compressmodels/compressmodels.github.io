@@ -37,7 +37,11 @@ lf(X)
 
 ## Benchmarked Results
 
-Coming soon! For now, take a look at the notebooks.
+|    | Dataset   |   Number of Datapoints |   Number of Features |   Hidden Layer |   Number of Classes |   Latency (Baseline) |   Latency (New) |   Accuracy (Baseline) |   Accuracy (New) |   FLOPS (Baseline) |   FLOPS (New) |
+|---:|:----------|-----------------------:|---------------------:|---------------:|--------------------:|---------------------:|----------------:|----------------------:|-----------------:|-------------------:|--------------:|
+|  0 | digits    |                   1797 |                   64 |            100 |                  10 |             5.50766  |        5.17639  |              1        |         0.998331 |           13297800 |       2082480 |
+|  1 | iris      |                    150 |                    4 |            100 |                   3 |             0.439866 |        0.357155 |              0.973333 |         0.966667 |             105000 |         36200 |
+|  2 | fraud     |                 284807 |                   28 |            100 |                   2 |             5.31037  |        2.31736  |              0.99967  |         0.99967  |          854421000 |     561069596 |
 
 ![image](./images/graph.png)
 
