@@ -41,14 +41,14 @@ lf(X)
 |:----------|-----------------------:|---------------------:|---------------:|--------------------:|
 | MNIST 8x8 Optical Character Recognition |                   1797 |                   64 |            100 |                  10 |
 | Iris flower classification    |                    150 |                    4 |            100 |                   3 |
-| Credit Card Fraud    |                 284807 |                   28 |            100 |                   2 |
+| Credit Card Fraud prediction   |                 284807 |                   28 |            100 |                   2 |
 
 
-| Dataset | Latency (Baseline) |   Latency (New) |   Accuracy (Baseline) |   Accuracy (New) |   FLOPS (Baseline) |   FLOPS (New) |
-|---------|---------------------:|----------------:|--------------------:|-----------------:|-------------------:|--------------:|
-| MNIST8x8 OCR| 5.50766              |        5.17639  |              1      |         0.998331 |           13M      | 2,082,480     |
-| Iris flower classification   |             0.439866 |        0.357155 |            0.973333 |         0.966667 |             105000 |         36200 |
-| Credit Card Fraud|  5.31037    |        2.31736  |            0.99967  |         0.99967  |          854421000 |     561069596 |
+| Dataset   |   Latency (Baseline) |   Latency (Seq) |   Latency (Raced) |   Accuracy (Baseline) |   Accuracy (New) |   FLOPS (Baseline) |   FLOPS (New) |
+|---:|:----------|---------------------:|----------------:|------------------:|----------------------:|-----------------:|-------------------:|--------------:|
+| MNIST 8x8 Optical Character Recognition    |          5.9592e-05  |     2.96408e-05 |       5.06691e-05 |              1        |         0.998331 |           13297800 |       2082480 |
+| Iris flower classification      |          2.95659e-05 |     2.22301e-05 |       2.35114e-05 |              0.98     |         0.98     |             105000 |         36900 |
+| Credit Card Fraud prediction      |          5.50101e-05 |     5.14726e-05 |       2.37914e-05 |              0.999765 |         0.999761 |          854421000 |     611775596 |
 
 ![image](./images/graph.png)
 
