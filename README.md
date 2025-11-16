@@ -2,7 +2,7 @@
 `moco`: makes rate-limited and energy-limited classification ML models 15-30% more efficient.
 
 ## Use Cases
-  - [Embedded Systems](https://compressmodels.github.io/one_pagers/moco-embedded-systems.pdf)
+  - [Embedded Systems](https://compressmodels.github.io/one_pagers/moco-embedded-systems.html)
   - [Cybersecurity Network Intrusion](https://compressmodels.github.io/one_pagers/network_intrusion.pdf)
   - [Financial Fraud Detection](https://compressmodels.github.io/research_report.pdf)
   - [Sentiment Analysis](https://compressmodels.github.io/tiny_bert_imdb.pdf)
