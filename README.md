@@ -56,7 +56,7 @@ lf(X)
 |  1 | Iris Flower Classification              |          2.93296e-05 |     2.15416e-05 |       2.27195e-05 |              0.973333 |         0.973333 |             105000 |         34800 |
 |  2 | Credit Card Fraud Detection             |          5.5073e-05  |     4.86502e-05 |       2.28601e-05 |              0.999709 |         0.999705 |          854421000 |     581988596 |
 
-![image](./images/graph.png)
+<!-- ![image](./images/graph.png) -->
 
 
 ## Notebooks
@@ -84,8 +84,6 @@ View the project on GitHub at [moco-client](https://github.com/sam-randall/moco-
 
 ## About Me
 
-My name is Sam Randall. I attended Stanford University for my MS in Computational and Mathematical Engineering and my Bachelors in Applied Mathematics and Public Health from Johns Hopkins University. My research interests are in computational geometry, graph theory and their applications to machine learning.
-
-I seek to make sustainability profitable and our world healthier so I am especially interested in partnering with organizations that are working to deploy models in very resource-constrained settings on edge devices to promote health and sustainability.
+[About me](https://compressmodels.github.io/about.md)
 
 [LinkedIn](https://www.linkedin.com/in/sam-randall-9a3068110/)
