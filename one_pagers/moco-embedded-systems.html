@@ -186,6 +186,54 @@
             <li><strong>Environmental:</strong> Weather event classification (hurricane, flood, normal, etc.).</li>
           </ul>
 
+          <h2>Benchmarked Results</h2>
+
+          <h2>Benchmarked Results</h2>
+
+            <table border="1" cellspacing="0" cellpadding="6">
+            <thead>
+                <tr>
+                <th>Dataset</th>
+                <th>Latency Improvement (Seq)</th>
+                <th>Latency Improvement (Raced)</th>
+                <th>Latency Improvement</th>
+                <th>FLOPs Reduction</th>
+                <th>Accuracy Change</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                <td>MNIST 8x8 Optical Character Recognition</td>
+                <td>50.8%</td>
+                <td>14.3%</td>
+                <td>50.8%</td>
+                <td>84.3%</td>
+                <td>-0.0017</td>
+                </tr>
+
+                <tr>
+                <td>Iris Flower Classification</td>
+                <td>26.6%</td>
+                <td>22.5%</td>
+                <td>26.6%</td>
+                <td>66.9%</td>
+                <td>0</td>
+                </tr>
+
+                <tr>
+                <td>Credit Card Fraud Detection</td>
+                <td>11.7%</td>
+                <td>58.5%</td>
+                <td>58.5%</td>
+                <td>31.9%</td>
+                <td>-3.5e-06</td>
+                </tr>
+            </tbody>
+            </table>
+
+
+
           <div class="cta" role="region" aria-label="Call to action">
             <a class="btn" href="mailto:samrandall@alumni.stanford.edu">Contact us — Schedule consultation</a>
             <a class="btn secondary" href="#contact">Learn more / Contact</a>
@@ -194,12 +242,7 @@
 
         <article class="card" aria-labelledby="validate-heading">
           <h2 id="validate-heading">Interested?</h2>
-          <p>We're validating moco on models that are currently rate-limited or energy-limited. Schedule a consultation to see how your models can benefit.</p>
-          <ul>
-            <li>Reduce FLOPS and energy consumption</li>
-            <li>Shorten time-to-deploy for edge systems</li>
-            <li>Preserve model accuracy while lowering cost</li>
-          </ul>
+          <p>Schedule a demo.</p>
         </article>
       </section>
 
@@ -218,16 +261,6 @@
               <a href="https://compressmodels.github.io" target="_blank" rel="noopener noreferrer">Website</a>
             </div>
           </div>
-        </div>
-
-        <div class="card" aria-labelledby="tech-heading">
-          <h2 id="tech-heading">What you'll get</h2>
-          <p>Actionable rule-sets derived from the model and input distribution that can be executed on-device to avoid full model inference for many inputs.</p>
-          <ul>
-            <li>Rule extraction compatible with classification pipelines</li>
-            <li>Quantified FLOPS and energy reductions</li>
-            <li>Integration support for edge runtime environments</li>
-          </ul>
         </div>
       </aside>
     </main>
