@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>moco — Low-energy, Low-latency Classification</title>
+  <style>
+    :root{
+      --accent:#0b63ce;
+      --muted:#6b7280;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --radius:12px;
+      font-family:Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+      color:#0f1724;
+    }
+    body{
+      margin:0;
+      background:linear-gradient(180deg, #fbfdff 0%, var(--bg) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+    }
+    .container{
+      max-width:980px;
+      margin:0 auto;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap:14px;
+    }
+    .logo{
+      width:64px;
+      height:64px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--accent),#7cc3ff);
+      color:white;
+      font-weight:700;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(11,99,206,0.14);
+    }
+    h1{font-size:28px;margin:0}
+    .tagline{color:var(--muted);font-size:14px}
+    main{
+      display:grid;
+      grid-template-columns:1fr 340px;
+      gap:20px;
+      align-items:start;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 6px 24px rgba(15,23,36,0.06);
+    }
+    .hero{
+      margin-bottom:18px;
+    }
+    .eyebrow{
+      display:inline-block;
+      background:#eef6ff;
+      color:var(--accent);
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:13px;
+      margin-bottom:12px;
+    }
+    .lead{
+      font-size:18px;
+      margin:6px 0 12px 0;
+      line-height:1.35;
+    }
+    .stat{
+      display:inline-block;
+      background:#0b63ce;
+      color:#fff;
+      font-weight:700;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:15px;
+      margin-right:8px;
+    }
+    h2{font-size:18px;margin:16px 0 8px 0}
+    p{color:var(--muted);line-height:1.5;margin:0 0 12px 0}
+    ul{margin:8px 0 16px 20px;color:var(--muted)}
+    .use-cases{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:10px}
+    .use-cases li{margin-bottom:8px}
+    .cta{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:12px;
+    }
+    .btn{
+      background:var(--accent);
+      color:white;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 8px 20px rgba(11,99,206,0.12);
+    }
+    .btn.secondary{
+      background:transparent;
+      border:1px solid #e6eefc;
+      color:var(--accent);
+      font-weight:700;
+    }
+    aside .card + .card{margin-top:16px}
+    footer{
+      margin-top:28px;
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .contact-list{display:flex;flex-direction:column;gap:6px}
+    .contact-list a{color:var(--accent);text-decoration:none;font-weight:600}
+    @media (max-width:880px){
+      main{grid-template-columns:1fr; padding-bottom:20px}
+      .use-cases{grid-template-columns:1fr}
+      .logo{width:52px;height:52px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="brand">
+
+        <div>
+          <h1>moco</h1>
+          <div class="tagline">30% fewer FLOPS in inference — meet energy and latency constraints faster.</div>
+        </div>
+      </div>
+
+    </header>
+
+    <main>
+      <section>
+        <article class="card hero" aria-labelledby="hero-heading">
+          <span class="eyebrow">Optimization library</span>
+          <h2 id="hero-heading" class="lead">Mathematical optimization to reduce inference compute</h2>
+          <div>
+            <span class="stat">~30% fewer FLOPS</span>
+            <span style="color:var(--muted)">Lower energy • Lower latency</span>
+          </div>
+
+          <h2>Problem</h2>
+          <p>
+            Classification models (or models that make decisions, categorize data, recognize intent) must meet
+            <strong>latency</strong>, <strong>throughput</strong>, and <strong>energy</strong> standards and
+            <abbr title="Service Level Agreement">SLAs</abbr> to be deployed in real-time embedded systems.
+          </p>
+
+          <p>
+            Engineers address these technical requirements using iterative methods and must ultimately
+            make informed trade-offs between <strong>accuracy</strong>, <strong>cost</strong>, and <strong>latency</strong>.
+        </p>
+
+          <h2>Solution</h2>
+          <p>
+            moco is a mathematical optimization library that analyzes a model’s input data and predictions and derives
+            rules. Those rules replace model inference for portions of the input space. This results in avoided computation
+            for some of the data, and produces lower energy and lower latency models.
+          </p>
+
+          <h2>Use Cases by Industry</h2>
+            <div class="use-cases-expandable">
+
+            <details>
+                <summary><strong>Finance</strong></summary>
+                <ul>
+                    <li>Real-time credit card fraud detection.</li>
+                    <li>Decrease latency of buy/sell/hold decisions in high-frequency trading systems.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary><strong>Cybersecurity</strong></summary>
+                <ul>
+                    <li>Increase throughput for high-volume attacks (e.g., DDoS).</li>
+                    <li>Reduce latency for fast-propagating attacks (e.g., malware).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary><strong>Energy</strong></summary>
+                <ul>
+                    <li>Predictive maintenance for smart grid sensors.</li>
+                    <li>Battery charge/discharge forecasting.</li>
+                    <li>Fault detection.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary><strong>Security</strong></summary>
+                <ul>
+                    <li>Real-time threat detection in images and live video streams.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary><strong>Defense</strong></summary>
+                <ul>
+                    <li>Low-latency, edge-based threat detection for constrained systems (e.g., naval/subsurface platforms).</li>
+                </ul>
+            </details>
+
+            </div>
+
+          <h2>Benchmarked Results</h2>
+
+            <table border="1" cellspacing="0" cellpadding="6">
+            <thead>
+                <tr>
+                <th>Dataset</th>
+                <th>Latency Improvement (Seq)</th>
+                <th>Latency Improvement (Raced)</th>
+                <th>Latency Improvement</th>
+                <th>FLOPs Reduction</th>
+                <th>Accuracy Change</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                <td>MNIST 8x8 Optical Character Recognition</td>
+                <td>50.8%</td>
+                <td>14.3%</td>
+                <td>50.8%</td>
+                <td>84.3%</td>
+                <td>-0.0017</td>
+                </tr>
+
+                <tr>
+                <td>Iris Flower Classification</td>
+                <td>26.6%</td>
+                <td>22.5%</td>
+                <td>26.6%</td>
+                <td>66.9%</td>
+                <td>0</td>
+                </tr>
+
+                <tr>
+                <td>Credit Card Fraud Detection</td>
+                <td>11.7%</td>
+                <td>58.5%</td>
+                <td>58.5%</td>
+                <td>31.9%</td>
+                <td>-3.5e-06</td>
+                </tr>
+            </tbody>
+            </table>
+        </article>
+
+        <article class="card" aria-labelledby="validate-heading">
+          <a class="btn" href="mailto:samrandall@alumni.stanford.edu">Contact us — Schedule a demo</a>
+        </article>
+      </section>
+
+      <aside>
+        <div class="card" id="contact" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Contact</h2>
+          <div class="contact-list">
+            <div><strong>Sam Randall</strong>, Founder</div>
+            <div>
+              <a href="https://www.linkedin.com/in/sam-randall-9a3068110/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div>
+              <a href="mailto:samrandall@alumni.stanford.edu">Email</a>
+            </div>
+            <div>
+              <a href="https://compressmodels.github.io" target="_blank" rel="noopener noreferrer">Website</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>&copy; <span id="year"></span> moco — founder: Sam Randall</div>
+    </footer>
+  </div>
+
+  <script>
+    // insert current year dynamically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
