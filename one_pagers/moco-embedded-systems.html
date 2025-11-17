@@ -161,17 +161,16 @@
 
           <h2>Problem</h2>
           <p>
-            Classification models must run efficiently to be deployed in real-time embedded systems.
-            Achieving low energy and low latency requirements typically requires multiple people-months
-            of engineering effort.
+            Classification models (or models that make decisions, categorize data, recognize intent) must meet **latency**, **throughput** and **energy** standards and service level agreements (SLAs)
+            to be deployed in real-time embedded systems. Achieving these requirements is a technical problem that engineers 
+            solve with iterative methods, and ultimately need to make decisions on accuracy cost, and latency trade-offs.
           </p>
 
           <h2>Solution</h2>
           <p>
-            moco is a mathematical optimization library that analyzes a model’s input data and derives
-            rules that match the model’s predictions. Those rules replace model inference for portions
-            of the input space. This results in avoided computation and produces lower energy and lower
-            latency systems.
+            moco is a mathematical optimization library that analyzes a model’s input data and predictions and derives
+            rules. Those rules replace model inference for portions of the input space. This results in avoided computation
+            for some of the data, and produces lower energy and lower latency models.
           </p>
 
           <h2>Use Cases by Industry</h2>
@@ -179,12 +178,14 @@
 
             <details>
                 <summary><strong>Finance</strong></summary>
-                Real-time credit card fraud detection; buy/sell/hold decisions in high-frequency trading systems.
+                Real-time credit card fraud detection; 
+                Decrease the latency of buy/sell/hold decisions in high-frequency trading systems.
             </details>
 
             <details>
                 <summary><strong>Cybersecurity</strong></summary>
-                Detection of high-volume and fast-propagating attacks (e.g., DDoS, malware).
+                Increasing the throughput of high-volume attacks. (e.g DDoS)
+                Decreasing the latency of fast-propagating attacks (malware).
             </details>
 
             <details>
