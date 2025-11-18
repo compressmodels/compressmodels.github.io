@@ -296,7 +296,7 @@
 
         <div class="container">
           <header>
-            <h1>Notebooks</h1>
+            <h1>Notebooks and Reports</h1>
           </header>
 
           <section class="card">
@@ -305,7 +305,7 @@
               <ul>
                 <li>
                   <a href="https://compressmodels.github.io/tiny_bert_imdb.pdf" target="_blank" rel="noopener noreferrer">
-                    Accelerating TinyBERT Classification on IMDB dataset
+                    Accelerating TinyBERT Classification on IMDB dataset (Report)
                   </a>
                   <div class="meta">Achieves a 21.5% reduction in latency and throughput on the IMDB movie-review classification task using a transformer-based TinyBERT, with no measurable accuracy loss.</div>
                 </li>
@@ -318,22 +318,10 @@
               <summary><h2>Tabular</h2></summary>
               <ul>
                 <li>
-                  <a href="https://compressmodels.github.io/2025/06/06/realtime-fraud-detection.html" target="_blank" rel="noopener noreferrer">
-                    Credit Card Fraud Detection — Latency improvement (wide & deep, sklearn, batched)
+                  <a href="https://compressmodels.github.io/notebooks/fraud.ipynb" target="_blank" rel="noopener noreferrer">
+                    Credit Card Fraud Detection — Latency improvement (Notebook)
                   </a>
-                  <div class="meta">Demonstrates ≈1.27× speed-up across wide & deep MLPs and scikit-learn models in batched, real-time pipelines.</div>
-                </li>
-                <li>
-                  <a href="https://compressmodels.github.io/research_report.pdf" target="_blank" rel="noopener noreferrer">
-                    Credit Card Fraud Detection — XGBoost
-                  </a>
-                  <div class="meta">Shows roughly 20% lower latency on XGBoost inference in production-like settings.</div>
-                </li>
-                <li>
-                  <a href="https://compressmodels.github.io/2025/06/01/breast-cancer-case-study.html" target="_blank" rel="noopener noreferrer">
-                    Rapid Breast Cancer Diagnosis with sensor data
-                  </a>
-                  <div class="meta">A 2.4× speed-up on a wide MLP (parallel hidden layer size <code>h = 2048</code>), and >1.5× cost savings across model sizes for real-time deployments.</div>
+                  <div class="meta">Demonstrates 55% speed-up, FLOP count reduction.</div>
                 </li>
               </ul>
             </details>
@@ -345,7 +333,7 @@
           <ul>
             <li>
               <a href="https://compressmodels.github.io/mnist_report.pdf" target="_blank" rel="noopener noreferrer">
-                Rapid Handwritten Digit Classification (MNIST)
+                Rapid Handwritten Digit Classification (MNIST), Report
               </a>
               <div class="meta">Reports a 20% latency improvement on the canonical MNIST CNN benchmark, using rule-based inference replacement for portions of the input space.</div>
             </li>
