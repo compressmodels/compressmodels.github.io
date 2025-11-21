@@ -7534,7 +7534,7 @@ a.anchor-link {
 <thead>
 <tr>
 <th style="text-align:left">experiment</th>
-<th style="text-align:right">Latency per transaction, raced (s)</th>
+<th style="text-align:right">Latency per transaction, raced (ms)</th>
 <th style="text-align:right">Number of FLOPs per transaction (ms)</th>
 <th style="text-align:right">Precision</th>
 <th style="text-align:right">Recall</th>
@@ -7543,17 +7543,17 @@ a.anchor-link {
 <tbody>
 <tr>
 <td style="text-align:left">baseline</td>
-<td style="text-align:right">4.80942e-05</td>
+<td style="text-align:right">5.20875e-05</td>
 <td style="text-align:right">3104</td>
-<td style="text-align:right">0.785714</td>
-<td style="text-align:right">0.916667</td>
+<td style="text-align:right">0.630952</td>
+<td style="text-align:right">1</td>
 </tr>
 <tr>
 <td style="text-align:left">optimized</td>
-<td style="text-align:right">2.18402e-05</td>
+<td style="text-align:right">2.30249e-05</td>
 <td style="text-align:right">1627.6</td>
-<td style="text-align:right">0.785714</td>
-<td style="text-align:right">0.916667</td>
+<td style="text-align:right">0.630952</td>
+<td style="text-align:right">1</td>
 </tr>
 </tbody>
 </table>
@@ -7581,10 +7581,12 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moco.profiling</span><span class="w"> </span><span class="kn">import</span> <span class="n">profile_method_real_time</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">precision_recall_fscore_support</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moco.binary_logit_classifier</span><span class="w"> </span><span class="kn">import</span> <span class="n">BinaryLogitClassifier</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
@@ -7696,7 +7698,7 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Choose-a-threshold-based-on-precision-recall-curve-on-validation-set.">Choose a threshold based on precision-recall curve on validation set.<a class="anchor-link" href="#Choose-a-threshold-based-on-precision-recall-curve-on-validation-set.">¶</a></h2><ul>
-<li>I chose <code>threshold = {}</code>, achieving <code>precision = {}</code> and <code>recall = {}</code>.</li>
+<li>I chose <code>threshold = 0.9</code>, achieving <code>precision = 63%</code> and <code>recall = 100%</code>.</li>
 </ul>
 </div>
 </div>
@@ -7710,7 +7712,8 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.9</span>
-<span class="n">y_hat_t_train</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+<span class="n">blc</span> <span class="o">=</span> <span class="n">BinaryLogitClassifier</span><span class="p">(</span><span class="n">mlp</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="n">y_hat_t_train</span> <span class="o">=</span> <span class="n">blc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">y_hat_t_train</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -7736,7 +7739,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_hat_t_test</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_hat_t_test</span> <span class="o">=</span> <span class="n">blc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">y_hat_t_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">average</span> <span class="o">=</span> <span class="s1">'binary'</span><span class="p">)</span>
 <span class="n">p</span><span class="p">,</span> <span class="n">r</span>
 </pre></div>
@@ -7755,51 +7758,6 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9dc8a06a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyMLP</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
-            <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">h</span> <span class="o">@</span> <span class="n">W</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">h</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">prob</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">out</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">prob</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e63382bf">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">forward_mlp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">biases</span><span class="p">):</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">biases</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">biases</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">h</span> <span class="o">@</span> <span class="n">W</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="n">h</span> <span class="o">@</span> <span class="n">weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">biases</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">prob</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">out</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">prob</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f5ed3c80">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7808,21 +7766,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">original_timings</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># Warmup</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-    <span class="n">mlp</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>
-    <span class="n">e</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-    
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">forward_mlp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mlp</span><span class="o">.</span><span class="n">coefs_</span><span class="p">,</span> <span class="n">mlp</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">)</span>
-    <span class="n">e</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-    <span class="n">original_timings</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">e</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">original_timings</span> <span class="o">=</span> <span class="n">profile_method_real_time</span><span class="p">(</span><span class="n">mlp</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7836,6 +7780,20 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>On average, it takes 6.41E-6 seconds or 6 microseconds (us) to execute a transaction.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=061f73a5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">original_timings</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -7902,10 +7860,10 @@ In sum total, there are (28 + 1) * 100 + 100 + (100 * 1) + 1 + 3 = <strong>3104 
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">p_train</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">p_train</span> <span class="o">=</span> <span class="n">blc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">partition</span> <span class="o">=</span> <span class="n">Partition</span><span class="p">()</span>
 <span class="n">C</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">partition</span><span class="o">.</span><span class="n">find_sufficient_groups</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">p_train</span><span class="p">,</span> <span class="n">min_group_size</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">C</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">partition</span><span class="o">.</span><span class="n">find_sufficient_groups</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">min_group_size</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">C</span> <span class="o">*</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">partition</span><span class="o">.</span><span class="n">summary_table</span>
 </pre></div>
 </div>
@@ -7923,7 +7881,7 @@ In sum total, there are (28 + 1) * 100 + 100 + (100 * 1) + 1 + 3 = <strong>3104 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=639f4c86">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=34a74abf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7931,7 +7889,8 @@ In sum total, there are (28 + 1) * 100 + 100 + (100 * 1) + 1 + 3 = <strong>3104 
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">mymlp</span> <span class="o">=</span> <span class="n">MyMLP</span><span class="p">(</span><span class="n">mlp</span><span class="o">.</span><span class="n">coefs_</span><span class="p">,</span> <span class="n">mlp</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">partition</span><span class="o">.</span><span class="n">subset_predictors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7945,7 +7904,8 @@ In sum total, there are (28 + 1) * 100 + 100 + (100 * 1) + 1 + 3 = <strong>3104 
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">rm</span> <span class="o">=</span> <span class="n">RoutedModel</span><span class="o">.</span><span class="n">from_partition</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">mlp</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Problem is Need to Pass in MLP </span>
+<span class="n">rm</span> <span class="o">=</span> <span class="n">RoutedModel</span><span class="o">.</span><span class="n">from_partition</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">blc</span><span class="o">.</span><span class="n">predict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7973,6 +7933,20 @@ In sum total, there are (28 + 1) * 100 + 100 + (100 * 1) + 1 + 3 = <strong>3104 
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b5d59ac1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d7f970e4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7982,7 +7956,7 @@ In sum total, there are (28 + 1) * 100 + 100 + (100 * 1) + 1 + 3 = <strong>3104 
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">p_train_new</span> <span class="o">=</span> <span class="n">rm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">mlp_train_new</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">mlp_train_new</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"train"</span><span class="p">)</span>
 <span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">mlp_train_new</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">average</span> <span class="o">=</span> <span class="s1">'binary'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"MLP"</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
@@ -7990,9 +7964,11 @@ In sum total, there are (28 + 1) * 100 + 100 + (100 * 1) + 1 + 3 = <strong>3104 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Routed Model"</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 
 <span class="n">p_test_new</span> <span class="o">=</span> <span class="n">rm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">mlp_test</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">mlp_test</span> <span class="o">=</span> <span class="p">(</span><span class="n">mlp</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"test"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mlp_test</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mlp_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_fscore_support</span><span class="p">(</span><span class="n">mlp_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">average</span> <span class="o">=</span> <span class="s1">'binary'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"MLP"</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 
@@ -8027,7 +8003,7 @@ In sum total, there are (28 + 1) * 100 + 100 + (100 * 1) + 1 + 3 = <strong>3104 
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8061,6 +8037,26 @@ This is a <strong>48% reduction</strong> in FLOPS</p>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8998cced">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+<span class="n">vcs_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">indices</span><span class="p">])</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)))</span>
+<span class="n">vcs_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="n">indices</span><span class="p">])</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">vcs_train</span><span class="p">,</span> <span class="n">vcs_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f665f692">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -8069,7 +8065,8 @@ This is a <strong>48% reduction</strong> in FLOPS</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">rm</span> <span class="o">=</span> <span class="n">RoutedModel</span><span class="o">.</span><span class="n">from_partition</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">mlp</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">blc</span> <span class="o">=</span> <span class="n">BinaryLogitClassifier</span><span class="p">(</span><span class="n">mlp</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="n">rm</span> <span class="o">=</span> <span class="n">RoutedModel</span><span class="o">.</span><span class="n">from_partition</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">blc</span><span class="o">.</span><span class="n">predict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8083,37 +8080,9 @@ This is a <strong>48% reduction</strong> in FLOPS</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">profile</span><span class="p">(</span><span class="n">prediction_method</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-    <span class="n">n_trials</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="p">):</span>
-
-    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">eyes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">replace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">eyes</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-            <span class="n">prediction_method</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">b</span><span class="p">])</span>
-            <span class="n">e</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-
-
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eyes</span><span class="p">):</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span> <span class="n">idx</span> <span class="o">+</span> <span class="n">b</span><span class="p">]</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-            <span class="n">prediction_method</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">e</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-            <span class="n">times</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">e</span> <span class="o">-</span> <span class="n">s</span>
-
-
-    <span class="k">return</span> <span class="n">times</span> <span class="o">/</span> <span class="n">n_trials</span>
-
-<span class="n">original_times</span> <span class="o">=</span> <span class="n">profile</span><span class="p">(</span><span class="n">mlp</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
-<span class="n">rm_times_raced</span> <span class="o">=</span> <span class="n">profile</span><span class="p">(</span><span class="n">rm</span><span class="o">.</span><span class="n">predict_race</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
-<span class="n">rm_seq_times</span> <span class="o">=</span> <span class="n">profile</span><span class="p">(</span><span class="n">rm</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"original"</span><span class="p">:</span> <span class="n">original_times</span><span class="p">,</span> <span class="s2">"optimized_best_of"</span><span class="p">:</span> <span class="n">rm_times_raced</span><span class="p">,</span> <span class="s2">"optimized_sequential"</span><span class="p">:</span> <span class="n">rm_seq_times</span><span class="p">})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rm_times_raced</span> <span class="o">=</span> <span class="n">profile_method_real_time</span><span class="p">(</span><span class="n">rm</span><span class="o">.</span><span class="n">predict_race</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+<span class="n">rm_seq_times</span> <span class="o">=</span> <span class="n">profile_method_real_time</span><span class="p">(</span><span class="n">rm</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"original"</span><span class="p">:</span> <span class="n">original_timings</span><span class="p">,</span> <span class="s2">"optimized_best_of"</span><span class="p">:</span> <span class="n">rm_times_raced</span><span class="p">,</span> <span class="s2">"optimized_sequential"</span><span class="p">:</span> <span class="n">rm_seq_times</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
