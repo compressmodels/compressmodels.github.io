@@ -216,6 +216,7 @@
             moco reduces the average latency of queries running through models, which means it can be used to reduce latency-based penalties (e.g SLA violations). 
           </p>
 
+
           <h2>Use Cases by Industry</h2>
             <div class="use-cases-expandable">
 
@@ -350,9 +351,20 @@
           <ul>
             <li>
               <a href="https://compressmodels.github.io/mnist_report.pdf" target="_blank" rel="noopener noreferrer">
-                Rapid Handwritten Digit Classification (MNIST), Report
+                Image Classification, Optical Character Recognition Example
               </a>
-              <div class="meta">Reports a 20% latency improvement on the canonical MNIST CNN benchmark, using rule-based inference replacement for portions of the input space.</div>
+              <div class="meta">Applies moco on a CNN model resulting in a 20% latency improvement.</div>
+            </li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary><h2>Audio</h2></summary>
+          <ul>
+            <li>
+              Achieved a 13% reduction in GPU hours for a client running an audio classification pipeline using a fine-tuned Resnet50 model, in PyTorch, with no accuracy loss.
             </li>
           </ul>
         </details>
