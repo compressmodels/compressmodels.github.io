@@ -104,15 +104,18 @@
       margin:6px 0 12px 0;
       line-height:1.35;
     }
-    .stat{
-      display:inline-block;
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px; /* spacing between items both horizontally and vertically */
+    }
+    .stat {
       background:#0b63ce;
       color:#fff;
       font-weight:700;
       padding:8px 12px;
       border-radius:8px;
       font-size:15px;
-      margin-right:8px;
     }
     h2{font-size:18px;margin:16px 0 8px 0}
     p{color:var(--muted);line-height:1.5;margin:0 0 12px 0}
@@ -204,7 +207,7 @@
         <article class="card hero" aria-labelledby="hero-heading">
           <span class="eyebrow">Optimization library</span>
           <h2 id="hero-heading" class="lead">Mathematical optimization to improve computational efficiency of classifiers</h2>
-          <div>
+          <div class="stats">
             <span class="stat">~30% fewer FLOPS</span>
             <span class="stat">~30% fewer GPUs needed</span>
             <span class="stat">~30% higher QPS</span>
@@ -220,12 +223,13 @@
 
           <h2>Solution</h2>
           <p>
-            moco is a mathematical optimization library that optimizes machine learning models for computational efficiency, resulting in smaller computational loads, reducing floating point operations (FLOPS), effectively meaning companies can run higher throughput on fewer GPUs.
+            moco is a mathematical optimization library that contains algorithms that analyze input data, model embeddings and weight matrices
+            to optimize machine learning models, resulting in smaller computational loads, reducing floating point operations (FLOPS).
+
+            This has a range of benefits including enabling higher throughput, fewer GPUs required, avoiding SLAs by meeting strict latency requirements more frequently, shifting workloads from the Cloud to the device, reducing energy footprint, extending battery life, increasing GPU headroom, etc.
+
           </p>
 
-          <p>
-              Lower computational load also reduces average query latency, helping systems meet strict latency requirements and avoid SLA violations.
-          </p>
 
           <h3>Consulting</h3>
           <p>
@@ -234,7 +238,11 @@
 
           <p>
           Pricing is performance-based: you pay 50% of the verified infrastructure savings.  
-          For example, if the optimization reduces compute costs by $100k per year, the consulting fee is $50k.
+          </p>
+
+          <p>
+            Example:
+              If optimization reduces compute costs by $100k per year, the consulting fee is $50k.
           </p>
 
           <h3>Product</h3>
@@ -479,7 +487,7 @@
               <a href="https://compressmodels.github.io" target="_blank" rel="noopener noreferrer">Website</a>
             </div>
             <div>
-              <a style="color: white;" class="btn" href="mailto:samrandall@alumni.stanford.edu">Contact us — Schedule a demo</a>
+              <a style="color: white;" class="btn" href="mailto:samrandall@alumni.stanford.edu">Contact us — book an audit.</a>
             </div>
           </div>
         </div>
