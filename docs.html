@@ -81,6 +81,9 @@ to find equivalent loss-less representations to represent models.
 
 <h4>Early-Exiting</h4>
 
+Note that early-exiting involves an analysis step to do this step intentionally. 
+Training a probe classifier on **any** given layer will have low probability of success. 
+
 <pre><code class="language-python">
 class RoutedModel:
     base: torch.nn.Module
