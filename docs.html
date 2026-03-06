@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>moco Product Documentation</title>
+</head>
+<body>
+
+<h2>Product Documentation</h2>
+
+<h3>Purpose of <code>moco</code></h3>
+
+<p>
+<code>moco</code> takes machine learning models (or any "learned" function) and optimizes them
+for computational efficiency. moco consists of a suite of algorithms that optimize models
+for computational efficiency with no accuracy loss.
+</p>
+
+<p>moco analyzes data to find early-exit strategies to exploit:</p>
+<ul>
+    <li>
+        moco analyzes the input data. An example early-exit rule for a fraud detection
+        model (when the features are interpretable) might be:
+        <em>"it's fraud if the user has logged in 4 times in the last 10 minutes."</em>
+    </li>
+    <li>
+        Intermediate representations (often referred to as embeddings, activations, etc.)
+    </li>
+</ul>
+
+<p>
+moco analyzes the internal parameters (weights and biases) to find equivalent
+loss-less representations for models.
+</p>
+
+<ul>
+    <li>Example: pruning.</li>
+</ul>
+
+<p>
+moco also analyzes the interaction of the parameters with the data/activations
+to find equivalent loss-less representations to represent models.
+</p>
+
+<h3>Form Factor</h3>
+
+<p>
+<code>moco</code> is a <code>pip</code>-installable Python package that offers:
+</p>
+
+<ul>
+    <li>A command-line interface</li>
+    <li>A software library with proprietary algorithms accessible via API</li>
+    <li>
+        A client-side helper library that aggregates outputs from the API into a
+        machine-runnable format
+    </li>
+</ul>
+
+<h3>API Methods</h3>
+
+<h4>Pruning</h4>
+
+<ul>
+    <li><code>prune_neurons(model: MLPClassifier, data: np.ndarray) -&gt; MLPClassifier</code></li>
+    <li><code>condense_neurons(model: MLPClassifier, data: np.ndarray) -&gt; Tuple[MLPClassifier, LogisticRegression]</code></li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+<ol>
+    <li><code>model</code> is uploaded as a <code>.joblib</code> file.</li>
+    <li><code>model.activation</code> must be <code>"relu"</code>.</li>
+    <li>
+        <code>condense_neurons</code> returns two models whose summed output matches
+        the original model.
+    </li>
+    <li>
+        <code>prune_neurons</code> returns one model whose output matches the original model.
+    </li>
+</ol>
+
+<h4>Early-Exiting</h4>
+
+<pre><code class="language-python">
+class RoutedModel:
+    base: torch.nn.Module
+    conditional: torch.nn.Module
+    router: torch.nn.Module
+    yes_path: torch.nn.Module
+    no_path: torch.nn.Module
+</code></pre>
+
+<ul>
+    <li>
+        <code>compute_rule(model: torch.nn.Sequential, layer_name: str, data: torch.utils.data.Dataset) -&gt; RoutedModel</code>
+    </li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+<ol>
+    <li>In many cases, <code>yes_path</code> is a simple constant function.</li>
+</ol>
+
+<h5>Utility</h5>
+
+<ul>
+    <li><code>get_layers(model: torch.nn.Sequential) -&gt; List[str]</code></li>
+    <li><code>profile_layers(model: torch.nn.Sequential, data: torch.utils.data.Dataset) -&gt; List[Tuple[str, float]]</code></li>
+</ul>
+
+<h5>Compatibility</h5>
+
+<ul>
+    <li>
+        For any algorithm that returns models, the user can specify the format of
+        the output model.
+    </li>
+    <li>
+        Supported formats include ONNX, TorchScript, PyTorch, CoreML, etc.
+    </li>
+</ul>
+
+</body>
+</html>
