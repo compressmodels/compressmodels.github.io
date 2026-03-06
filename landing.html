@@ -108,6 +108,11 @@ border:1px solid #e5e7eb;
 padding:10px;
 text-align:left;
 }
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
 
 .btn{
 display:inline-block;
@@ -179,66 +184,85 @@ reducing unnecessary compute while preserving model accuracy.
 <span class="stat">~30% lower latency</span>
 </div>
 
-<a class="btn" href="mailto:samrandall@alumni.stanford.edu">Start a 30-day pilot</a>
+
 
 </section>
 
+<a class="btn" href="mailto:samrandall@alumni.stanford.edu">Start a 30-day pilot</a>
+
+<section class="section grid3">
+
+  <div class="card">
+
+    <h2>The Problem</h2>
+
+    <p>
+      High-throughput ML systems must provision large GPU fleets to meet strict
+      latency requirements.
+    </p>
+
+    <p>
+      But every request typically runs the full model—even when the input is easy
+      to classify.
+    </p>
+
+    <p>
+      This wastes significant compute.
+    </p>
+
+  </div>
 
 
-<section class="section grid2">
+  <div class="card">
 
-<div class="card">
+    <h2>The Idea</h2>
 
-<h2>The Problem</h2>
+    <p>
+      Many inputs can be classified correctly long before the final layer of a model.
+    </p>
 
-<p>
-High-throughput ML systems must provision large GPU fleets to meet strict latency
-requirements.
-</p>
+    <p>
+      moco adds <strong>early-exit paths</strong> to existing classifiers so easy
+      inputs skip the remaining layers.
+    </p>
 
-<p>
-But every request typically runs the full model—even when the input is easy to classify.
-</p>
+    <p>
+      Easy inputs → exit early<br>
+      Hard inputs → run the full model
+    </p>
 
-<p>
-This wastes significant compute.
-</p>
+    <p>
+      The result: less compute per request and lower infrastructure cost.
+    </p>
 
-<p>
-Example:
-</p>
-
-<ul>
-<li>10 GPUs ≈ $262k/year</li>
-<li>100 GPUs ≈ $2.6M/year</li>
-</ul>
-
-</div>
+  </div>
 
 
-<div class="card">
+  <div class="card">
 
-<h2>The Idea</h2>
+    <h2>The Solution</h2>
 
-<p>
-Many inputs can be classified correctly long before the final layer of a model.
-</p>
+    <p><strong>Example GPU savings:</strong></p>
 
-<p>
-moco adds <strong>early-exit paths</strong> to existing classifiers so easy inputs
-skip the remaining layers.
-</p>
+    <div style="font-family: monospace; line-height:1.6; margin-top:10px">
 
-<p>
-Easy inputs → exit early<br>
-Hard inputs → run the full model
-</p>
+      <div style="margin-bottom:18px">
+        <strong>Typical Inference Cluster</strong><br>
+        ████████████████████████████████████████████<br>
+        <strong>$2.6M / year</strong><br>
+        100 GPUs
+      </div>
 
-<p>
-The result: less compute per request and lower infrastructure cost.
-</p>
+      <div>
+        <strong>With moco Optimization</strong><br>
+        ███████████████████████████<br>
+        <strong>$1.8M / year</strong><br>
+        70 GPUs
+      </div>
 
-</div>
+    </div>
+
+  </div>
 
 </section>
 
