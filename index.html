@@ -419,8 +419,11 @@ Run a 30-day evaluation to measure GPU savings on your inference workload.
 <h2>How It Works</h2>
 
 <p>
-moco analyzes a trained classifier and adds a lightweight probe at an intermediate
-layer that can classify certain inputs without running the rest of the model.
+As a post-training optimization step, moco analyzes a calibration dataset (e.g training), considers a specific representation
+(either the dataset itself or a representation pulled from an intermediate layer) and determines regions of the dataset
+where only one class is present. 
+
+If this rule activates, it means the rule is confident in its decision, and can avoid execution of the rest of the model.
 </p>
 
 <div class="grid">
