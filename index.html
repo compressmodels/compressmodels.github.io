@@ -537,6 +537,52 @@ If this rule activates, it means the rule is confident in its decision, and can 
 
 </section>
 
+<section class="use-cases">
+  <h2>Use Cases by Industry</h2>
+
+  <div class="use-case">
+    <h3>Cybersecurity</h3>
+    <p>
+      High-volume threat detection systems (phishing, malware, intrusion detection)
+      must scan massive streams of events under strict latency constraints.
+    </p>
+    <ul>
+      <li><strong>Problem:</strong> Every event runs full model inference, even low-risk traffic</li>
+      <li><strong>With moco:</strong> Early-exit on high-confidence benign or malicious patterns</li>
+      <li><strong>Impact:</strong> Increased coverage under fixed compute budget</li>
+      <li><strong>Outcome:</strong> More threats evaluated per second, lower infra cost</li>
+    </ul>
+  </div>
+
+  <div class="use-case">
+    <h3>Fraud Detection</h3>
+    <p>
+      Payment systems and identity verification pipelines require real-time decisions
+      while minimizing false positives and customer friction.
+    </p>
+    <ul>
+      <li><strong>Problem:</strong> Expensive models run on every transaction</li>
+      <li><strong>With moco:</strong> Fast-path classification for low-risk transactions</li>
+      <li><strong>Impact:</strong> Lower latency at peak traffic</li>
+      <li><strong>Outcome:</strong> Reduced compute cost + faster approvals</li>
+    </ul>
+  </div>
+
+  <div class="use-case">
+    <h3>Autonomous Vehicles</h3>
+    <p>
+      Perception systems must process sensor data under strict real-time constraints
+      with high reliability.
+    </p>
+    <ul>
+      <li><strong>Problem:</strong> Full model inference on every frame increases latency</li>
+      <li><strong>With moco:</strong> Early exit on easy frames (clear roads, static scenes)</li>
+      <li><strong>Impact:</strong> Reduced compute per frame</li>
+      <li><strong>Outcome:</strong> Lower energy consumption → longer battery life</li>
+    </ul>
+  </div>
+</section>
+
 
 
 <section class="section">
