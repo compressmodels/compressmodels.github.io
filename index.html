@@ -475,28 +475,55 @@ layer that can classify certain inputs without running the rest of the model.
 <table>
 
 <thead>
-<tr>
-<th>Task</th>
-<th>Model</th>
-<th>Latency Reduction</th>
-<th>Accuracy Impact</th>
-</tr>
-</thead>
 
 <tbody>
-
 <tr>
-<td>Image Classification</td>
-<td>ResNet-18</td>
-<td>34.6%</td>
-<td>-0.3%</td>
+  <th>Task</th>
+  <th>Dataset</th>
+  <th>Base Model</th>
+  <th>Fine Tuned Model</th>
+  <th>Compute Reduction</th>
+  <th>Accuracy Change</th>
+  
 </tr>
 
 <tr>
-<td>Text Classification</td>
-<td>BERT</td>
-<td>21.5%</td>
-<td>+0.1%</td>
+  <td>Image Classification</td>
+  <td>
+    <a href="https://huggingface.co/datasets/uoft-cs/cifar10" target="_blank">
+      CIFAR-10
+    </a>
+  </td>
+  <td>ResNet-18</td>
+  <td>
+    <a href="https://huggingface.co/edadaltocg/resnet18_cifar10" target="_blank">
+      HF Model finetuned on CIFAR-10
+    </a>
+  </td>
+
+  
+  <td>34.6%</td>
+  <td>-0.3%</td>
+  
+</tr>
+
+<tr>
+  <td>Text Classification</td>
+  <td>
+    <a href="https://huggingface.co/datasets/stanfordnlp/imdb" target="_blank">
+      IMDB Reviews
+    </a>
+  </td>
+
+  <td>BERT</td>
+  <td>
+    <a href="https://huggingface.co/arnabdhar/tinybert-imdb?library=transformers" target="_blank">
+      Fine-Tuned TinyBERT
+    </a>
+  </td>
+  <td>21.5%</td>
+  <td>+0.1%</td>
+  
 </tr>
 
 </tbody>
