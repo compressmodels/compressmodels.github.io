@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>moco — Reduce GPU Inference Costs</title>
+<title>moco</title>
 
 <style>
 
@@ -233,12 +233,21 @@ font-size:32px;
 
 <section class="hero">
 
-<h1>Cut GPU inference costs by 20–35%</h1>
+  <h1>Reduce compute per ML decision</h1>
 
-<p>
-moco optimizes machine learning models so easy inputs finish early,
-enabling more computationally efficient models while preserving model accuracy.
-</p>
+  <p>
+    Eliminate unnecessary inference to free up capacity in your existing infrastructure
+  </p>
+
+  <div class="hero-options">
+    <p><strong>Reallocate that capacity to:</strong></p>
+    <ul>
+      <li><strong>Process more decisions</strong> enabling higher throughput, better coverage</li>
+      <li><strong>Reduce infrastructure usage</strong> enabling lower cost at the same workload</li>
+      <li><strong>Allocate more compute to the complex decisions</strong> enabling higher detection accuracy</li>
+      <li><strong>Run more models in parallel</strong> enabling more accurate systems</li>
+    </ul>
+  </div>
 
 </section>
 
@@ -256,8 +265,6 @@ Run a 30-day evaluation!
 <li>Apply rules to build optimized decision system.</li>
 <li>Validate no performance degradation</li>
 <li>Measure latency, compute reduction in production shadow system</li>
-<li>Direct Benefit: reduce infra cost, reduce latency, increase throughput.</li>
-<li>Second-order Benefit: allocate compute/latency budget to hard-to-classify data points, creating an accuracy lift.</li>
 </ul>
 
 <a class="btn" href="mailto:samrandall@alumni.stanford.edu">Book an evaluation</a>
@@ -276,13 +283,12 @@ Run a 30-day evaluation!
     <h2>The Problem</h2>
 
     <p>
-      High-throughput ML systems must provision large GPU fleets to meet strict
-      latency requirements.
+      Organizations must provision large GPU fleets to run at-scale classification 
+      in order to meet strict latency requirements.
     </p>
 
     <p>
-      But every request typically runs the full model—even when the input is easy
-      to classify.
+      Given a trained ML model, every request runs through the full model.
     </p>
 
     <p>
@@ -302,16 +308,12 @@ Run a 30-day evaluation!
 
     <p>
       moco adds <strong>early-exit paths</strong> to existing classifiers so easy
-      inputs skip the remaining layers.
+      inputs skip the remaining layers or avoid model execution all together.
     </p>
 
     <p>
       Easy inputs → exit early<br>
       Hard inputs → run the full model
-    </p>
-
-    <p>
-      The result: less compute per request and lower infrastructure cost.
     </p>
 
   </div>
@@ -607,46 +609,6 @@ If this rule activates, it means the rule is confident in its decision, and can 
       <li><strong>Impact:</strong> Reduction of cost and improved energy efficiency</li>
     </ul>
   </div>
-</section>
-
-
-
-<section class="section">
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Reduce Infrastructure Cost</h3>
-
-<p>
-Lower compute requirements mean fewer GPUs needed to serve the same workload.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Increase Throughput</h3>
-
-<p>
-Handle more requests per second without adding hardware.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Run More Complex Models</h3>
-
-<p>
-Deploy more complex classifiers within existing compute budgets, reducing false-negatives and false-positives.
-</p>
-
-</div>
-
-</div>
-
 </section>
 
 
