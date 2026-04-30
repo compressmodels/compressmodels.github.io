@@ -594,6 +594,19 @@ If this rule activates, it means the rule is confident in its decision, and can 
       <li><strong>Outcome:</strong> Lower energy consumption → longer battery life</li>
     </ul>
   </div>
+
+  <div class="use-case">
+    <h3>NLP/Chatbot/Agentic guardrails</h3>
+    <p>
+      Classifiers are commonplace in chatbots to run customer sentiment analysis, intent classificaiton for proper routing,
+      topic tagging, and guardrails that protect the system from out-of-bounds user queries. 
+    </p>
+    <ul>
+      <li><strong>Problem:</strong> Each of these classifiers run fully for every single user query.</li>
+      <li><strong>With moco:</strong> Some of these classifiers only need to run partially.</li>
+      <li><strong>Impact:</strong> Reduction of cost and improved energy efficiency</li>
+    </ul>
+  </div>
 </section>
 
 
