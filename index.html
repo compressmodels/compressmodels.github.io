@@ -551,13 +551,14 @@ If this rule activates, it means the rule is confident in its decision, and can 
     <h3>Cybersecurity</h3>
     <p>
       High-volume threat detection systems (phishing, malware, intrusion detection)
-      must scan massive streams of events under strict latency constraints.
+      must scan massive streams of events. There is a cost tradeoff between analyzing data at scale and accuracy.
+
     </p>
     <ul>
       <li><strong>Problem:</strong> Every event runs full model inference, even low-risk traffic</li>
       <li><strong>With moco:</strong> Early-exit on high-confidence benign or malicious patterns</li>
       <li><strong>Impact:</strong> Increased coverage under fixed compute budget</li>
-      <li><strong>Outcome:</strong> More threats evaluated per second, lower infra cost</li>
+      <li><strong>Outcome:</strong> More threats evaluated per second -> reduced risk for organizations</li>
     </ul>
   </div>
 
