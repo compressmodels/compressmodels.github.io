@@ -7,45 +7,89 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
+            margin: 40px auto;
             line-height: 1.6;
             color: #333;
-            max-width: 800px;
+            max-width: 1000px;
         }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .content {
+            flex: 1;
+        }
+
         h1 {
             font-size: 2em;
             margin-bottom: 5px;
         }
+
         h2 {
             font-size: 1.2em;
             color: #666;
             margin-top: 0;
+            margin-bottom: 20px;
         }
+
         p {
             margin-bottom: 16px;
         }
-        .section {
-            margin-top: 30px;
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            p {
+                text-align: left;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Sam Randall</h1>
-    <h2>Founder, moco</h2>
+    <div class="container">
+        <img src="/profile.jpeg" alt="Sam Randall" class="profile-img">
 
-    <div class="section">
-        <p>
-            Sam Randall studied Applied Mathematics and Public Health at Johns Hopkins University, where he earned his bachelor's degree. He later pursued advanced studies in mathematics at Stanford University, completing a master's degree in Mathematical and Computational Engineering.
-        </p>
+        <div class="content">
+            <h1>Sam Randall</h1>
+            <h2>Founder, moco</h2>
 
-        <p>
-            Over the past 6 years, Sam has built and shipped systems across a range of startups as a founding engineer, scientist, and technical lead. At Athena Security, he developed a real-time computer vision system to detect and prevent physical threats. At BluelightAI, he focused on improving machine learning model performance through automated failure mode and error analysis. At Madmen.AI, he helped build an AI-driven advertising system that generates high-performing ads based on historical data. At Prime Health Technologies, he worked on an AI-powered personalized health coach integrating nutrition, behavioral science, and health data to guide individuals toward better habits at scale.
-        </p>
+            <p>
+                Sam Randall studied Applied Mathematics and Public Health at Johns Hopkins University, where he earned his bachelor's degree. He later pursued advanced studies in mathematics at Stanford University, completing a master's degree in Mathematical and Computational Engineering.
+            </p>
 
-        <p>
-            Through this experience, Sam observed that deeply understanding and analyzing real-world data enables the design of more efficient, accurate, and performant systems. This insight led him to focus on building data-aware analysis techniques that optimize machine learning inference by aligning system architecture with the actual data distributions encountered in production.
-        </p>
+            <p>
+                Over the past 6 years, Sam has built and shipped systems across a range of startups as a founding engineer, scientist, and technical lead. At Athena Security, he developed a real-time computer vision system to detect and prevent physical threats. At BluelightAI, he focused on improving machine learning model performance through automated failure mode and error analysis. At Madmen.AI, he helped build an AI-driven advertising system that generates high-performing ads based on historical data. At Prime Health Technologies, he worked on an AI-powered personalized health coach integrating nutrition, behavioral science, and health data to guide individuals toward better habits at scale.
+            </p>
+
+            <p>
+                Through this experience, Sam observed that deeply understanding and analyzing real-world data enables the design of more efficient, accurate, and performant systems. This insight led him to focus on building data-aware analysis techniques that optimize machine learning inference by aligning system architecture with the actual data distributions encountered in production.
+            </p>
+        </div>
     </div>
 
 </body>
