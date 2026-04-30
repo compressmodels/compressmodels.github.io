@@ -298,26 +298,6 @@ Run a 30-day evaluation!
   </div>
 
 
-  <div class="card">
-
-    <h2>The Idea</h2>
-
-    <p>
-      Many inputs can be classified correctly long before the final layer of a model.
-    </p>
-
-    <p>
-      moco adds <strong>early-exit paths</strong> to existing classifiers so easy
-      inputs skip the remaining layers or avoid model execution all together.
-    </p>
-
-    <p>
-      Easy inputs → exit early<br>
-      Hard inputs → run the full model
-    </p>
-
-  </div>
-
 
   <div style="
   padding:24px;
@@ -329,7 +309,24 @@ Run a 30-day evaluation!
 ">
 
   <h2 style="margin:0 0 10px 0;">The Solution</h2>
-  <p style="margin:0 0 16px 0;"><strong>Example GPU savings</strong></p>
+  
+
+  <p>
+      Many inputs can be classified correctly long before the final layer of a model.
+    </p>
+
+    <p>
+      moco adds <strong>early-exit paths</strong> to existing classifiers so easy
+      inputs skip the remaining layers or avoid model execution all together.
+    </p>
+
+  
+
+</div>
+
+<div class="card">
+
+    <p style="margin:0 0 16px 0;"><strong>Example GPU savings</strong></p>
 
   <!-- Scenario 1 -->
   <div style="margin-bottom:20px;">
@@ -403,7 +400,7 @@ Run a 30-day evaluation!
     ↓ 30% GPU usage • ↓ $800K/year
   </div>
 
-</div>
+  </div>
 
 </section>
 
@@ -420,7 +417,7 @@ As a post-training optimization step, moco analyzes a calibration dataset (e.g t
 (either the dataset itself or a representation pulled from an intermediate layer) and determines regions of the dataset
 where only one class is present. 
 
-If this rule activates, it means the rule is confident in its decision, and can avoid execution of the rest of the model.
+If this rule activates, it means the rule is confident in its decision, and can avoid executing the rest of the model.
 </p>
 
 <div class="grid">
@@ -461,6 +458,19 @@ If this rule activates, it means the rule is confident in its decision, and can 
 </div>
 
 </div>
+
+</section>
+
+<section class="section">
+  <div class="card">
+
+  <h2>How It Is Different</h2>
+
+  <h3>Quantization/Pruning</h3><p>Can be applied in combination with quantization/pruned models. Quantization & pruning alike risk accuracy degradation.</p>
+  <h3>Knowledge Distillation</h3><p>Knowledge Distillation occurs at training time, and requires significant development cost to optimize the model for deployment, meeting both latency & accuracy targets.</p>
+  <h3>Cascaded Systems</h3><p>Cascaded systems are great! Why evaluate a complex ML model if a simple rule will suffice? moco scales this idea and automatically generates these rules, and builds a routed system automatically.</p>
+  </div>
+
 
 </section>
 
