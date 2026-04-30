@@ -236,17 +236,9 @@ font-size:32px;
 <h1>Cut GPU inference costs by 20–35%</h1>
 
 <p>
-moco optimizes machine learning classifiers so easy inputs finish early,
-reducing unnecessary compute while preserving model accuracy.
+moco optimizes machine learning models so easy inputs finish early,
+enabling more computationally efficient models while preserving model accuracy.
 </p>
-
-<div class="stats">
-<span class="stat">~30% fewer FLOPs</span>
-<span class="stat">~30% fewer GPUs</span>
-<span class="stat">~30% higher throughput</span>
-<span class="stat">~30% lower latency</span>
-</div>
-
 
 </section>
 
@@ -541,6 +533,21 @@ If this rule activates, it means the rule is confident in its decision, and can 
   <h2>Use Cases by Industry</h2>
 
   <div class="use-case">
+    <h3>Fraud Detection</h3>
+    <p>
+      Transaction risk monitoring systems make real-time decisions (100ms)
+      to avoid business losses because of fraudulent activity, but suffer from
+      immense operational costs due to false positives. 
+    </p>
+    <ul>
+      <li><strong>Problem:</strong> Real-Time systems' accuracy are constrained by average latency budget.</li>
+      <li><strong>With moco:</strong> Create rule to identify transactions that can avoid model execution.</li>
+      <li><strong>Impact:</strong> Reduced compute required for easy transactions -> enabling intelligence + better features where they're needed.</li>
+      <li><strong>Outcome:</strong> Reduction in false positives</li>
+    </ul>
+  </div>
+
+  <div class="use-case">
     <h3>Cybersecurity</h3>
     <p>
       High-volume threat detection systems (phishing, malware, intrusion detection)
@@ -554,25 +561,14 @@ If this rule activates, it means the rule is confident in its decision, and can 
     </ul>
   </div>
 
-  <div class="use-case">
-    <h3>Fraud Detection</h3>
-    <p>
-      Payment systems and identity verification pipelines require real-time decisions
-      while minimizing false positives and customer friction.
-    </p>
-    <ul>
-      <li><strong>Problem:</strong> Expensive models run on every transaction</li>
-      <li><strong>With moco:</strong> Fast-path classification for low-risk transactions</li>
-      <li><strong>Impact:</strong> Lower latency at peak traffic</li>
-      <li><strong>Outcome:</strong> Reduced compute cost + faster approvals</li>
-    </ul>
-  </div>
+  
 
   <div class="use-case">
     <h3>Autonomous Vehicles</h3>
     <p>
-      Perception systems must process sensor data under strict real-time constraints
-      with high reliability.
+      Perception systems must process a large volume of continously generated sensor data
+      under strict real-time constraints. Critical decisions rely on perception systems which 
+      constantly scan their environment for pedestrians, stoplights and obstacles. 
     </p>
     <ul>
       <li><strong>Problem:</strong> Full model inference on every frame increases latency</li>
@@ -622,27 +618,6 @@ Deploy more complex classifiers within existing compute budgets, reducing false-
 </div>
 
 </section>
-
-
-
-<section class="section card">
-
-<h2>Pilot Program</h2>
-
-<p>
-Run a 30-day evaluation to measure GPU savings on your inference workload.
-</p>
-
-<ul>
-<li>Model audit: generate/evaluate rules</li>
-<li>Apply rules to build optimized decision system.</li>
-<li>Measured latency and compute reduction in production shadow system</li>
-</ul>
-
-<a class="btn" href="mailto:">Book an evaluation</a>
-
-</section>
-
 
 
 <footer>
