@@ -441,9 +441,11 @@ Given my early stage, I seek to take on clients where I use my algorithms to bui
 <h2>How It Works</h2>
 
 <p>
-As a post-training optimization step, moco analyzes a calibration dataset (e.g training), considers a specific representation
-(either the dataset itself or a representation pulled from an intermediate layer) and identify conditions: low-complexity rules
-that simplify the classification decision: i.e split the classification problem into two easier problems. 
+
+moco is a post-training optimization tool that improves classification efficiency.
+Given a calibration dataset and a chosen representation of the data, moco identifies
+low-complexity rules that simplify the decision problem itself by decomposing the 
+decision into easier-to-solve subproblems.
 </p>
 
 <div class="grid2">
