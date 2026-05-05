@@ -352,11 +352,9 @@ font-size:32px;
 
         <h2>Problem Size</h2>
 
-    <p>From queueing theory, the number of GPUs = (requests per second) x (seconds per inference) / (utilization = 0.7).</p>
-    <p>For a system with 1 million requests per second, and every inference needs 1 ms, 1400 GPUs are required.</p>
-    <p>For multi-model systems, this scales with the number of models.</p>
-
-    
+    <p>The number of GPUs needed to serve one model can be estimated as (requests per second) x (seconds per inference) / (utilization = 0.7).</p>
+    <p>For a system with 1 million requests per second, and one model classifying every request in 1ms per inference, 1400 GPUs are required.</p>
+    <p>The number of GPUs required scales with the number of models that run in parallel for each request.</p>
 
 
   </div>
