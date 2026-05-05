@@ -339,17 +339,22 @@ font-size:32px;
     <p><strong>Inference compute budgets are bursting, and ML systems still make errors, costing business value.</strong></p>
 
     <p>
-      Organizations must provision large GPU fleets to run at-scale classification 
+      Organizations must use a lot of compute (CPUs and GPUs) to run at-scale classification 
       in order to meet strict latency requirements.
     </p>
 
-    <p>
-      Given a trained ML model, every request runs through the full model.
-    </p>
+    <h2>Problem Size</h2>
 
-    <p>
-      This wastes significant compute.
-    </p>
+    From queueing theory, the number of GPUs = (requests per second) x (seconds per inference) / 0.7.
+    For a system with 1 million requests per second, and every inference needs 1 ms, 1400 GPUs are required.
+
+    
+
+
+  </div>
+
+  <div>
+
 
   </div>
 
