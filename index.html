@@ -343,17 +343,20 @@ font-size:32px;
       in order to meet strict latency requirements.
     </p>
 
-    <h2>Problem Size</h2>
 
-    From queueing theory, the number of GPUs = (requests per second) x (seconds per inference) / 0.7.
-    For a system with 1 million requests per second, and every inference needs 1 ms, 1400 GPUs are required.
-
-    
 
 
   </div>
 
-  <div>
+  <div class="card">
+
+        <h2>Problem Size</h2>
+
+    <p>From queueing theory, the number of GPUs = (requests per second) x (seconds per inference) / (utilization = 0.7).</p>
+    <p>For a system with 1 million requests per second, and every inference needs 1 ms, 1400 GPUs are required.</p>
+    <p>For multi-model systems, this scales with the number of models.</p>
+
+    
 
 
   </div>
