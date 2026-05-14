@@ -307,20 +307,8 @@ font-size:32px;
 
 <section class="hero">
 
-  <h1>Reduce compute per ML decision</h1>
+  <h1>ML Inference is expensive and power-hungry</h1>
 
-  <p>
-    Eliminate unnecessary inference
-  </p>
-
-  <div class="hero-options">
-    <ul>
-      <li><strong>Process 20-50% more decisions with the same compute budget.</strong></li>
-      <li><strong>Reduce CAPEX costs by 20-50%.</strong></li>
-      <li><strong>Increase the number of models run in parallel by 20-50%, enabling more accurate, safer systems</strong></li>
-    </ul>
-    <p><strong>Shift decision-making to the edge</strong></p>
-  </div>
 
 </section>
 
@@ -331,63 +319,20 @@ font-size:32px;
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/sam-randall5/30min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
 <!-- Calendly badge widget end -->
-<section class="section grid3">
+<section class = "section">
 
-  <div class="card">
+  <div class = "card">
 
-    <h2>The Problem</h2>
-    <p><strong>Inference compute budgets are bursting, and ML systems still make errors, costing business value.</strong></p>
-
-    <p>
-      Organizations must use a lot of compute (CPUs and GPUs) to run at-scale classification 
-      in order to meet strict latency requirements.
-    </p>
-
-
-
-
-  </div>
-
-  <div class="card">
-
-        <h2>Problem Size</h2>
-
-    <p>The number of GPUs needed to serve one model can be estimated as (requests per second) x (seconds per inference) / (utilization = 0.7).</p>
-    <p>For a system with 1 million requests per second, and one model classifying every request in 1ms per inference, 1400 GPUs are required.</p>
-    <p>The number of GPUs required scales with the number of models that run in parallel for each request.</p>
-
-
-  </div>
-
-
-
-  <div style="
-  padding:24px;
-  border-radius:12px;
-  background:#111;
-  color:#fff;
-  max-width:500px;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-">
 
   <h2 style="margin:0 0 10px 0;">The Solution</h2>
 
-  <p>
-      <strong>Only run the model on the inputs (logs, transactions, events) that need it.</strong>
-  </p>
-  
+  <p>moco automatically converts machine learning classifiers into validated cascaded systems by analyzing the dataset and model activations.</p>
 
-    <p>
-      Many inputs can be classified correctly long before the final layer of a model.
-    </p>
+  <p>moco analyzes the dataset to find inputs (logs, transactions, events) that are easy-to-classify and can be classified with simpler models than the original model.</p>
 
-    <p>
-      moco adds <strong>early-exit paths</strong> to existing classifiers so easy
-      inputs skip the remaining layers or avoid model execution all together.
-    </p>
+  <p> moco reduces the FLOPS per inference, saving your system expensive compute time, and reduces the number of GPUs you need to keep turned on.</p>
 
-  
-
+  <p style="margin:0 0 16px 0;">Computationally-efficient models in high-throughput settings slashes GPU costs</p>
 </div>
 
 
@@ -396,11 +341,12 @@ font-size:32px;
 
 <div class="card">
 
-    <h2>Cost-savings for a 65k requests per second, 12 models per request, 50 ms per inference.</h2>
+    <h2>VISA Size Real-Time Fraud Detection Example</h2>
+    <p>65,000 requests per second, 12 models per request, 50 ms per inference.</p>
 
     <p>Assuming utilization of 0.7, required GPU count = 55k.</p>
 
-    <p style="margin:0 0 16px 0;">Computationally-efficient models  in high-throughput settings slashes GPU costs</p>
+    
 
   <!-- Scenario 1 -->
   <div style="margin-bottom:20px;">
