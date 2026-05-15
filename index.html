@@ -283,6 +283,71 @@ grid-template-columns:1fr;
 font-size:32px;
 }
 
+.solution-card {
+  padding: 40px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #111 0%, #171717 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  max-width: 900px;
+  margin: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+.solution-card h2 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.solution-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 18px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.benefit {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: 0.2s ease;
+}
+
+.benefit:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.06);
+}
+
+.benefit-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.benefit h3 {
+  margin: 0 0 6px 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.benefit p {
+  margin: 0;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 }
 
 </style>
@@ -306,8 +371,8 @@ font-size:32px;
 
 
 <section class="hero">
-  <h1>ML Inference is expensive and power-hungry</h1>
-  <p>Reduce cost/joules per inference with no accuracy loss, no re-training and no new hardware. Just math.</p>
+  <h1>Reduce ML inference cost by 20–50% without retraining models</h1>
+  <p>moco automatically converts existing classifiers into routed cascaded systems that avoid unnecessary computation while preserving model behavior.</p>
 </section>
 
 
@@ -318,36 +383,54 @@ font-size:32px;
 <!-- Calendly badge widget end -->
 <section class = "section">
 
-  <div class = "card">
+  <div class="card solution-card">
 
+  <h2>Stop Running Full Inference on Easy Predictions</h2>
 
-  <h2 style="margin:0 0 10px 0;">The Solution</h2>
+  <p class="solution-text">
+    Most production ML systems send every input through the full model —
+    even when many predictions are trivial to classify.
+  </p>
 
-  <p>moco automatically converts machine learning classifiers into validated cascaded systems by analyzing the dataset and model activations for easy-to-classify inputs.</p>
+  <p class="solution-text">
+    <strong>moco</strong> analyzes model behavior and automatically routes
+    easy predictions through cheaper decision paths while reserving full
+    inference for difficult cases.
+  </p>
 
-  <p>By only invoking the layers of the model that are needed for a given data point, moco reduces the FLOPS per inference, saving your system expensive compute time, and reduces the number of GPUs you need to keep turned on.</p>
+  <div class="benefits-grid">
+    <div class="benefit">
+      
+      <div>
+        <h3>Smaller GPU Fleet</h3>
+        <p>Reduce unnecessary inference compute.</p>
+      </div>
+    </div>
 
-  <p style="margin:0 0 16px 0;">moco achieves 20-50% more computationally-efficient systems.</p>
+    <div class="benefit">
+      
+      <div>
+        <h3>Lower Power Usage</h3>
+        <p>Reduce energy consumed per prediction.</p>
+      </div>
+    </div>
+
+    <div class="benefit">
+      
+      <div>
+
+        <h3>Higher Throughput</h3>
+        <p>Process more requests on existing hardware.</p>
+      </div>
+    </div>
   </div>
+
+</div>
+
+
 
 </section>
 
-<section class = "section">
-
-  <div class = "card">
-
-
-  <h2 style="margin:0 0 10px 0;">Benefits</h2>
-
-  <p>Edge Systems: Extend battery life, reduce thermal usage of GPUs.</p>
-  <p>Large Batched Workloads: Reduce compute costs.</p>
-  <p>Real-Time Systems: Increase headroom for the more complex analysis of the inputs that need it.</p>
-
-  </div>
-
-</section>
-
-<!-- NEW COMPUTE WASTE AUDIT SECTION -->
 <section class="section">
 
   <div class="card" style="border:1px solid #dbe4ff;">
@@ -401,6 +484,24 @@ font-size:32px;
   </div>
 
 </section>
+
+<section class = "section">
+
+  <div class = "card">
+
+
+  <h2 style="margin:0 0 10px 0;">Benefits</h2>
+
+  <p>Edge Systems: Extend battery life, reduce thermal usage of GPUs.</p>
+  <p>Large Batched Workloads: Reduce compute costs.</p>
+  <p>Real-Time Systems: Increase headroom for the more complex analysis of the inputs that need it.</p>
+
+  </div>
+
+</section>
+
+<!-- NEW COMPUTE WASTE AUDIT SECTION -->
+
 
 
 
