@@ -323,14 +323,29 @@ font-size:32px;
 
   <h2 style="margin:0 0 10px 0;">The Solution</h2>
 
-  <p>moco automatically converts machine learning classifiers into validated cascaded systems by analyzing the dataset and model activations.</p>
+  <p>moco automatically converts machine learning classifiers into validated cascaded systems by analyzing the dataset and model activations for easy-to-classify inputs.</p>
 
-  <p>moco analyzes the dataset to find inputs (logs, transactions, events) that are easy-to-classify and can be classified with simpler models than the original model.</p>
+  <p>By only invoking the layers of the model that are needed for a given data point, moco reduces the FLOPS per inference, saving your system expensive compute time, and reduces the number of GPUs you need to keep turned on.</p>
 
-  <p> moco reduces the FLOPS per inference, saving your system expensive compute time, and reduces the number of GPUs you need to keep turned on.</p>
+  <p style="margin:0 0 16px 0;">moco achieves 20-50% more computationally-efficient systems.</p>
+  </div>
 
-  <p style="margin:0 0 16px 0;">20-50% more computationally-efficient models in high-throughput settings reduces GPU costs by 20-50% or extends battery/hardware life.</p>
-</div>
+</section>
+
+<section class = "section">
+
+  <div class = "card">
+
+
+  <h2 style="margin:0 0 10px 0;">Benefits</h2>
+
+  <p>Edge Systems: Extend battery life, reduce thermal usage of GPUs.</p>
+  <p>Large Batched Workloads: Reduce compute costs.</p>
+  <p>Real-Time Systems: Increase headroom for the more complex analysis of the inputs that need it.</p>
+
+  </div>
+
+</section>
 
 
 
@@ -362,6 +377,19 @@ I offer my services + algorithms to optimize ML inference pipelines. I will quan
 
 <p>A preview of the API docs is <a href="/docs.html">here</a>.</p>
 <p>The product is available for alpha testing.</p>
+
+<p>Python Example of the Python pip installable package. Inquire if you would prefer this.</p>
+
+<pre><code class="language-python">
+
+  rules = moco.analyze(dataset: np.ndarray, predictions: np.ndarray)
+
+  selected_rules = [rule for rule in rules if rule.class in (0, 1, 2)]
+
+  optimized_model = moco.build_cascaded_system(original_model, selected_rules)
+
+
+</code></pre>
 
 
 </div>
