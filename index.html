@@ -347,6 +347,63 @@ font-size:32px;
 
 </section>
 
+<!-- NEW COMPUTE WASTE AUDIT SECTION -->
+<section class="section">
+
+  <div class="card" style="border:1px solid #dbe4ff;">
+
+    <h2 style="margin:0 0 10px 0;">
+      Free Compute-Waste Audit
+    </h2>
+
+    <p>
+      Not sure whether your ML system is a fit?
+    </p>
+
+    <p>
+      I will analyze historical inference logs, model outputs, or 
+      representative datasets to identify unnecessary model computation 
+      and estimate potential savings.
+    </p>
+
+    <p>
+      The audit evaluates:
+    </p>
+
+    <ul>
+      <li>Potential GPU-hour reduction</li>
+      <li>Inference latency improvements</li>
+      <li>Inputs that may not require full model execution</li>
+      <li>Whether cascaded routing can preserve model accuracy</li>
+    </ul>
+
+    <p style="margin-bottom:18px;">
+      Ideal for fraud detection, NLP classification, cybersecurity, 
+      edge AI, and large batch inference workloads.
+    </p>
+
+    <a 
+      href="https://calendly.com/sam-randall5/30min"
+      target="_blank"
+      style="
+        display:inline-block;
+        background:#0069ff;
+        color:white;
+        padding:12px 18px;
+        border-radius:6px;
+        text-decoration:none;
+        font-weight:600;
+      "
+    >
+      Book a Free Audit
+    </a>
+
+  </div>
+
+</section>
+
+
+
 
 
 
@@ -381,6 +438,7 @@ I offer my services + algorithms to optimize ML inference pipelines. I will quan
 <p>Python Example of the Python pip installable package. Inquire if you would prefer this.</p>
 
 <pre><code class="language-python">
+  import moco
 
   rules = moco.analyze(dataset: np.ndarray, predictions: np.ndarray)
 
