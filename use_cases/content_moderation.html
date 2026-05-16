@@ -1,0 +1,25 @@
+<div class="use-case">
+  <h3>Content Moderation at Platform Scale</h3>
+
+  <p>
+    Content moderation systems continuously classify text, images, video, and user activity to detect spam, abuse, policy violations, and unsafe content.
+    These systems operate under strict latency constraints and enormous throughput requirements, often requiring billions of classifications per day.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Problem:</strong>
+      Moderation pipelines are expensive to operate because every piece of content is sent through full inference, even when many decisions are obvious or low-risk.
+    </li>
+
+    <li>
+      <strong>With moco:</strong>
+      moco automatically routes straightforward moderation decisions through cheaper decision paths while reserving full model inference for ambiguous or high-risk cases.
+    </li>
+
+    <li>
+      <strong>Impact:</strong>
+      20–50% reduction in moderation inference cost and GPU utilization while maintaining moderation quality and platform responsiveness.
+    </li>
+  </ul>
+</div>
