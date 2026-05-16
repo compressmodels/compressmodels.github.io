@@ -1,0 +1,46 @@
+<div class="use-case">
+  <h3>Customer Support Ticket Classification (Help Desk & ITSM)</h3>
+
+  <p>
+    Customer support and IT help desk systems continuously ingest large volumes of incoming tickets across email, chat, and web forms.
+    Each ticket must be classified into the correct category, department, or routing queue in real time.
+  </p>
+
+  <ul>
+    <li><strong>Problem:</strong> Every ticket is routed through full classification models, creating high inference cost at scale (Zendesk-style workloads).</li>
+    <li><strong>With moco:</strong> Simple, high-confidence tickets are routed through lightweight decision paths, while ambiguous cases use full model inference.</li>
+    <li><strong>Impact:</strong> 25–45% reduction in classification compute cost with faster routing latency and improved operational efficiency.</li>
+  </ul>
+</div>
+
+
+<div class="use-case">
+  <h3>Ticket Prioritization for SLA Management</h3>
+
+  <p>
+    Support teams must prioritize incoming tickets based on urgency, customer tier, and business impact to meet SLA requirements and prevent escalation.
+    This requires real-time scoring of incoming requests across multiple signals.
+  </p>
+
+  <ul>
+    <li><strong>Problem:</strong> All tickets are evaluated with full priority models, even when priority is obvious from simple heuristics (e.g., VIP users or outage keywords).</li>
+    <li><strong>With moco:</strong> High-confidence priority decisions are handled with low-cost routing logic, reserving full inference for edge cases requiring deeper analysis.</li>
+    <li><strong>Impact:</strong> Reduced GPU/CPU load by 20–40% while maintaining SLA accuracy and improving response time consistency.</li>
+  </ul>
+</div>
+
+
+<div class="use-case">
+  <h3>Sentiment & Intent Analysis for Support Automation</h3>
+
+  <p>
+    Support platforms analyze customer messages to detect sentiment and intent, enabling automated replies, escalation, or agent routing.
+    This is critical for chat-based systems and large-scale customer success operations.
+  </p>
+
+  <ul>
+    <li><strong>Problem:</strong> Full transformer-based models are applied to every message, even when sentiment or intent is already obvious from structure or keywords.</li>
+    <li><strong>With moco:</strong> moco filters easy cases (e.g., clearly negative or clearly informational messages) through lightweight paths and escalates uncertain cases to full models.</li>
+    <li><strong>Impact:</strong> 30–50% reduction in inference cost with faster response times and improved scalability for real-time support systems.</li>
+  </ul>
+</div>
