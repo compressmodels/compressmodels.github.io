@@ -580,9 +580,11 @@ I offer my services + algorithms to optimize ML inference pipelines.
 
   <h2>How the algorithms are different from other ML system and model optimization techniques</h2>
 
-  <h3>Quantization/Pruning</h3><p>Can be applied in combination with quantization/pruned models. Quantization & pruning alike risk accuracy degradation.</p>
-  <h3>Knowledge Distillation</h3><p>Knowledge Distillation occurs at training time, and requires significant development cost to optimize the model for deployment, meeting both latency & accuracy targets.</p>
+  <h3>Quantization/Pruning/Just using a lower fidelity model</h3><p>Can be applied in combination with quantization/pruned models. Quantization & pruning alike risk accuracy degradation. Accepting lower accuracy in favor of cost/energy constraints is a tough place to be in.</p>
+  <h3>Knowledge Distillation</h3><p>Requires re-training, and thus significant development cost.</p>
   <h3>Cascaded Systems</h3><p>Cascaded systems are great! Why evaluate a complex ML model if a simple rule will suffice? moco scales this idea and automatically generates these rules, and builds a routed system automatically.</p>
+  <h3>Horizontal Scaling</h3><p>Adding more CPUs/GPUs to meet compute needs is expensive and disruptive. Delaying that until next quarter is a win.</p>
+  <h3>Vertical Scaling</h3><p>Migrating to faster CPU/GPUs to meet compute needs is expensive and disruptive. Delaying that until next quarter is a win.</p>
   </div>
 
 
