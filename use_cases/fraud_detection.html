@@ -1,27 +1,218 @@
-<div class="use-case">
-    <h3>Fraud Detection</h3>
-    <p>
-      Transaction risk monitoring systems make real-time decisions (100ms)
-      to avoid business losses because of fraudulent activity, but suffer from
-      immense operational costs due to false positives. 
-    </p>
-    <ul>
-      <li><strong>Problem:</strong> Real-Time systems' accuracy are constrained by average latency budget.</li>
-      <li><strong>With moco:</strong> Create rule to identify transactions that can avoid model execution.</li>
-      <li><strong>Impact:</strong> Reduced compute required for easy transactions -> enabling intelligence + better features where they're needed.</li>
-      <li><strong>Outcome:</strong> Enables additional model capacity and feature complexity within existing latency constraints.</li>
-    </ul>
 
-    <a href="https://compressmodels.github.io/notebooks/fraud.html"
-           target="_blank" rel="noopener noreferrer"
-           onclick="gtag('event', 'pdf_click', {
-            event_category: 'engagement',
-            event_label: 'fraud_notebook'
-          });">
-          Credit Card Fraud Detection — Inference Acceleration
-        </a>
+<style>
 
-        <p class="meta">
-          Delivered a <strong>55% speed-up</strong> and major FLOP reduction on a production-style fraud classifier.
+.use-case {
+  padding: 96px 24px;
+  background: #ffffff;
+  color: #111111;
+}
+
+.use-case__content {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.use-case__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.use-case__header h2 {
+  font-size: 42px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px;
+}
+
+.use-case__lead {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #4b5563;
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.use-case__highlight {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #111111;
+  max-width: 780px;
+  padding-left: 20px;
+  border-left: 2px solid #d1d5db;
+  margin-bottom: 56px;
+}
+
+.use-case__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+.use-case__item {
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.use-case__item .label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.use-case__item p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.use-case__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.use-case__link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #111111;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.use-case__link:hover {
+  opacity: 0.7;
+}
+
+.use-case__metric {
+  text-align: right;
+}
+
+.use-case__metric span {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.use-case__metric strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+}
+
+@media (max-width: 768px) {
+  .use-case {
+    padding: 72px 20px;
+  }
+
+  .use-case__header h2 {
+    font-size: 34px;
+  }
+
+  .use-case__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .use-case__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .use-case__metric {
+    text-align: left;
+  }
+}
+
+</style>
+
+<section class="use-case">
+  <div class="use-case__content">
+    <div class="use-case__eyebrow">Use Case</div>
+
+    <div class="use-case__header">
+      <h2>Fraud Detection</h2>
+
+      <p class="use-case__lead">
+        Real-time transaction risk systems operate under strict latency budgets,
+        often making decisions in under 100ms. As transaction volume grows,
+        maintaining accuracy becomes increasingly expensive.
+      </p>
+
+      <p class="use-case__highlight">
+        moco reduces compute required per fraud decision by approximately 48%,
+        enabling payment systems to process nearly 2× more transactions on the
+        same inference infrastructure while preserving precision and recall.
+      </p>
+    </div>
+
+    <div class="use-case__grid">
+      <div class="use-case__item">
+        <span class="label">Problem</span>
+        <p>
+          Accuracy and model complexity are constrained by strict real-time
+          latency requirements and infrastructure costs.
         </p>
+      </div>
+
+      <div class="use-case__item">
+        <span class="label">Approach</span>
+        <p>
+          moco identifies low-risk transactions that can bypass expensive model
+          execution while routing uncertain cases through the full pipeline.
+        </p>
+      </div>
+
+      <div class="use-case__item">
+        <span class="label">Impact</span>
+        <p>
+          Reduces unnecessary inference on easy transactions, freeing capacity
+          for more sophisticated models and richer feature computation.
+        </p>
+      </div>
+
+      <div class="use-case__item">
+        <span class="label">Outcome</span>
+        <p>
+          Teams can increase intelligence and throughput within existing latency
+          and infrastructure constraints.
+        </p>
+      </div>
+    </div>
+
+    <div class="use-case__footer">
+      <a
+        class="use-case__link"
+        href="https://compressmodels.github.io/notebooks/fraud.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="gtag('event', 'pdf_click', {
+          event_category: 'engagement',
+          event_label: 'fraud_notebook'
+        });"
+      >
+        View Technical Notebook
+      </a>
+
+      <div class="use-case__metric">
+        <span>Results</span>
+        <strong>55% inference speed-up with major FLOP reduction</strong>
+      </div>
+    </div>
   </div>
+</section>
