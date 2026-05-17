@@ -394,6 +394,90 @@ font-size:32px;
   line-height: 1.5;
 }
 
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111111;
+  font-family: Inter, sans-serif;
+}
+
+.hero {
+  padding: 120px 24px 72px;
+}
+
+.hero__content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 7vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  margin: 0 0 32px;
+  max-width: 900px;
+}
+
+.hero__lead {
+  font-size: 24px;
+  line-height: 1.5;
+  color: #374151;
+  margin: 0 0 18px;
+  max-width: 760px;
+}
+
+.hero__description {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #6b7280;
+  margin: 0;
+  max-width: 760px;
+}
+
+.cards {
+  max-width: 960px;
+  margin: 0 auto 120px;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.card p {
+  margin: 0 0 16px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.card__title {
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280 !important;
+  margin-bottom: 20px !important;
+}
+
+.card__highlight {
+  color: #111111 !important;
+  font-weight: 600;
+}
+
 
 </style>
 </head>
@@ -429,15 +513,44 @@ font-size:32px;
 
 </header>
 
-
 <section class="hero">
-  <h1>Reduce ML inference cost by 20–50% without retraining models</h1>
-  <p>moco automatically converts existing classifiers into routed cascaded systems that avoid unnecessary computation while preserving model behavior.</p>
+  <div class="hero__content">
+
+    <h1>
+      Reduce Machine Learning system inference cost by 20–50% without retraining models
+    </h1>
+
+    <p class="hero__lead">
+      Determine which inputs need complex, deep analysis, and reserve compute expense for those inputs.
+    </p>
+
+    <p class="hero__description">
+      moco automatically converts existing classifiers into routed cascaded systems that avoid unnecessary
+      computation while preserving model behavior.
+    </p>
+
+  </div>
 </section>
 
-<section class = "card">
-  <p>A BERT text classification model classifying 1B texts per day costs $365k per year in compute-time alone.</p>
-  <p>moco saves $73k - $182.5k / year in direct compute-time savings.</p>
+<section class="cards">
+
+  <section class="card">
+    <p class="card__title">Applicable To:</p>
+
+    <p>- Cascaded Systems</p>
+    <p>- Deep Learning Models</p>
+  </section>
+
+  <section class="card">
+    <p>
+      A BERT text classification model classifying 1B texts per day costs $365k per year in compute-time alone.
+    </p>
+
+    <p class="card__highlight">
+      moco saves $73k - $182.5k / year in direct compute-time savings.
+    </p>
+  </section>
+
 </section>
 
 
@@ -721,6 +834,7 @@ Evaluation Steps
 <footer>
 
 <div>© 2026 moco</div>
+<div>Built by <a href="https://www.linkedin.com/in/sam-randall-9a3068110/" target="_blank">Sam Randall</a>, an alumni of the Computational and Mathematical Engineering Masters Program at Stanford University</div>
 
 </footer>
 
