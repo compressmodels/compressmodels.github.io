@@ -532,7 +532,15 @@ body {
   </div>
 </section>
 
-<section class="cards">
+<section>
+
+    <p>
+      A BERT text classification model classifying 1B texts per day costs $365k per year in compute-time alone.
+    </p>
+
+    <p class="card__highlight">
+      moco saves $73k - $182.5k / year in direct compute-time savings.
+    </p>
 
   <section class="industry-scale">
 
@@ -541,42 +549,58 @@ body {
   <div class="industry-grid">
 
     <div class="industry-card">
-      <h3>Content Moderation</h3>
-      <p>Transformer moderation systems processing billions of events per day.</p>
+  <h3>Content Moderation</h3>
 
-      <ul>
-        <li>Typical models: BERT, RoBERTa, multimodal transformers</li>
-        <li>Typical latency: 5–20ms</li>
-        <li>Typical scale: 100k–750k+ requests/sec</li>
-        <li>Typical annual inference cost: Millions/year</li>
-      </ul>
-    </div>
+  <p>
+    Transformer moderation systems processing billions of events per day.
+  </p>
 
-    <div class="industry-card">
-      <h3>Search + Tagging</h3>
-      <p>Large-scale indexing and retrieval pipelines operating on billions of assets.</p>
+  <ul>
+    <li>Typical models: BERT, RoBERTa, multimodal transformers</li>
+    <li>Typical latency: 5–20ms</li>
+    <li>Typical scale: 100k–750k+ requests/sec</li>
+    <li>Typical annual inference cost: Millions/year</li>
+    <li>
+      20% lower average FLOPs/inference can save hundreds of thousands
+      to millions per year in GPU infrastructure and compute-time costs.
+    </li>
+    <li>
+      Lower inference load also reduces peak GPU utilization,
+      enabling smaller serving fleets and higher throughput on existing hardware.
+    </li>
+  </ul>
+</div>
 
-      <ul>
-        <li>Typical models: BERT, CLIP, embedding models</li>
-        <li>Typical latency: 5–50ms</li>
-        <li>Typical scale: Billions of classifications/day</li>
-        <li>Typical annual inference cost: Millions/year</li>
-      </ul>
-    </div>
+<div class="industry-card">
+  <h3>Search + Tagging</h3>
+
+  <p>
+    Large-scale indexing and retrieval pipelines operating on billions of assets.
+  </p>
+
+  <ul>
+    <li>Typical models: BERT, CLIP, embedding models</li>
+    <li>Typical latency: 5–50ms</li>
+    <li>Typical scale: Billions of classifications/day</li>
+    <li>Typical annual inference cost: Millions/year</li>
+    <li>
+      20% lower average FLOPs/inference can save hundreds of thousands
+      annually in indexing and embedding compute costs.
+    </li>
+    <li>
+      Reduced compute per classification enables faster index refreshes,
+      higher indexing throughput, and more models within the same infrastructure budget.
+    </li>
+  </ul>
+</div>
 
   </div>
 
+
+
 </section>
 
-  <section class="card">
-    <p>
-      A BERT text classification model classifying 1B texts per day costs $365k per year in compute-time alone.
-    </p>
 
-    <p class="card__highlight">
-      moco saves $73k - $182.5k / year in direct compute-time savings.
-    </p>
-  </section>
 
 </section>
 
@@ -719,8 +743,8 @@ body {
 
 I offer my services + algorithms to optimize ML inference pipelines. 
 
-<p>License to Self-Serve API: you only pay based on the value it provides you.</p>
-<p>Self-Serve API + Support: you only pay based on the value it provides you.</p>
+<p>License to Self-Serve API</p>
+<p>Self-Serve API + Support</p>
 <p>Enterprise: I will quantize, prune models and apply my algorithms to build cascaded systems.</p>
 
 <p>The Product API docs are <a href="/docs.html">here</a>.</p>
