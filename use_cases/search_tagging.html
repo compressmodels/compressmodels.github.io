@@ -1,15 +1,213 @@
+<style>
 
+.use-case {
+  padding: 96px 24px;
+  background: #ffffff;
+  color: #111111;
+}
 
-<div class="use-case">
-    <h3>Tagging Systems in Large Scale Search Systems</h3>
-    <p>
-      Classifiers are commonplace to index images, assets, and documents for efficient retrieval at query-time.
-      Classifiers need to be re-run frequently, and there is an ever-changing supply of items to classify. 
+.use-case__content {
+  max-width: 920px;
+  margin: 0 auto;
+}
 
-    </p>
-    <ul>
-      <li><strong>Problem:</strong> The compute-time is extremely expensive.</li>
-      <li><strong>With moco:</strong> Each of these classifiers only need to be run partially for some inputs.</li>
-      <li><strong>Impact:</strong>20% reduction in GPU usage and cost</li>
-    </ul>
+.use-case__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.use-case__header h2 {
+  font-size: 42px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px;
+}
+
+.use-case__lead {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #4b5563;
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.use-case__highlight {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #111111;
+  max-width: 780px;
+  padding-left: 20px;
+  border-left: 2px solid #d1d5db;
+  margin-bottom: 56px;
+}
+
+.use-case__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+.use-case__item {
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.use-case__item .label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.use-case__item p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.use-case__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.use-case__link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #111111;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.use-case__link:hover {
+  opacity: 0.7;
+}
+
+.use-case__metric {
+  text-align: right;
+}
+
+.use-case__metric span {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.use-case__metric strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+}
+
+@media (max-width: 768px) {
+  .use-case {
+    padding: 72px 20px;
+  }
+
+  .use-case__header h2 {
+    font-size: 34px;
+  }
+
+  .use-case__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .use-case__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .use-case__metric {
+    text-align: left;
+  }
+}
+
+</style>
+
+<section class="use-case">
+  <div class="use-case__content">
+    <div class="use-case__eyebrow">Use Case</div>
+
+    <div class="use-case__header">
+      <h2>Search Indexing & Product Tagging</h2>
+
+      <p class="use-case__lead">
+        Large-scale eCommerce platforms continuously classify products, images,
+        listings, and catalog updates to power search relevance, filtering,
+        recommendations, and merchandising systems.
+      </p>
+
+      <p class="use-case__highlight">
+        moco reduces the compute required for indexing and tagging pipelines,
+        allowing eCommerce teams to process significantly more catalog data on
+        existing infrastructure while improving index freshness, retrieval
+        quality, and search responsiveness.
+      </p>
+    </div>
+
+    <div class="use-case__grid">
+      <div class="use-case__item">
+        <span class="label">Problem</span>
+        <p>
+          Product classification and tagging systems operate continuously as
+          catalogs evolve. Re-indexing millions of products with deep models is
+          computationally expensive and limits how frequently search indexes can
+          be refreshed.
+        </p>
+      </div>
+
+      <div class="use-case__item">
+        <span class="label">Approach</span>
+        <p>
+          moco identifies products and assets that can be classified confidently
+          using partial computation, reserving full model execution only for
+          ambiguous or difficult cases.
+        </p>
+      </div>
+
+      <div class="use-case__item">
+        <span class="label">Impact</span>
+        <p>
+          Reduced inference cost enables more frequent indexing cycles,
+          higher-throughput ingestion pipelines, and lower GPU utilization
+          across search infrastructure.
+        </p>
+      </div>
+
+      <div class="use-case__item">
+        <span class="label">Outcome</span>
+        <p>
+          Faster and more efficient indexing improves search freshness,
+          attribute coverage, and retrieval quality — helping customers find
+          relevant products more quickly while reducing infrastructure spend.
+        </p>
+      </div>
+    </div>
+
+    <div class="use-case__footer">
+      <div class="use-case__metric">
+        <span>Business Value</span>
+        <strong>
+          Increased indexing throughput and lower GPU cost without reducing
+          model quality
+        </strong>
+      </div>
+    </div>
   </div>
+</section>
