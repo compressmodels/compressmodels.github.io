@@ -549,161 +549,236 @@ body {
   <div class="hero__content">
 
     <h1>
-      Reduce Machine Learning system inference cost by 20–50% without retraining models
+      Reduce Machine Learning system inference compute-time and infrastructure cost by 20–50%.
     </h1>
 
     <p class="hero__lead">
       Determine which inputs need complex, deep analysis, and reserve compute-time for those inputs.
     </p>
 
+    <p>Drop-in Model Optimization and Replacement. No Retraining. No Accuracy Loss. No New Hardware. </p>
+
+
+  </div>
+</section>
+
+<section class="hero">
+
+  <div class="hero__content">
+
+    <h1>
+      Stop Running Full Inference on Easy Predictions
+    </h1>
+
+    <p class="hero__lead">
+      Every inference has a cost in dollars,
+      based on the number of computations that need to be executed.
+    </p>
+
     <p class="hero__description">
-      moco automatically converts existing classifiers into routed cascaded systems that avoid unnecessary
-      computation while preserving model behavior.
+      For text classification, inference costs
+      $1/1M inferences. At scale, with 1B inferences / day, this costs $365k / year.
+    </p>
+
+
+
+    <p class="hero__description">
+      <strong>moco</strong> analyzes model behavior and automatically routes
+      easy predictions through cheaper decision paths. This increases computational
+      capacity for the difficult cases, results in throughput improvements, or
+      latency reductions or can be accepted as cost-savings.
+    </p>
+
+    <p class = 'hero__description'>
+      The bottom line: moco reduces the cost per inference from $1 / 1M inferences to $0.5 - $0.8 / 1M inferences, saving 20-50% of compute-time related costs, in this case $72,000-$183,000 a year.
     </p>
 
   </div>
+
 </section>
 
-<section class="industry-scale">
+<section class="section">
 
-  <h2>Built for production-scale inference systems</h2>
+  <div class="section__content">
 
-  <div class="industry-grid">
+    <h2>
+      Built for production-scale inference systems
+    </h2>
 
-    <h3>Verticals</h3>
+    <p class="section__lead">
+      moco reduces unnecessary inference computation in both real-time and
+      batched machine learning systems operating at production scale.
+    </p>
 
-    <details class="industry-card">
-      <summary>Content Moderation</summary>
+    <p class="section__description">
+      The largest infrastructure savings occur in systems processing massive
+      request volumes, expensive transformer inference, or strict latency constraints.
+    </p>
 
-      <p>
-        Transformer moderation systems processing billions of events per day.
-      </p>
+    <div class="industry-grid">
 
-      <ul>
-        <li>Typical models: BERT, RoBERTa, multimodal transformers</li>
-        <li>Typical latency: 5–20ms</li>
-        <li>Typical scale: 100k–750k+ requests/sec</li>
-        <li>Typical annual inference cost: Millions/year</li>
-        <li>
-          20% lower average FLOPs/inference can save hundreds of thousands
-          to millions per year in GPU infrastructure and compute-time costs.
-        </li>
-        <li>
-          Lower inference load also reduces peak GPU utilization,
-          enabling smaller serving fleets and higher throughput on existing hardware.
-        </li>
-      </ul>
-    </details>
+      <h3>Verticals</h3>
 
-    <details class="industry-card">
-      <summary>Search + Tagging</summary>
+      <details class="industry-card">
+        <summary>Content Moderation</summary>
 
-      <p>
-        Large-scale indexing and retrieval pipelines operating on billions of assets.
-      </p>
+        <p>
+          Transformer moderation systems processing billions of events per day.
+        </p>
 
-      <ul>
-        <li>Typical models: BERT, CLIP, embedding models</li>
-        <li>Typical latency: 5–50ms</li>
-        <li>Typical scale: Billions of classifications/day</li>
-        <li>Typical annual inference cost: Millions/year</li>
-        <li>
-          20% lower average FLOPs/inference can save hundreds of thousands
-          annually in indexing and embedding compute costs.
-        </li>
-        <li>
-          Reduced compute per classification enables faster index refreshes,
-          higher indexing throughput, and more models within the same infrastructure budget.
-        </li>
-      </ul>
-    </details>
+        <ul>
+          <li>Typical models: BERT, RoBERTa, multimodal transformers</li>
+          <li>Typical latency: 5–20ms</li>
+          <li>Typical scale: 100k–750k+ requests/sec</li>
+          <li>Typical annual inference cost: Millions/year</li>
+          <li>
+            20% lower average FLOPs/inference can save hundreds of thousands
+            to millions per year in GPU infrastructure and compute-time costs.
+          </li>
+          <li>
+            Lower inference load reduces peak GPU utilization,
+            enabling smaller serving fleets and higher throughput on existing hardware.
+          </li>
+        </ul>
+      </details>
 
-    <!-- repeat same pattern for other cards -->
+      <details class="industry-card">
+        <summary>Search + Tagging</summary>
+
+        <p>
+          Large-scale indexing and retrieval pipelines operating on billions of assets.
+        </p>
+
+        <ul>
+          <li>Typical models: BERT, CLIP, embedding models</li>
+          <li>Typical latency: 5–50ms</li>
+          <li>Typical scale: Billions of classifications/day</li>
+          <li>Typical annual inference cost: Millions/year</li>
+          <li>
+            20% lower average FLOPs/inference can save hundreds of thousands
+            annually in indexing and embedding compute costs.
+          </li>
+          <li>
+            Reduced compute per classification enables faster index refreshes,
+            higher indexing throughput, and more models within the same infrastructure budget.
+          </li>
+        </ul>
+      </details>
+
+      <details class="industry-card">
+        <summary>Financial Fraud Detection</summary>
+
+        <p>
+          Real-Time and Batched Fraud Detection is latency constrained and compute-constrained respectively. 
+        </p>
+
+        <ul>
+          <li>Real-Time Fraud Detection Systems: moco unlocks compute budget to apply more analytics to the hard cases, increasing the accuracy of the system, saving false positives and false negatives.</li>
+          <li>Batched Fraud Detection Systems: moco unlocks reduces runs the same inference with less physical hardware, saving money in compute-time and infra.</li>
+          
+        </ul>
+      </details>
+
+      <h3>System Types</h3>
+
+      <details class="industry-card">
+        <summary>Embedded Systems</summary>
+
+        <p>
+          moco supports embedded inference pipelines where compute and power are constrained.
+        </p>
+
+        <ul>
+          <li>
+            Existing PyTorch models can be transformed into routed hierarchical classifiers.
+          </li>
+          <li>
+            Expensive model execution is conditionally avoided for easy predictions.
+          </li>
+          <li>
+            Reduced average compute-time enables lower-power inference deployments.
+          </li>
+          <li>
+            Compatible with ONNX export and edge deployment workflows.
+          </li>
+        </ul>
+      </details>
+
+      <details class="industry-card">
+        <summary>Battery-Powered Edge Devices / IoT</summary>
+
+        <p>
+          Edge inference systems benefit from lower power consumption and reduced average computation.
+        </p>
+
+        <ul>
+          <li>
+            Lower average FLOPs/inference extends battery life for always-on systems.
+          </li>
+          <li>
+            Reduced compute demand lowers thermal load on constrained hardware.
+          </li>
+          <li>
+            Smaller inference workloads enable more models to run on-device.
+          </li>
+        </ul>
+      </details>
+
+      <details class="industry-card">
+        <summary>Real-Time Systems</summary>
+
+        <p>
+          Latency-sensitive systems benefit from avoiding unnecessary expensive computation.
+        </p>
+
+        <ul>
+          <li>
+            Many production systems are bottlenecked by feature loading,
+            graph queries, and deep model execution.
+          </li>
+
+          <li>
+            moco helps determine when expensive computation can be skipped safely.
+          </li>
+
+          <li>
+            Reduced infrastructure load enables smaller serving fleets
+            and higher throughput on existing hardware.
+          </li>
+        </ul>
+      </details>
+
+      <details class="industry-card">
+        <summary>Batched Inference Pipelines</summary>
+
+        <p>
+          Large offline inference jobs directly benefit from lower compute-time per prediction.
+        </p>
+
+        <ul>
+          <li>
+            Reduced average computation increases total system throughput.
+          </li>
+          <li>
+            Lower GPU-hours reduce infrastructure and cloud compute costs.
+          </li>
+          <li>
+            Existing hardware can process larger datasets without scaling infrastructure.
+          </li>
+        </ul>
+      </details>
+
+    </div>
 
   </div>
+
 </section>
-
-
 
 <!-- Calendly badge widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/sam-randall5/30min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
 <!-- Calendly badge widget end -->
-<section class = "section">
-
-  <div class="card solution-card">
-
-  <h2>Stop Running Full Inference on Easy Predictions</h2>
-
-  <p class="solution-text">
-    Most production ML systems send every input through the full model —
-    even when many predictions are trivial to classify.
-  </p>
-
-  <p class="solution-text">
-    <strong>moco</strong> analyzes model behavior and automatically routes
-    easy predictions through cheaper decision paths while reserving full
-    inference for difficult cases.
-  </p>
-
-  <div class="benefits-grid">
-    <div class="benefit">
-      
-      <div>
-        <h3>Smaller GPU Fleet for real-time applications.</h3>
-        <p>Reduce unnecessary inference compute, reducing peak load, directly reducing GPUs needed at peak.</p>
-      </div>
-    </div>
-
-    <div class="benefit">
-      <div>
-        <h3>Smaller GPU Fleet Size for batched applications.</h3>
-        <p>Reduce unnecessary inference compute, reducing the size of the batch, directly reducing the compute time that's needed.</p>
-      </div>
-    </div>
-
-    <div class="benefit">
-      
-      <div>
-        <h3>Lower Power Usage/Thermal Throttling for Data Centers and Edge Applications</h3>
-        <p>Reduce energy consumed per prediction, reducing energy costs, saving hardware deterioration and slowdowns</p>
-      </div>
-    </div>
-
-    <div class="benefit">
-      
-      <div>
-
-        <h3>Higher Throughput</h3>
-        <p>Process more events/transactions/frames per second on existing hardware to keep up with a dynamic environment.</p>
-      </div>
-    </div>
-
-    <div class="benefit">
-      
-      <div>
-
-        <h3>Shift Inference to the Edge</h3>
-        <p>Avoid high-latency network calls and infrastructure costs for obviously safe transactions.</p>
-      </div>
-    </div>
-
-
-    <div class="benefit">
-      
-      <div>
-
-        <h3>Make your compute-time go further -- fit more models in the same budget</h3>
-        <p>Enable smarter systems that classify more objects/issues</p>
-      </div>
-    </div>
-
-
-    
-  </div>
-
-</div>
 
 
 
