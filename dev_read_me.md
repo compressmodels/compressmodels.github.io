@@ -13,7 +13,20 @@ Make your changes by editing the HTML files. Note that `index.html` is the home 
 Visualizing changes is easy: just write `open index.html` to view the current changes in your favorite browser.
 
 #### To test on mobile. 
-Push the change then wait for it to deploy and then test on mobile.
+Old Way: Push the change then wait for it to deploy and then test on mobile.
+New Way: 
+
+In the Terminal, on MacOS, run `ipconfig getifaddr en0` to get the IP Address of your local computer. 
+
+You'll get an IP address `(host_ip_address)` resembling `10.0.0.229`
+
+Now in the root directory of this website run `python -m http.server 8001` to serve the files up. 
+
+While both the mobile device and your computer are connected to the same WiFi:
+in a browser on your mobile device, visit `http://{host_ip_address}:8001/index.html`
+
+The website should load. 
+
 
 ## To commit changes
 
