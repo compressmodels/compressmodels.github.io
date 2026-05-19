@@ -1,14 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Vision</title>
+</head>
 
-  <div class="use-case">
-    <h3>Computer Vision</h3>
-    <p>
-      Real-Time Computer Vision systems that detect whether the object-of-interest (person, obstacle, threat) is present constantly poll on device or in the cloud. Running large CNN creates a large AWS cost, and hastens GPU degradation and reduces battery life.
-    </p>
-    <ul>
-      <li><strong>Problem:</strong> Full model inference shortens battery life</li>
-      <li><strong>With moco:</strong> Early exit on frames with obviously no object-of-interest</li>
-      <li><strong>Impact:</strong> Reduced compute per frame</li>
-      <li><strong>Outcome:</strong> Lower energy consumption → longer battery life</li>
-    </ul>
-  </div>
+<!-- Nav Bar   -->
+<header class="navbar">
+
+  <a class="logo" href="../index.html">
+    <img src="../images/moco_logo.png" alt="moco logo">
+  </a>
+
+  <nav class="nav-links">
+
+    <div class="nav-item dropdown">
+      <button class="dropbtn">Use Cases ▼ </button>
+
+      <div class="dropdown-content">
+        <a href="autonomous.html">Autonomous Systems</a>
+        <a href="computer_vision.html">Computer Vision</a>
+        <a href="fraud_detection.html">Financial Fraud Detection</a>
+        <a href="cybersecurity.html">Cybersecurity</a>
+        <a href="nlp_chatbot_agent.html">NLP / Chatbots / Agents</a>
+        <a href="search_tagging.html">Search + Tagging</a>
+        <a href="content_moderation.html">Content Moderation</a>
+        <a href="customer_support_tickets_prioritization_sentiment_intent.html">Customer Support</a>
+      </div>
+    </div>
+
+    <a href="../team.html">Team</a>
+    <a href="../docs.html">API Documentation</a>
+    <a href="../notebooks.html">Notebook Examples</a>
+
+  </nav>
+</header>
+
+<!-- End Nav Bar -->
+
+<body>
+  <div class="container">
+    <section class="use-case">
+      <div class="use-case__content">
+        <div class="use-case__eyebrow">Use Case</div>
+
+        <div class="use-case__header">
+          <h2>Computer Vision</h2>
+        <p>
+          Real-Time Computer Vision systems that detect whether the object-of-interest (person, obstacle, threat) is present constantly poll on device or in the cloud. Running large CNN creates a large AWS cost, and hastens GPU degradation and reduces battery life.
+        </p>
+        <ul>
+          <li><strong>Problem:</strong> Full model inference shortens battery life</li>
+          <li><strong>With moco:</strong> Early exit on frames with obviously no object-of-interest</li>
+          <li><strong>Impact:</strong> Reduced compute per frame</li>
+          <li><strong>Outcome:</strong> Lower energy consumption → longer battery life</li>
+        </ul>
+        </div>
+      </div>
+    </section>
+
+</body>
+</html>

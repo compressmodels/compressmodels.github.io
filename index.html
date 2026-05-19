@@ -1,845 +1,443 @@
 <!doctype html>
 <html lang="en">
+
+ <!-- Header -->
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <title>moco</title>
 
-<meta name="description" content="Reduce ML inference cost by 20–50%, increase throughput, and deploy more models under fixed compute budgets. Optimize GPU usage without sacrificing accuracy.">
+  <meta name="description" content="Reduce ML inference cost by 20–50%, increase throughput, and deploy more models under fixed compute budgets. Optimize GPU usage without sacrificing accuracy.">
+  <meta name="keywords" content="ML inference optimization, reduce compute cost, GPU efficiency, classification systems, early exit models, cascaded systems, edge ML">
+  <meta name="author" content="moco">
 
-<meta name="keywords" content="ML inference optimization, reduce compute cost, GPU efficiency, classification systems, early exit models, cascaded systems, edge ML">
+  <meta property="og:title" content="moco — Reduce ML compute per decision">
+  <meta property="og:description" content="Cut GPU costs, reduce false positives, and increase model throughput without accuracy loss.">
+  <meta property="og:type" content="website">
 
-<meta name="author" content="moco">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="moco — ML inference optimization">
+  <meta name="twitter:description" content="20–50% compute reduction. More decisions per GPU.">
 
-<meta property="og:title" content="moco — Reduce ML compute per decision">
-<meta property="og:description" content="Cut GPU costs, reduce false positives, and increase model throughput without accuracy loss.">
-<meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="moco — ML inference optimization">
-<meta name="twitter:description" content="20–50% compute reduction. More decisions per GPU.">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "moco",
-  "applicationCategory": "MachineLearning",
-  "description": "Post-training optimization system that reduces ML inference compute cost while maintaining accuracy.",
-  "operatingSystem": "Cloud, Edge",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "additionalProperty": [
-    {
-      "@type": "PropertyValue",
-      "name": "Compute Reduction",
-      "value": "20-50%"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "moco",
+    "applicationCategory": "MachineLearning",
+    "description": "Post-training optimization system that reduces ML inference compute cost while maintaining accuracy.",
+    "operatingSystem": "Cloud, Edge",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     },
-    {
-      "@type": "PropertyValue",
-      "name": "Throughput Increase",
-      "value": "20-50%"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "GPU Cost Reduction",
-      "value": "Up to 30%"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "False Positive Reduction",
-      "value": "Improved via reallocation of compute"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Inference Strategy",
-      "value": "Early exit, cascaded classification"
-    },
-    {
-      "@type": "PropertyValue",
-      "name": "Deployment",
-      "value": "No retraining required"
-    }
-  ]
-}
-</script>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KNZ8JQG78"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3KNZ8JQG78');
-</script>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>moco</title>
-
-<style>
-
-:root{
---accent:#0b63ce;
---bg:#f7f9fc;
---text:#0f1724;
---muted:#6b7280;
---card:#ffffff;
---radius:12px;
-font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto;
-}
-
-body{
-margin:0;
-background:var(--bg);
-color:var(--text);
-line-height:1.6;
-padding:32px;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-}
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:40px;
-}
-
-.logo{
-font-weight:700;
-font-size:20px;
-}
-
-.hero{
-margin-bottom:40px;
-}
-
-.hero h1{
-font-size:40px;
-margin:0 0 10px 0;
-}
-
-.hero p{
-font-size:18px;
-color:var(--muted);
-}
-
-.stats{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-top:20px;
-}
-
-.stat{
-background:var(--accent);
-color:white;
-padding:8px 12px;
-border-radius:8px;
-font-weight:600;
-}
-
-.section{
-margin:40px 0;
-}
-
-.card{
-background:var(--card);
-padding:20px;
-border-radius:var(--radius);
-box-shadow:0 6px 20px rgba(0,0,0,0.05);
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.grid2{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-h2{
-margin-top:0;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-td,th{
-border:1px solid #e5e7eb;
-padding:10px;
-text-align:left;
-}
-.grid3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-}
-
-.btn{
-display:inline-block;
-margin-top:20px;
-background:var(--accent);
-color:white;
-padding:12px 18px;
-border-radius:10px;
-text-decoration:none;
-font-weight:600;
-}
-
-footer{
-margin-top:60px;
-font-size:14px;
-color:var(--muted);
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-}
-
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.dark-card {
-  padding: 24px;
-  border-radius: 12px;
-  background: #111;
-  color: #fff;
-  /* max-width: 500px; */
-}
-
-.comparison {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 16px;
-}
-
-.scenario {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.label {
-  font-weight: 600;
-}
-
-.bar-container {
-  width: 100%;
-  height: 10px;
-  background: #2a2a2a;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.bar {
-  height: 100%;
-  border-radius: 6px;
-}
-
-.bar.full {
-  width: 100%;
-  background: #4f8cff;
-}
-
-.bar.reduced {
-  width: 70%;
-  background: #22c55e;
-}
-
-.meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.cost {
-  font-weight: 600;
-}
-
-.optimized .label {
-  color: #22c55e;
-}
-
-.grid2{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-font-size:32px;
-}
-
-.solution-card {
-  padding: 40px;
-  border-radius: 20px;
-  /* background: linear-gradient(180deg, #111 0%, #171717 100%); */
-  border: 1px solid rgba(255,255,255,0.08);
-  max-width: 900px;
-  margin: auto;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
-}
-
-.solution-card h2 {
-  font-size: 2rem;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  /* color: white; */
-}
-
-.solution-text {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  /* color: rgba(255,255,255,0.82); */
-  margin-bottom: 18px;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-top: 35px;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbtn {
-  background: black;
-  color: white;
-  padding: 12px 16px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.dropdown-content {
-  display: none;
-
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  background: white;
-  min-width: 240px;
-
-  border: 1px solid #ccc;
-  z-index: 1000;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 12px 16px;
-  color: black;
-  text-decoration: none;
-}
-
-.dropdown-content a:hover {
-  background: #f2f2f2;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.benefit {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  padding: 20px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: 0.2s ease;
-}
-
-.benefit:hover {
-  transform: translateY(-2px);
-  background: rgba(255,255,255,0.06);
-}
-
-.benefit-icon {
-  font-size: 1.4rem;
-  line-height: 1;
-}
-
-.nav-item.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.benefit h3 {
-  margin: 0 0 6px 0;
-  /* color: white; */
-  font-size: 1rem;
-}
-
-.benefit p {
-  margin: 0;
-  /* color: rgba(255,255,255,0.7); */
-  font-size: 0.92rem;
-  line-height: 1.5;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: #111111;
-  font-family: Inter, sans-serif;
-}
-
-.hero {
-  padding: 120px 24px 72px;
-}
-
-.hero__content {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: clamp(48px, 7vw, 76px);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
-  font-weight: 700;
-  margin: 0 0 32px;
-  max-width: 900px;
-}
-
-.hero__lead {
-  font-size: 24px;
-  line-height: 1.5;
-  color: #374151;
-  margin: 0 0 18px;
-  max-width: 760px;
-}
-
-.hero__description {
-  font-size: 18px;
-  line-height: 1.7;
-  color: #6b7280;
-  margin: 0;
-  max-width: 760px;
-}
-
-.cards {
-  max-width: 960px;
-  margin: 0 auto 120px;
-  padding: 0 24px;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-}
-
-.card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-  padding: 32px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-}
-
-.card p {
-  margin: 0 0 16px;
-  font-size: 17px;
-  line-height: 1.7;
-  color: #374151;
-}
-
-.card p:last-child {
-  margin-bottom: 0;
-}
-
-.card__title {
-  font-size: 12px !important;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #6b7280 !important;
-  margin-bottom: 20px !important;
-}
-
-.card__highlight {
-  color: #111111 !important;
-  font-weight: 600;
-}
-
-
-.industry-card summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  list-style: none;
-}
-
-/* Remove default triangle */
-.industry-card summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Add a custom arrow */
-.industry-card summary::after {
-  content: "▾";
-  font-size: 14px;
-  transition: transform 0.2s ease;
-}
-
-/* Rotate when open */
-.industry-card[open] summary::after {
-  transform: rotate(180deg);
-}
-
-/* Keep title clean */
-.industry-card summary h3 {
-  margin: 0;
-  font-size: 18px;
-}
-</style>
-
-
-</head>
-
-<body>
-
-<div class="container">
-
-<header>
-
-<div class="logo">moco</div>
-
-<div class="nav-item dropdown">
-  <button class="dropbtn">Use Cases</button>
-
-  <div class="dropdown-content">
-    <a href="use_cases/autonomous.html">Autonomous Systems</a>
-    <a href="use_cases/computer_vision.html">Computer Vision</a>
-    <a href="use_cases/fraud_detection.html">Financial Fraud Detection</a>
-    <a href="use_cases/cybersecurity.html">Cybersecurity</a>
-    <a href="use_cases/nlp_chatbot_agent.html">NLP / Chatbots / Agents</a>
-    <a href="use_cases/search_tagging.html">Search + Tagging (Product Search, Text Search, Image Search)</a>
-    <a href="use_cases/content_moderation.html">Content Moderation</a>
-    <a href="use_cases/customer_support_tickets_prioritization_sentiment_intent.html">Customer Support</a>
-  </div>
-</div>
-
-<div>
-<a href="/team.html">Team</a>
-<a href="/docs.html">API Documentation</a>
-<a href="/notebooks.html">Notebook Examples</a>
-</div>
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Compute Reduction",
+        "value": "20-50%"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Throughput Increase",
+        "value": "20-50%"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "GPU Cost Reduction",
+        "value": "Up to 30%"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "False Positive Reduction",
+        "value": "Improved via reallocation of compute"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Inference Strategy",
+        "value": "Early exit, cascaded classification"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Deployment",
+        "value": "No retraining required"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KNZ8JQG78"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-3KNZ8JQG78');
+  </script>
+
+<!-- Nav Bar   -->
+<header class="navbar">
+
+  <a class="logo" href="index.html">
+    <img src="images/moco_logo.png" alt="moco logo">
+  </a>
+
+  <nav class="nav-links">
+
+    <div class="nav-item dropdown">
+      <button class="dropbtn">Use Cases ▼ </button>
+
+      <div class="dropdown-content">
+        <a href="use_cases/autonomous.html">Autonomous Systems</a>
+        <a href="use_cases/computer_vision.html">Computer Vision</a>
+        <a href="use_cases/fraud_detection.html">Financial Fraud Detection</a>
+        <a href="use_cases/cybersecurity.html">Cybersecurity</a>
+        <a href="use_cases/nlp_chatbot_agent.html">NLP / Chatbots / Agents</a>
+        <a href="use_cases/search_tagging.html">Search + Tagging</a>
+        <a href="use_cases/content_moderation.html">Content Moderation</a>
+        <a href="use_cases/customer_support_tickets_prioritization_sentiment_intent.html">Customer Support</a>
+      </div>
+    </div>
+
+    <a href="team.html">Team</a>
+    <a href="docs.html">API Documentation</a>
+    <a href="notebooks.html">Notebook Examples</a>
+
+  </nav>
 
 </header>
+<!-- Body -->
+<body>
 
-<section class="hero">
-  <div class="hero__content">
+  <div class="container">
 
-    <h1>
-      Reduce Machine Learning system inference compute-time and infrastructure cost by 20–50%.
-    </h1>
+  <section class="hero">
+    <div class="hero__content">
 
-    <p class="hero__lead">
-      Determine which inputs need complex, deep analysis, and reserve compute-time for those inputs.
-    </p>
+      <h1>
+        Reduce ML Inference Cost and Compute Time by 20 - 50%
+      </h1>
 
-    <p>Drop-in Model Optimization and Replacement. No Retraining. No Accuracy Loss. No New Hardware. </p>
+      <p class="hero__lead">
+        Why waste your compute resources on easy-to-classify data points?
+      </p>
 
+      <p class = "hero__lead">
+        With moco, you can handle your data intelligently to determine which inputs <b>need</b>
+         deeper analysis and reserve compute-time for <b> only</b> those inputs.
+      </p>
 
-  </div>
-</section>
-
-<section class="hero">
-
-  <div class="hero__content">
-
-    <h1>
-      Stop Running Full Inference on Easy Predictions
-    </h1>
-
-    <p class="hero__lead">
-      Every inference has a cost in dollars,
-      based on the number of computations that need to be executed.
-    </p>
-
-    <p class="hero__description">
-      For text classification, inference costs
-      $1/1M inferences. At scale, with 1B inferences / day, this costs $365k / year.
-    </p>
+      <p class = "hero__lead">
+        Drop-in Replacement Model for Instant Efficiency and Optimization. 
+      </p>
+      <p class = "hero__lead">
+      <b>No Retraining. No Accuracy Loss. No New Hardware. </b>
+      </p>
 
 
+    </div>
+  </section>
 
-    <p class="hero__description">
-      <strong>moco</strong> analyzes model behavior and automatically routes
-      easy predictions through cheaper decision paths. This increases computational
-      capacity for the difficult cases, results in throughput improvements, or
-      latency reductions or can be accepted as cost-savings.
-    </p>
+  <section class="hero">
 
-    <p class = 'hero__description'>
-      The bottom line: moco reduces the cost per inference from $1 / 1M inferences to $0.5 - $0.8 / 1M inferences, saving 20-50% of compute-time related costs, in this case $72,000-$183,000 a year.
-    </p>
+    <div class="hero__content">
 
-  </div>
+      <h1>
+        Stop Running Full Inference on Easy Predictions
+      </h1>
 
-</section>
+      <p class="hero__lead">
+        Every prediction your model makes costs you. That cost scales with the number of computations 
+        required for inference. 
+      </p>
 
-<section class="section">
+      <!-- <p class="hero__lead">
+        SHREYA NOTE: I dont think you need this on the main page. Not everyone needs text classification. 
+        For text classification, inference costs
+        $1/1M inferences. At scale, with 1B inferences / day, this costs $365k / year.
+      </p> -->
 
-  <div class="section__content">
+      <p class="hero__lead">
+        <strong>moco</strong> analyzes model behavior and automatically routes
+        easy predictions through cheaper decision paths. This increases computational
+        capacity for the difficult cases, resulting in your choice of: 
+      </p>
+      
+      <ol class = "hero-bullets">
+        <li> Throughput improvement</li>
+        <li> Latency reduction </li>
+        <li> Cost-savings</li>
 
-    <h2>
-      Built for production-scale inference systems
-    </h2>
+      </ol>
 
-    <p class="section__lead">
-      moco reduces unnecessary inference computation in both real-time and
-      batched machine learning systems operating at production scale.
-    </p>
+      <p class="hero__lead">
+        <b>Without sacrificing the other two. </b>
+      </p>
 
-    <p class="section__description">
-      The largest infrastructure savings occur in systems processing massive
-      request volumes, expensive transformer inference, or strict latency constraints.
-    </p>
-
-    <div class="industry-grid">
-
-      <h3>Verticals</h3>
-
-      <details class="industry-card">
-        <summary>Content Moderation</summary>
-
-        <p>
-          Transformer moderation systems processing billions of events per day.
-        </p>
-
-        <ul>
-          <li>Typical models: BERT, RoBERTa, multimodal transformers</li>
-          <li>Typical latency: 5–20ms</li>
-          <li>Typical scale: 100k–750k+ requests/sec</li>
-          <li>Typical annual inference cost: Millions/year</li>
-          <li>
-            20% lower average FLOPs/inference can save hundreds of thousands
-            to millions per year in GPU infrastructure and compute-time costs.
-          </li>
-          <li>
-            Lower inference load reduces peak GPU utilization,
-            enabling smaller serving fleets and higher throughput on existing hardware.
-          </li>
-        </ul>
-      </details>
-
-      <details class="industry-card">
-        <summary>Search + Tagging</summary>
-
-        <p>
-          Large-scale indexing and retrieval pipelines operating on billions of assets.
-        </p>
-
-        <ul>
-          <li>Typical models: BERT, CLIP, embedding models</li>
-          <li>Typical latency: 5–50ms</li>
-          <li>Typical scale: Billions of classifications/day</li>
-          <li>Typical annual inference cost: Millions/year</li>
-          <li>
-            20% lower average FLOPs/inference can save hundreds of thousands
-            annually in indexing and embedding compute costs.
-          </li>
-          <li>
-            Reduced compute per classification enables faster index refreshes,
-            higher indexing throughput, and more models within the same infrastructure budget.
-          </li>
-        </ul>
-      </details>
-
-      <details class="industry-card">
-        <summary>Financial Fraud Detection</summary>
-
-        <p>
-          Real-Time and Batched Fraud Detection is latency constrained and compute-constrained respectively. 
-        </p>
-
-        <ul>
-          <li>Real-Time Fraud Detection Systems: moco unlocks compute budget to apply more analytics to the hard cases, increasing the accuracy of the system, saving false positives and false negatives.</li>
-          <li>Batched Fraud Detection Systems: moco unlocks reduces runs the same inference with less physical hardware, saving money in compute-time and infra.</li>
-          
-        </ul>
-      </details>
-
-      <h3>System Types</h3>
-
-      <details class="industry-card">
-        <summary>Embedded Systems</summary>
-
-        <p>
-          moco supports embedded inference pipelines where compute and power are constrained.
-        </p>
-
-        <ul>
-          <li>
-            Existing PyTorch models can be transformed into routed hierarchical classifiers.
-          </li>
-          <li>
-            Expensive model execution is conditionally avoided for easy predictions.
-          </li>
-          <li>
-            Reduced average compute-time enables lower-power inference deployments.
-          </li>
-          <li>
-            Compatible with ONNX export and edge deployment workflows.
-          </li>
-        </ul>
-      </details>
-
-      <details class="industry-card">
-        <summary>Battery-Powered Edge Devices / IoT</summary>
-
-        <p>
-          Edge inference systems benefit from lower power consumption and reduced average computation.
-        </p>
-
-        <ul>
-          <li>
-            Lower average FLOPs/inference extends battery life for always-on systems.
-          </li>
-          <li>
-            Reduced compute demand lowers thermal load on constrained hardware.
-          </li>
-          <li>
-            Smaller inference workloads enable more models to run on-device.
-          </li>
-        </ul>
-      </details>
-
-      <details class="industry-card">
-        <summary>Real-Time Systems</summary>
-
-        <p>
-          Latency-sensitive systems benefit from avoiding unnecessary expensive computation.
-        </p>
-
-        <ul>
-          <li>
-            Many production systems are bottlenecked by feature loading,
-            graph queries, and deep model execution.
-          </li>
-
-          <li>
-            moco helps determine when expensive computation can be skipped safely.
-          </li>
-
-          <li>
-            Reduced infrastructure load enables smaller serving fleets
-            and higher throughput on existing hardware.
-          </li>
-        </ul>
-      </details>
-
-      <details class="industry-card">
-        <summary>Batched Inference Pipelines</summary>
-
-        <p>
-          Large offline inference jobs directly benefit from lower compute-time per prediction.
-        </p>
-
-        <ul>
-          <li>
-            Reduced average computation increases total system throughput.
-          </li>
-          <li>
-            Lower GPU-hours reduce infrastructure and cloud compute costs.
-          </li>
-          <li>
-            Existing hardware can process larger datasets without scaling infrastructure.
-          </li>
-        </ul>
-      </details>
+      <p class = 'hero__lead'>
+        In text classification, moco reduces the cost per inference from $1 / 1M inferences 
+        to $0.5 - $0.8 / 1M inferences, saving <b>20-50%</b> of compute-time related costs 
+        <!-- ,in this case $72,000-$183,000 a year. -->
+        <!-- Shreya: This doesn't seem like much money? I would remove. -->
+      </p>
 
     </div>
 
+  </section>
+
+  <section class="hero">
+
+    <div class="hero__content">
+
+      <h1>
+        Built for production-scale inference systems
+      </h1>
+
+      <p class="hero__lead">
+        moco reduces unnecessary inference computation in both real-time and
+        batched machine learning systems operating at production scale.
+      </p>
+
+      <p class="hero__lead">
+        <b> 
+          moco can help your business if you: 
+          <ul class = "unordered_bullets">
+            <li> Process massive request volumes </li>
+            <li> Are spending too much on expensive transformer inference</li>
+            <li> Have strict latency constraints </li>
+          </ul>
+
+         </b>
+      </p>
+
+      <div class="industry-grid">
+
+        <h3>Verticals</h3>
+
+        <details class="industry-card">
+          <summary>Content Moderation</summary>
+
+          <p>
+            <b>Transformer moderation systems processing billions of events per day.</b>
+          </p>
+
+          <ul>
+            <li>Typical models: BERT, RoBERTa, multimodal transformers</li>
+            <li>Typical latency: 5–20ms</li>
+            <li>Typical scale: 100k–750k+ requests/sec</li>
+            <li>Typical annual inference cost: Millions/year</li>
+            <li>
+              20% lower average FLOPs/inference can save hundreds of thousands
+              to millions per year in GPU infrastructure and compute-time costs.
+            </li>
+            <li>
+              Lower inference load reduces peak GPU utilization,
+              enabling smaller serving fleets and higher throughput on existing hardware.
+            </li>
+          </ul>
+        </details>
+
+        <details class="industry-card">
+          <summary>Search + Tagging</summary>
+
+          <p>
+            <b>Large-scale indexing and retrieval pipelines operating on billions of assets.</b>
+          </p>
+
+          <ul>
+            <li>Typical models: BERT, CLIP, embedding models</li>
+            <li>Typical latency: 5–50ms</li>
+            <li>Typical scale: Billions of classifications/day</li>
+            <li>Typical annual inference cost: Millions/year</li>
+            <li>
+              20% lower average FLOPs/inference can save hundreds of thousands
+              annually in indexing and embedding compute costs.
+            </li>
+            <li>
+              Reduced compute per classification enables faster index refreshes,
+              higher indexing throughput, and more models within the same infrastructure budget.
+            </li>
+          </ul>
+        </details>
+
+        <details class="industry-card">
+          <summary>Financial Fraud Detection</summary>
+
+          <p>
+            <b>Real-Time and Batched Fraud Detection is latency constrained and compute-constrained respectively. </b>
+          </p>
+
+          <ul>
+            <li>Real-Time Fraud Detection Systems: moco unlocks compute budget to apply more analytics to the hard cases, increasing the accuracy of the system, saving false positives and false negatives.</li>
+            <li>Batched Fraud Detection Systems: moco unlocks reduces runs the same inference with less physical hardware, saving money in compute-time and infra.</li>
+            
+          </ul>
+        </details>
+
+        <h3>System Types</h3>
+
+        <details class="industry-card">
+          <summary>Embedded Systems</summary>
+
+          <p>
+            <b>moco supports embedded inference pipelines where compute and power are constrained.</b>
+          </p>
+
+          <ul>
+            <li>
+              Existing PyTorch models can be transformed into routed hierarchical classifiers.
+            </li>
+            <li>
+              Expensive model execution is conditionally avoided for easy predictions.
+            </li>
+            <li>
+              Reduced average compute-time enables lower-power inference deployments.
+            </li>
+            <li>
+              Compatible with ONNX export and edge deployment workflows.
+            </li>
+          </ul>
+        </details>
+
+        <details class="industry-card">
+          <summary>Battery-Powered Edge Devices / IoT</summary>
+
+          <p>
+            <b>Edge inference systems benefit from lower power consumption and reduced average computation.</b>
+          </p>
+
+          <ul>
+            <li>
+              Lower average FLOPs/inference extends battery life for always-on systems.
+            </li>
+            <li>
+              Reduced compute demand lowers thermal load on constrained hardware.
+            </li>
+            <li>
+              Smaller inference workloads enable more models to run on-device.
+            </li>
+          </ul>
+        </details>
+
+        <details class="industry-card">
+          <summary>Real-Time Systems</summary>
+
+          <p>
+            <b>Latency-sensitive systems benefit from avoiding unnecessary expensive computation.</b>
+          </p>
+
+          <ul>
+            <li>
+              Many production systems are bottlenecked by feature loading,
+              graph queries, and deep model execution.
+            </li>
+
+            <li>
+              moco helps determine when expensive computation can be skipped safely.
+            </li>
+
+            <li>
+              Reduced infrastructure load enables smaller serving fleets
+              and higher throughput on existing hardware.
+            </li>
+          </ul>
+        </details>
+
+        <details class="industry-card">
+          <summary>Batched Inference Pipelines</summary>
+
+          <p>
+            <b>Large offline inference jobs directly benefit from lower compute-time per prediction.</b>
+          </p>
+
+          <ul>
+            <li>
+              Reduced average computation increases total system throughput.
+            </li>
+            <li>
+              Lower GPU-hours reduce infrastructure and cloud compute costs.
+            </li>
+            <li>
+              Existing hardware can process larger datasets without scaling infrastructure.
+            </li>
+          </ul>
+        </details>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Calendly badge widget begin -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/sam-randall5/30min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
+  <!-- Calendly badge widget end -->
+
+<!-- Free Comptue Waste Audit -->
+
+  <section class="section">
+
+    <div class="card" style="border:1px solid #dbe4ff;">
+
+      <h2 style="margin:0 0 10px 0; font-size: 25px;">
+        Free Compute-Waste Audit
+      </h2>
+
+      <p>
+        I will analyze historical inference logs, model outputs, or 
+        representative datasets to identify unnecessary model computation 
+        and estimate potential savings.
+      </p>
+
+      <p>
+        The audit evaluates:
+      </p>
+
+      <ul>
+        <li>Potential GPU-hour reduction</li>
+        <li>Inference latency improvements</li>
+        <li>Whether cascaded routing can preserve model accuracy</li>
+      </ul>
+
+
+      <a 
+        href="https://calendly.com/sam-randall5/30min"
+        target="_blank"
+        style="
+          display:inline-block;
+          background:#0069ff;
+          color:white;
+          padding:12px 18px;
+          border-radius:6px;
+          text-decoration:none;
+          font-weight:600;
+        "
+      >
+        Book a Free Audit
+      </a>
+
+    </div>
+
+  </section>
+<!-- End Free Audit Section -->
+
+
+  <footer>
+  <img src="images/moco_logo.png" alt="moco logo">
+
+
+
+  <div>© 2026 moco</div>
+  <div>Built by <a href="https://www.linkedin.com/in/sam-randall-9a3068110/" target="_blank">Sam Randall</a>
+  </footer>
+
+
   </div>
 
-</section>
-
-<!-- Calendly badge widget begin -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/sam-randall5/30min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
-<!-- Calendly badge widget end -->
-
-
-
-</section>
-
-<section class="section">
-
-  <div class="card" style="border:1px solid #dbe4ff;">
-
-    <h2 style="margin:0 0 10px 0;">
-      Free Compute-Waste Audit
-    </h2>
-
-    <p>
-      I will analyze historical inference logs, model outputs, or 
-      representative datasets to identify unnecessary model computation 
-      and estimate potential savings.
-    </p>
-
-    <p>
-      The audit evaluates:
-    </p>
-
-    <ul>
-      <li>Potential GPU-hour reduction</li>
-      <li>Inference latency improvements</li>
-      <li>Whether cascaded routing can preserve model accuracy</li>
-    </ul>
-
-
-    <a 
-      href="https://calendly.com/sam-randall5/30min"
-      target="_blank"
-      style="
-        display:inline-block;
-        background:#0069ff;
-        color:white;
-        padding:12px 18px;
-        border-radius:6px;
-        text-decoration:none;
-        font-weight:600;
-      "
-    >
-      Book a Free Audit
-    </a>
-
-  </div>
-
-</section>
-
-
-
-<footer>
-
-<div>© 2026 moco</div>
-<div>Built by <a href="https://www.linkedin.com/in/sam-randall-9a3068110/" target="_blank">Sam Randall</a>, an alumni of the Computational and Mathematical Engineering Masters Program at Stanford University</div>
-
-</footer>
-
-
-</div>
-
-</body>
+  </body>
 </html>

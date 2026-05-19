@@ -1,145 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraud Detection</title>
+</head>
 
-.use-case {
-  padding: 96px 24px;
-  background: #ffffff;
-  color: #111111;
-}
+<!-- Nav Bar   -->
+<header class="navbar">
 
-.use-case__content {
-  max-width: 920px;
-  margin: 0 auto;
-}
+  <a class="logo" href="../index.html">
+    <img src="../images/moco_logo.png" alt="moco logo">
+  </a>
 
-.use-case__eyebrow {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #6b7280;
-  margin-bottom: 20px;
-}
+  <nav class="nav-links">
 
-.use-case__header h2 {
-  font-size: 42px;
-  line-height: 1.1;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  margin: 0 0 24px;
-}
+    <div class="nav-item dropdown">
+      <button class="dropbtn">Use Cases ▼ </button>
 
-.use-case__lead {
-  font-size: 18px;
-  line-height: 1.7;
-  color: #4b5563;
-  max-width: 760px;
-  margin-bottom: 24px;
-}
+      <div class="dropdown-content">
+        <a href="autonomous.html">Autonomous Systems</a>
+        <a href="computer_vision.html">Computer Vision</a>
+        <a href="fraud_detection.html">Financial Fraud Detection</a>
+        <a href="cybersecurity.html">Cybersecurity</a>
+        <a href="nlp_chatbot_agent.html">NLP / Chatbots / Agents</a>
+        <a href="search_tagging.html">Search + Tagging</a>
+        <a href="content_moderation.html">Content Moderation</a>
+        <a href="customer_support_tickets_prioritization_sentiment_intent.html">Customer Support</a>
+      </div>
+    </div>
 
-.use-case__highlight {
-  font-size: 20px;
-  line-height: 1.7;
-  color: #111111;
-  max-width: 780px;
-  padding-left: 20px;
-  border-left: 2px solid #d1d5db;
-  margin-bottom: 56px;
-}
+    <a href="../team.html">Team</a>
+    <a href="../docs.html">API Documentation</a>
+    <a href="../notebooks.html">Notebook Examples</a>
 
-.use-case__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
-  margin-bottom: 56px;
-}
+  </nav>
+</header>
 
-.use-case__item {
-  padding-top: 16px;
-  border-top: 1px solid #e5e7eb;
-}
+<!-- End Nav Bar -->
 
-.use-case__item .label {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 600;
-  color: #6b7280;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.use-case__item p {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #374151;
-}
-
-.use-case__footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
-  padding-top: 32px;
-  border-top: 1px solid #e5e7eb;
-}
-
-.use-case__link {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: #111111;
-  font-weight: 500;
-  font-size: 15px;
-}
-
-.use-case__link:hover {
-  opacity: 0.7;
-}
-
-.use-case__metric {
-  text-align: right;
-}
-
-.use-case__metric span {
-  display: block;
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 4px;
-}
-
-.use-case__metric strong {
-  font-size: 15px;
-  font-weight: 600;
-  color: #111111;
-}
-
-@media (max-width: 768px) {
-  .use-case {
-    padding: 72px 20px;
-  }
-
-  .use-case__header h2 {
-    font-size: 34px;
-  }
-
-  .use-case__grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .use-case__footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .use-case__metric {
-    text-align: left;
-  }
-}
-
-</style>
 
 <section class="use-case">
   <div class="use-case__content">
