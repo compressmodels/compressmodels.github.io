@@ -19,7 +19,7 @@
   <nav class="nav-links">
 
     <div class="nav-item dropdown">
-      <button class="dropbtn">Use Cases ▼ </button>
+      <button class="dropbtn active">Use Cases ▼ </button>
 
       <div class="dropdown-content">
         <a href="autonomous.html">Autonomous Systems</a>
@@ -44,37 +44,48 @@
 <body>
   <div class="container">
 
-  <section class="use-case">
-  <div class="use-case__content">
-    <div class="use-case__eyebrow">Use Case</div>
+    <section class="use-case">
+      <div class="use-case__content">
+        <div class="use-case__eyebrow">Use Case</div>
 
-    <div class="use-case__header">
-      <h2>Content Moderation at Platform Scale</h2>
+          <div class="use-case__header">
+            <h2>Content Moderation at Platform Scale</h2>
 
-    <p>
-      Content moderation systems continuously classify text, images, video, and user activity to detect spam, abuse, policy violations, and unsafe content.
-      These systems operate under strict latency constraints and enormous throughput requirements, often requiring billions of classifications per day.
-    </p>
+          <p>
+            Content moderation systems continuously classify text, images, video, and user activity to detect spam, abuse, policy violations, and unsafe content.
+            These systems operate under strict latency constraints and enormous throughput requirements, often requiring billions of classifications per day.
+          </p>
 
-    <ul>
-      <li>
-        <strong>Problem:</strong>
-        Moderation pipelines are expensive to operate because every piece of content is sent through full inference, even when many decisions are obvious or low-risk.
-      </li>
+          <ul>
+            <li>
+              <strong>Problem:</strong>
+              Moderation pipelines are expensive to operate because every piece of content is sent through full inference, even when many decisions are obvious or low-risk.
+            </li>
 
-      <li>
-        <strong>With moco:</strong>
-        moco automatically routes straightforward moderation decisions through cheaper decision paths while reserving full model inference for ambiguous or high-risk cases.
-      </li>
+            <li>
+              <strong>With moco:</strong>
+              moco automatically routes straightforward moderation decisions through cheaper decision paths while reserving full model inference for ambiguous or high-risk cases.
+            </li>
 
-      <li>
-        <strong>Impact:</strong>
-        20–50% reduction in moderation inference cost and GPU utilization while maintaining moderation quality and platform responsiveness.
-      </li>
-    </ul>
-  </div>
-  </div>
+            <li>
+              <strong>Impact:</strong>
+              20–50% reduction in moderation inference cost and GPU utilization while maintaining moderation quality and platform responsiveness.
+            </li>
+          </ul>
+        </div>
+      </div>
+
   </section>
+
+  <footer>
+    <img src="../images/moco_logo.png" alt="moco logo" class="footer-logo">
+
+
+
+    <div>© 2026 moco</div>
+    <div>Built by <a href="https://www.linkedin.com/in/sam-randall-9a3068110/" target="_blank">Sam Randall</a></div>
+  </footer>
+  </div>
 
 </body>
 </html>
