@@ -1,461 +1,1759 @@
 <!doctype html>
 <html lang="en">
 
- <!-- Header -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <title>moco</title>
 
-  <meta name="description" content="Reduce ML inference cost by 20–50%, increase throughput, and deploy more models under fixed compute budgets. Optimize GPU usage without sacrificing accuracy.">
-  <meta name="keywords" content="ML inference optimization, reduce compute cost, GPU efficiency, classification systems, early exit models, cascaded systems, edge ML">
+  <title>moco — More decisions per GPU-hour</title>
+
+  <meta
+    name="description"
+    content="moco reduces the compute required to make high-volume ML classification decisions. Process more decisions per GPU-hour with less inference compute."
+  >
+
+  <meta
+    name="keywords"
+    content="ML inference optimization, GPU efficiency, batch inference, classification, early exit, inference cost, throughput"
+  >
+
   <meta name="author" content="moco">
 
-  <meta property="og:title" content="moco — Reduce ML compute per decision">
-  <meta property="og:description" content="Cut GPU costs, reduce false positives, and increase model throughput without accuracy loss.">
+  <meta property="og:title" content="moco — More decisions per GPU-hour">
+  <meta
+    property="og:description"
+    content="Reduce the compute required to process high-volume ML classification workloads."
+  >
   <meta property="og:type" content="website">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="moco — ML inference optimization">
-  <meta name="twitter:description" content="20–50% compute reduction. More decisions per GPU.">
+  <meta name="twitter:title" content="moco — More decisions per GPU-hour">
+  <meta
+    name="twitter:description"
+    content="More decisions per GPU-hour. Less inference compute."
+  >
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "moco",
-    "applicationCategory": "MachineLearning",
-    "description": "Post-training optimization system that reduces ML inference compute cost while maintaining accuracy.",
-    "operatingSystem": "Cloud, Edge",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "Compute Reduction",
-        "value": "20-50%"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Throughput Increase",
-        "value": "20-50%"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "GPU Cost Reduction",
-        "value": "Up to 30%"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "False Positive Reduction",
-        "value": "Improved via reallocation of compute"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Inference Strategy",
-        "value": "Early exit, cascaded classification"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Deployment",
-        "value": "No retraining required"
+  <style>
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --soft: #f8fafc;
+
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-soft: #eff6ff;
+      --blue-line: #bfdbfe;
+
+      --max-width: 1120px;
+      --radius: 16px;
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      color: var(--text);
+      background: var(--bg);
+
+      line-height: 1.65;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================================================
+       CONTAINER
+    ========================================================= */
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max-width)
+      );
+
+      margin: 0 auto;
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      background: rgba(255, 255, 255, 0.94);
+
+      backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      width: min(
+        calc(100% - 40px),
+        var(--max-width)
+      );
+
+      min-height: 72px;
+
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 24px;
+    }
+
+    .logo img {
+      width: 92px;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+
+      gap: 28px;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      color: #374151;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-cta {
+      padding: 9px 14px;
+
+      border-radius: 8px;
+
+      background: var(--blue);
+
+      color: white !important;
+
+      font-weight: 600;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-dark);
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+
+    .button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 13px 19px;
+
+      border-radius: 9px;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      transition: 0.15s ease;
+    }
+
+    .button-primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .button-secondary:hover {
+      border-color: #cbd5e1;
+      background: var(--soft);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      padding: 120px 0 110px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+
+      margin-bottom: 20px;
+
+      padding: 6px 10px;
+
+      border: 1px solid #dbeafe;
+
+      border-radius: 999px;
+
+      color: var(--blue);
+      background: var(--blue-soft);
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    h1 {
+      max-width: 850px;
+
+      margin: 0;
+
+      font-size: clamp(
+        48px,
+        7vw,
+        82px
+      );
+
+      line-height: 1.02;
+
+      letter-spacing: -0.055em;
+
+      font-weight: 800;
+    }
+
+    .hero-lead {
+      max-width: 760px;
+
+      margin: 30px 0 0;
+
+      color: var(--muted);
+
+      font-size: clamp(
+        19px,
+        2.2vw,
+        24px
+      );
+
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 34px;
+    }
+
+
+    /* =========================================================
+       GENERAL SECTIONS
+    ========================================================= */
+
+    .content-section {
+      padding: 100px 0;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      margin-bottom: 12px;
+
+      color: var(--blue);
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      max-width: 800px;
+
+      margin: 0;
+
+      font-size: clamp(
+        34px,
+        4.5vw,
+        54px
+      );
+
+      line-height: 1.1;
+
+      letter-spacing: -0.04em;
+    }
+
+    h3 {
+      margin: 0;
+
+      font-size: 23px;
+
+      line-height: 1.25;
+
+      letter-spacing: -0.02em;
+    }
+
+    .section-intro {
+      max-width: 760px;
+
+      margin: 22px 0 0;
+
+      color: var(--muted);
+
+      font-size: 18px;
+    }
+
+
+    /* =========================================================
+       ECONOMIC EQUATION
+    ========================================================= */
+
+    .equation {
+      margin: 42px 0 0;
+
+      padding: 28px;
+
+      border: 1px solid var(--line);
+
+      border-radius: var(--radius);
+
+      background: var(--soft);
+
+      font-size: clamp(
+        18px,
+        2.5vw,
+        26px
+      );
+
+      font-weight: 600;
+
+      letter-spacing: -0.02em;
+    }
+
+    .equation span {
+      color: var(--blue);
+    }
+
+
+    /* =========================================================
+       ARCHITECTURE
+    ========================================================= */
+
+    .architecture {
+      margin-top: 48px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+      gap: 16px;
+
+      align-items: center;
+    }
+
+    .path-card {
+      padding: 28px;
+
+      border: 1px solid var(--line);
+
+      border-radius: var(--radius);
+
+      background: white;
+    }
+
+    .path-card strong {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 16px;
+    }
+
+    .path-card p {
+      margin: 0;
+
+      color: var(--muted);
+    }
+
+    .moco-path {
+      border-color: var(--blue-line);
+
+      background: var(--blue-soft);
+    }
+
+    .arrow {
+      font-size: 28px;
+
+      color: #94a3b8;
+    }
+
+
+    /* =========================================================
+       KPI
+    ========================================================= */
+
+    .kpi {
+      margin-top: 48px;
+
+      padding: 48px;
+
+      border-radius: 20px;
+
+      background: #111827;
+
+      color: white;
+    }
+
+    .kpi-label {
+      color: #93c5fd;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.08em;
+    }
+
+    .kpi-number {
+      margin-top: 10px;
+
+      font-size: clamp(
+        38px,
+        6vw,
+        70px
+      );
+
+      line-height: 1.05;
+
+      letter-spacing: -0.05em;
+
+      font-weight: 800;
+    }
+
+    .kpi p {
+      max-width: 700px;
+
+      margin: 18px 0 0;
+
+      color: #cbd5e1;
+
+      font-size: 17px;
+    }
+
+
+    /* =========================================================
+       USE CASES
+    ========================================================= */
+
+    .use-case-grid {
+      margin-top: 52px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .use-case {
+      padding: 28px;
+
+      border: 1px solid var(--line);
+
+      border-radius: var(--radius);
+
+      background: white;
+    }
+
+    .use-case p {
+      margin: 14px 0 0;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .metric {
+      margin-top: 22px;
+
+      padding-top: 18px;
+
+      border-top: 1px solid var(--line);
+
+      font-size: 14px;
+
+      font-weight: 600;
+    }
+
+
+    /* =========================================================
+       ICP
+    ========================================================= */
+
+    .icp-grid {
+      margin-top: 50px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 18px;
+    }
+
+    .icp-item {
+      padding: 26px;
+
+      border: 1px solid var(--line);
+
+      border-radius: var(--radius);
+    }
+
+    .icp-item p {
+      margin: 8px 0 0;
+
+      color: var(--muted);
+    }
+
+
+    /* =========================================================
+       ECONOMICS
+    ========================================================= */
+
+    .economics {
+      margin-top: 50px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .economic-card {
+      padding: 28px;
+
+      border-radius: var(--radius);
+
+      background: var(--soft);
+    }
+
+    .economic-number {
+      font-size: 32px;
+
+      font-weight: 800;
+
+      letter-spacing: -0.04em;
+    }
+
+    .economic-card p {
+      margin: 8px 0 0;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+
+    /* =========================================================
+       TECHNICAL / SCIENCE
+    ========================================================= */
+
+    .science-list {
+      margin-top: 42px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+    .science-item {
+      padding: 24px;
+
+      border-top: 2px solid var(--text);
+    }
+
+    .science-item p {
+      margin: 8px 0 0;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================================================
+       AUDIT
+    ========================================================= */
+
+    .audit {
+      padding: 100px 0;
+    }
+
+    .audit-card {
+      padding: 54px;
+
+      border: 1px solid var(--blue-line);
+
+      border-radius: 22px;
+
+      background: var(--blue-soft);
+    }
+
+    .audit-card h2 {
+      max-width: 700px;
+    }
+
+    .audit-card p {
+      max-width: 700px;
+
+      color: #475569;
+
+      font-size: 17px;
+    }
+
+    .audit-list {
+      max-width: 700px;
+
+      margin: 26px 0 30px;
+
+      padding-left: 20px;
+    }
+
+    .audit-list li {
+      margin: 8px 0;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      border-top: 1px solid var(--line);
+
+      padding: 38px 0;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+    }
+
+    .footer-logo {
+      width: 76px;
+
+      margin-bottom: 10px;
+    }
+
+    .footer-left {
+      display: flex;
+
+      flex-direction: column;
+    }
+
+    footer a {
+      color: var(--text);
+    }
+
+    footer a:hover {
+      color: var(--blue);
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
       }
-    ]
-  }
-  </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KNZ8JQG78"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      .hero {
+        padding: 85px 0 80px;
+      }
 
-    gtag('config', 'G-3KNZ8JQG78');
-  </script>
+      .content-section {
+        padding: 75px 0;
+      }
+
+      .architecture {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        text-align: center;
+
+        transform: rotate(90deg);
+      }
+
+      .use-case-grid,
+      .economics,
+      .science-list {
+        grid-template-columns:
+          1fr 1fr;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      .container,
+      .nav-inner {
+        width:
+          min(
+            calc(100% - 28px),
+            var(--max-width)
+          );
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .content-section {
+        padding: 60px 0;
+      }
+
+      .use-case-grid,
+      .icp-grid,
+      .economics,
+      .science-list {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi,
+      .audit-card {
+        padding: 32px 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+    }
+
+  </style>
+</head>
+
 
 <body>
-<!-- Nav Bar   -->
-<header class="navbar">
 
-  <a class="logo" href="index.html">
-    <img src="images/moco_logo.png" alt="moco logo">
-  </a>
 
-  <nav class="nav-links">
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================== -->
 
-    <div class="nav-item dropdown">
-      <button class="dropbtn">Use Cases ▼ </button>
+  <header class="navbar">
 
-      <div class="dropdown-content">
-        <a href="use_cases/autonomous.html">Autonomous Systems</a>
-        <a href="use_cases/computer_vision.html">Computer Vision</a>
-        <a href="use_cases/fraud_detection.html">Financial Fraud Detection</a>
-        <a href="use_cases/cybersecurity.html">Cybersecurity</a>
-        <a href="use_cases/nlp_chatbot_agent.html">NLP / Chatbots / Agents</a>
-        <a href="use_cases/search_tagging.html">Search + Tagging</a>
-        <a href="use_cases/content_moderation.html">Content Moderation</a>
-        <a href="use_cases/customer_support_tickets_prioritization_sentiment_intent.html">Customer Support</a>
-      </div>
+    <div class="nav-inner">
+
+      <a
+        class="logo"
+        href="index.html"
+        aria-label="moco home"
+      >
+        <img
+          src="images/moco_logo.png"
+          alt="moco"
+        >
+      </a>
+
+
+      <nav
+        class="nav-links"
+        aria-label="Main navigation"
+      >
+
+        <a href="#how-it-works">
+          How it works
+        </a>
+
+        <a href="#use-cases">
+          Use cases
+        </a>
+
+        <a href="#technical">
+          Technical
+        </a>
+
+        <a href="docs.html">
+          Docs
+        </a>
+
+        <a
+          class="nav-cta"
+          href="https://calendly.com/sam-randall5/30min"
+          target="_blank"
+          rel="noopener"
+        >
+          Free Audit
+        </a>
+
+      </nav>
+
     </div>
 
-    <a href="team.html">Team</a>
-    <a href="docs.html">API Documentation</a>
-    <a href="notebooks.html">Notebook Examples</a>
+  </header>
 
-  </nav>
 
-</header>
+  <main>
 
-  <div class="container">
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
     <section class="hero">
-      <div class="hero__content">
 
-        <h1>
-          Reduce GPU count by 20 - 50%.
-        </h1>
+      <div class="container">
 
-        <p class="hero__lead">
-          How: by reducing the computational footprint of machine learning workloads.
+        <div class="hero-inner">
+
+          <span class="eyebrow">
+            Inference optimization for high-volume decisions
+          </span>
+
+
+          <h1>
+            More decisions per GPU-hour.
+          </h1>
+
+
+          <p class="hero-lead">
+            moco reduces the compute required to make
+            high-volume ML classification decisions.
+            If your infrastructure processes millions or
+            billions of images, video frames, documents,
+            text objects, or events, moco identifies
+            decisions that don't require the full model
+            and routes them through cheaper computation paths.
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              class="button button-primary"
+              href="https://calendly.com/sam-randall5/30min"
+              target="_blank"
+              rel="noopener"
+            >
+              Get a Free Compute-Waste Audit
+            </a>
+
+
+            <a
+              class="button button-secondary"
+              href="#how-it-works"
+            >
+              See how it works
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ECONOMICS
+    ====================================================== -->
+
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-label">
+          The economics
+        </div>
+
+
+        <h2>
+          Your inference bill scales with every decision.
+        </h2>
+
+
+        <p class="section-intro">
+          Modern ML systems increasingly make decisions at
+          enormous scale. A single customer request can
+          trigger multiple model executions. A single video
+          can become thousands of frame-level classifications.
+          A document can become hundreds of page- and
+          token-level decisions.
         </p>
 
-        <p class = "hero__lead">
-          Allocate compute-time to decisions, based on each decision's difficulty.
-          moco determines the difficulty of each decision (where is deeper analysis needed), and compute-time can be allocated based on this measure.
+
+        <div class="equation">
+
+          <span>Objects</span>
+
+          ×
+
+          <span>Model executions / object</span>
+
+          ×
+
+          <span>Compute / execution</span>
+
+          =
+
+          Inference compute
+
+        </div>
+
+
+        <p class="section-intro">
+          When volume is large enough, small improvements
+          in compute efficiency become significant
+          infrastructure savings.
         </p>
 
-        <p class = "hero__lead">
-          moco outputs a model that is substitutable for the original, enabling instant efficiency gains. 
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+    ====================================================== -->
+
+    <section
+      class="content-section"
+      id="how-it-works"
+    >
+
+      <div class="container">
+
+        <div class="section-label">
+          How it works
+        </div>
+
+
+        <h2>
+          Stop spending the same compute on every decision.
+        </h2>
+
+
+        <p class="section-intro">
+          Most classification models process easy and
+          difficult examples through essentially the same
+          computational path. But they don't require the
+          same amount of computation.
         </p>
-        <p class = "hero__lead">
-        <b>No Retraining. No Accuracy Loss. No New Hardware.</b>
-        </p>
+
+
+        <div class="architecture">
+
+
+          <div class="path-card">
+
+            <strong>
+              Traditional inference
+            </strong>
+
+            <p>
+              Every input gets the same computation.
+            </p>
+
+            <br>
+
+            <strong>
+              Input → Full Model → Decision
+            </strong>
+
+          </div>
+
+
+          <div class="arrow">
+            →
+          </div>
+
+
+          <div class="path-card moco-path">
+
+            <strong>
+              moco
+            </strong>
+
+            <p>
+              Easy decisions terminate early.
+              Difficult decisions receive deeper computation.
+            </p>
+
+            <br>
+
+            <strong>
+              Input → Cheap Decision → Easy? → Stop
+            </strong>
+
+            <br>
+
+            <strong style="margin-top: 8px;">
+              ↘ Difficult → Full Model → Decision
+            </strong>
+
+          </div>
 
 
         </div>
-      </section>
 
-  <section class="hero">
 
-    <div class="hero__content">
+        <p class="section-intro">
+          moco finds sufficient conditions for making easy
+          decisions earlier, then constructs computational
+          paths that avoid unnecessary full-model execution.
+        </p>
 
-      <h1>
-        The Economics
-      </h1>
+      </div>
 
-      <h2>
-        Stop Running Full Inference on Easy Predictions
-      </h2>
+    </section>
 
-      
 
-      <p class="hero__lead">
-        Every prediction a model makes has a cost. The total compute cost to an organization cost scales with the number of decisions that need to be made and the computational difficulty of each decision. 
-      </p>
+    <!-- =====================================================
+         KPI
+    ====================================================== -->
 
-      <!-- <p class="hero__lead">
-        SHREYA NOTE: I dont think you need this on the main page. Not everyone needs text classification. 
-        For text classification, inference costs
-        $1/1M inferences. At scale, with 1B inferences / day, this costs $365k / year.
-      </p> -->
+    <section class="content-section">
 
-      <p class="hero__lead">
-        <strong>moco</strong> analyzes model behavior and automatically routes
-        easy predictions through cheaper decision paths. This increases computational
-        capacity for the difficult cases, resulting in: 
-      </p>
-      
-      <ol class = "hero-bullets">
-        <li> Throughput improvement</li>
-        <li> Latency reduction </li>
-        <li> Total Cost of Ownership (TCO)-savings (reduces need for servers, and reduces cooling costs)</li>
-        <li> Power-savings (resulting in longer battery life of devices)</li>
+      <div class="container">
 
-      </ol>
+        <div class="section-label">
+          The KPI
+        </div>
 
-      <p class = 'hero__lead'>
-        In text classification, moco reduces the cost per inference from $1 / 1M inferences 
-        to $0.5 - $0.8 / 1M inferences, saving <b>20-50%</b> of compute-time related costs. 
-        <!-- ,in this case $72,000-$183,000 a year. -->
-        <!-- Shreya: This doesn't seem like much money? I would remove. -->
-      </p>
 
-    </div>
+        <h2>
+          We optimize for decision capacity.
+        </h2>
 
-  </section>
 
-  <section class="hero">
+        <div class="kpi">
 
-    <div class="hero__content">
+          <div class="kpi-label">
+            Primary metric
+          </div>
 
-      <h1>
-        Built for production-scale inference systems
-      </h1>
 
-      <p class="hero__lead">
-        moco reduces unnecessary inference computation in both real-time and
-        batched machine learning systems operating at production scale.
-      </p>
+          <div class="kpi-number">
+            Decisions per GPU-hour
+          </div>
 
-      <p class="hero__lead">
-        <b> 
-          moco can help businesses that: 
-          <ul class = "unordered_bullets">
-            <li> have massive request volumes </li>
-            <li> have expensive transformer inference bills</li>
-            <li> whose ML decision systems violate service level agreements (SLAs)</li>
-          </ul>
-
-         </b>
-      </p>
-
-      <div class="industry-grid">
-
-        <h3>Verticals</h3>
-
-        <details class="industry-card">
-          <summary>Content Moderation</summary>
 
           <p>
-            <b>Transformer moderation systems processing billions of events per day.</b>
+            Increasing decisions per GPU-hour can mean fewer
+            GPU-hours for the same workload, higher throughput
+            on existing hardware, fewer servers, lower inference
+            COGS, and more customer volume without proportional
+            infrastructure growth.
           </p>
 
-          <ul>
-            <li>Typical models: BERT, RoBERTa, multimodal transformers</li>
-            <li>Typical latency: 5–20ms</li>
-            <li>Typical scale: 100k–750k+ requests/sec</li>
-            <li>Typical annual inference cost: Millions/year</li>
-            <li>
-              20% lower average FLOPs/inference can save hundreds of thousands
-              to millions per year in GPU infrastructure and compute-time costs.
-            </li>
-            <li>
-              Lower inference load reduces peak GPU utilization,
-              enabling smaller serving fleets and higher throughput on existing hardware.
-            </li>
-          </ul>
-        </details>
+        </div>
 
-        <details class="industry-card">
-          <summary>Search + Tagging</summary>
+
+        <p class="section-intro">
+
+          The objective isn't fewer FLOPs for their own sake.
+
+          <strong>
+            The objective is more useful decisions per
+            unit of compute.
+          </strong>
+
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         USE CASES
+    ====================================================== -->
+
+    <section
+      class="content-section"
+      id="use-cases"
+    >
+
+      <div class="container">
+
+        <div class="section-label">
+          Workloads
+        </div>
+
+
+        <h2>
+          Built for workloads where volume creates the cost.
+        </h2>
+
+
+        <p class="section-intro">
+          moco is most valuable when inference volume is
+          enormous and compute is a material operating expense.
+        </p>
+
+
+        <div class="use-case-grid">
+
+
+          <article class="use-case">
+
+            <h3>
+              Video classification
+            </h3>
+
+            <p>
+              Video becomes frames, and frames can trigger
+              multiple classifiers. At scale, tiny savings
+              per frame compound rapidly.
+            </p>
+
+            <div class="metric">
+              1 minute × 30 FPS = 1,800 frames
+            </div>
+
+          </article>
+
+
+          <article class="use-case">
+
+            <h3>
+              Image classification
+            </h3>
+
+            <p>
+              Large-scale image APIs classify enormous
+              volumes for moderation, visual search,
+              tagging, safety, identity, and quality control.
+            </p>
+
+            <div class="metric">
+              More images → more inference → more compute
+            </div>
+
+          </article>
+
+
+          <article class="use-case">
+
+            <h3>
+              Document processing
+            </h3>
+
+            <p>
+              Documents can generate decisions at the
+              document, page, region, and text levels for
+              routing, compliance, fraud, and extraction.
+            </p>
+
+            <div class="metric">
+              More pages → more decisions
+            </div>
+
+          </article>
+
+
+          <article class="use-case">
+
+            <h3>
+              Cybersecurity
+            </h3>
+
+            <p>
+              Classify URLs, files, emails, identities,
+              network events, and user actions across
+              large asynchronous security pipelines.
+            </p>
+
+            <div class="metric">
+              High event volume + multiple models
+            </div>
+
+          </article>
+
+
+          <article class="use-case">
+
+            <h3>
+              Fraud &amp; financial decisions
+            </h3>
+
+            <p>
+              High-volume transaction and account systems
+              make repeated classification decisions where
+              inference cost can compound.
+            </p>
+
+            <div class="metric">
+              Transactions × models × compute
+            </div>
+
+          </article>
+
+
+          <article class="use-case">
+
+            <h3>
+              Industrial inspection
+            </h3>
+
+            <p>
+              Manufacturing and physical-economy systems can
+              classify every item, component, image, or sensor
+              observation moving through a process.
+            </p>
+
+            <div class="metric">
+              Every object can require a disposition
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ICP
+    ====================================================== -->
+
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-label">
+          Who it's for
+        </div>
+
+
+        <h2>
+          For companies operating classification
+          infrastructure at scale.
+        </h2>
+
+
+        <div class="icp-grid">
+
+
+          <div class="icp-item">
+
+            <h3>
+              High volume
+            </h3>
+
+            <p>
+              Millions to trillions of objects or events
+              processed annually.
+            </p>
+
+          </div>
+
+
+          <div class="icp-item">
+
+            <h3>
+              Asynchronous inference
+            </h3>
+
+            <p>
+              Throughput and compute efficiency matter more
+              than single-request latency.
+            </p>
+
+          </div>
+
+
+          <div class="icp-item">
+
+            <h3>
+              Multiple model executions
+            </h3>
+
+            <p>
+              One object may trigger multiple classifiers
+              or model evaluations.
+            </p>
+
+          </div>
+
+
+          <div class="icp-item">
+
+            <h3>
+              Material inference COGS
+            </h3>
+
+            <p>
+              Inference compute is large enough to be a
+              meaningful infrastructure expense.
+            </p>
+
+          </div>
+
+
+          <div class="icp-item">
+
+            <h3>
+              Continuous workloads
+            </h3>
+
+            <p>
+              Infrastructure operates continuously or
+              at high utilization.
+            </p>
+
+          </div>
+
+
+          <div class="icp-item">
+
+            <h3>
+              Throughput is valuable
+            </h3>
+
+            <p>
+              Increasing decisions per GPU-hour creates
+              measurable economic or operational value.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ECONOMIC EXAMPLE
+    ====================================================== -->
+
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-label">
+          The math
+        </div>
+
+
+        <h2>
+          Small efficiency gains compound at scale.
+        </h2>
+
+
+        <div class="economics">
+
+
+          <div class="economic-card">
+
+            <div class="economic-number">
+              1B
+            </div>
+
+            <p>
+              objects processed per year
+            </p>
+
+          </div>
+
+
+          <div class="economic-card">
+
+            <div class="economic-number">
+              5B
+            </div>
+
+            <p>
+              model executions per year
+              at 5 executions/object
+            </p>
+
+          </div>
+
+
+          <div class="economic-card">
+
+            <div class="economic-number">
+              $1M
+            </div>
+
+            <p>
+              annual inference compute cost
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <p class="section-intro">
+          If moco reduces required computation by 20%,
+          that workload could require approximately
+          <strong>$800K</strong> of compute instead of $1M,
+          subject to the actual workload, hardware,
+          utilization, and deployment architecture.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TECHNICAL
+    ====================================================== -->
+
+    <section
+      class="content-section"
+      id="technical"
+    >
+
+      <div class="container">
+
+        <div class="section-label">
+          Technical
+        </div>
+
+
+        <h2>
+          From one model to a decision system.
+        </h2>
+
+
+        <p class="section-intro">
+          moco operates as a post-training optimization layer.
+          It analyzes model behavior, data, intermediate
+          computations, and predictions to identify regions
+          of the input space where additional computation
+          is unnecessary.
+        </p>
+
+
+        <div class="science-list">
+
+
+          <div class="science-item">
+
+            <h3>
+              Analyze
+            </h3>
+
+            <p>
+              Find structure in model predictions and
+              intermediate representations.
+            </p>
+
+          </div>
+
+
+          <div class="science-item">
+
+            <h3>
+              Discover
+            </h3>
+
+            <p>
+              Identify sufficient conditions for making
+              easy decisions earlier.
+            </p>
+
+          </div>
+
+
+          <div class="science-item">
+
+            <h3>
+              Route
+            </h3>
+
+            <p>
+              Construct cheaper computational paths
+              for easy inputs.
+            </p>
+
+          </div>
+
+
+          <div class="science-item">
+
+            <h3>
+              Fallback
+            </h3>
+
+            <p>
+              Send difficult inputs through the original
+              deeper computation.
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <p class="section-intro">
+          Designed for classification architectures including
+          transformers, CNNs / ResNets, MLPs, tree-based models,
+          and other production ML systems.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FREE AUDIT
+    ====================================================== -->
+
+    <section
+      class="audit"
+      id="audit"
+    >
+
+      <div class="container">
+
+        <div class="audit-card">
+
+          <div class="section-label">
+            Free assessment
+          </div>
+
+
+          <h2>
+            Find out whether your workload has compute waste.
+          </h2>
+
 
           <p>
-            <b>Large-scale indexing and retrieval pipelines operating on billions of assets.</b>
+            Send us representative inference data, model
+            outputs, or inference logs. We'll analyze the
+            workload to determine whether cheaper computational
+            paths are feasible.
           </p>
 
-          <ul>
-            <li>Typical models: BERT, CLIP, embedding models</li>
-            <li>Typical latency: 5–50ms</li>
-            <li>Typical scale: Billions of classifications/day</li>
-            <li>Typical annual inference cost: Millions/year</li>
+
+          <ul class="audit-list">
+
             <li>
-              20% lower average FLOPs/inference can save hundreds of thousands
-              annually in indexing and embedding compute costs.
+              Potential reduction in GPU-hours
             </li>
+
             <li>
-              Reduced compute per classification enables faster index refreshes,
-              higher indexing throughput, and more models within the same infrastructure budget.
+              Potential increase in decisions per GPU-hour
             </li>
+
+            <li>
+              Potential throughput improvement
+            </li>
+
+            <li>
+              Whether early-exit or cascaded computation
+              is feasible
+            </li>
+
+            <li>
+              Estimated infrastructure savings
+            </li>
+
           </ul>
-        </details>
 
-        <details class="industry-card">
-          <summary>Financial Fraud Detection</summary>
 
-          <p>
-            <b>Real-Time and Batched Fraud Detection is latency constrained and compute-constrained respectively. </b>
-          </p>
+          <a
+            class="button button-primary"
+            href="https://calendly.com/sam-randall5/30min"
+            target="_blank"
+            rel="noopener"
+          >
+            Book a Free Compute-Waste Audit
+          </a>
 
-          <ul>
-            <li>Real-Time Fraud Detection Systems: moco unlocks compute budget to apply more analytics to the hard cases, increasing the accuracy of the system, saving false positives and false negatives.</li>
-            <li>Batched Fraud Detection Systems: moco unlocks reduces runs the same inference with less physical hardware, saving money in compute-time and infra.</li>
-            
-          </ul>
-        </details>
+        </div>
 
-        <h3>System Types</h3>
+      </div>
 
-        <details class="industry-card">
-          <summary>Embedded Systems</summary>
+    </section>
 
-          <p>
-            <b>moco supports embedded inference pipelines where compute and power are constrained.</b>
-          </p>
 
-          <ul>
-            <li>
-              Existing PyTorch models can be transformed into routed hierarchical classifiers.
-            </li>
-            <li>
-              Expensive model execution is conditionally avoided for easy predictions.
-            </li>
-            <li>
-              Reduced average compute-time enables lower-power inference deployments.
-            </li>
-            <li>
-              Compatible with ONNX export and edge deployment workflows.
-            </li>
-          </ul>
-        </details>
+    <!-- =====================================================
+         CLOSING
+    ====================================================== -->
 
-        <details class="industry-card">
-          <summary>Battery-Powered Edge Devices / IoT</summary>
+    <section class="content-section">
 
-          <p>
-            <b>Edge inference systems benefit from lower power consumption and reduced average computation.</b>
-          </p>
+      <div class="container">
 
-          <ul>
-            <li>
-              Lower average FLOPs/inference extends battery life for always-on systems.
-            </li>
-            <li>
-              Reduced compute demand lowers thermal load on constrained hardware.
-            </li>
-            <li>
-              Smaller inference workloads enable more models to run on-device.
-            </li>
-          </ul>
-        </details>
+        <div class="section-label">
+          The question
+        </div>
 
-        <details class="industry-card">
-          <summary>Real-Time Systems</summary>
 
-          <p>
-            <b>Latency-sensitive systems benefit from avoiding unnecessary expensive computation.</b>
-          </p>
+        <h2>
+          How much compute does the world spend making
+          decisions that don't require all of that computation?
+        </h2>
 
-          <ul>
-            <li>
-              Many production systems are bottlenecked by feature loading,
-              graph queries, and deep model execution.
-            </li>
 
-            <li>
-              moco helps determine when expensive computation can be skipped safely.
-            </li>
+        <p class="section-intro">
+          moco is building infrastructure to make those
+          decisions cheaper.
+        </p>
 
-            <li>
-              Reduced infrastructure load enables smaller serving fleets
-              and higher throughput on existing hardware.
-            </li>
-          </ul>
-        </details>
 
-        <details class="industry-card">
-          <summary>Batched Inference Pipelines</summary>
+        <div class="hero-actions">
 
-          <p>
-            <b>Large offline inference jobs directly benefit from lower compute-time per prediction.</b>
-          </p>
+          <a
+            class="button button-primary"
+            href="https://calendly.com/sam-randall5/30min"
+            target="_blank"
+            rel="noopener"
+          >
+            Talk to us
+          </a>
 
-          <ul>
-            <li>
-              Reduced average computation increases total system throughput.
-            </li>
-            <li>
-              Lower GPU-hours reduce infrastructure and cloud compute costs.
-            </li>
-            <li>
-              Existing hardware can process larger datasets without scaling infrastructure.
-            </li>
-          </ul>
-        </details>
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-left">
+
+        <img
+          src="images/moco_logo.png"
+          alt="moco"
+          class="footer-logo"
+        >
+
+        <div>
+          © 2026 moco
+        </div>
+
+      </div>
+
+
+      <div>
+
+        Built by
+
+        <a
+          href="https://www.linkedin.com/in/sam-randall-9a3068110/"
+          target="_blank"
+          rel="noopener"
+        >
+          Sam Randall
+        </a>
 
       </div>
 
     </div>
 
-  </section>
-
-  <section class="hero">
-
-    <div class="hero__content">
-
-      <h1>
-        The Science
-      </h1>
-
-      <p class="hero__lead">
-        Coming soon: information on how we think about decisions, classifiers, graphs and data. 
-      </p>
-
-
-    </div>
-
-  </section>
-
-  <!-- Calendly badge widget begin -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/sam-randall5/30min', text: 'Schedule time with me', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
-  <!-- Calendly badge widget end -->
-
-<!-- Free Comptue Waste Audit -->
-
-  <section class="section">
-
-    <div class="card" style="border:1px solid #dbe4ff;">
-
-      <h2 style="margin:0 0 10px 0; font-size: 25px;">
-        Free Compute-Waste Audit
-      </h2>
-
-      <p>
-        I will analyze historical inference logs, model outputs, or 
-        representative datasets to identify unnecessary model computation 
-        and estimate potential savings.
-      </p>
-
-      <p>
-        The audit evaluates:
-      </p>
-
-      <ul>
-        <li>Potential GPU-hour reduction</li>
-        <li>Inference latency improvements</li>
-        <li>Whether cascaded routing can preserve model accuracy</li>
-      </ul>
-
-
-      <a 
-        href="https://calendly.com/sam-randall5/30min"
-        target="_blank"
-        style="
-          display:inline-block;
-          background:#0069ff;
-          color:white;
-          padding:12px 18px;
-          border-radius:6px;
-          text-decoration:none;
-          font-weight:600;
-        "
-      >
-        Book a Free Audit
-      </a>
-
-    </div>
-
-  </section>
-<!-- End Free Audit Section -->
-
-
-  <footer>
-  <img src="images/moco_logo.png" alt="moco logo" class="footer-logo">
-
-
-
-  <div>© 2026 moco</div>
-  <div>Built by <a href="https://www.linkedin.com/in/sam-randall-9a3068110/" target="_blank">Sam Randall</a></div>
   </footer>
 
 
-  </div>
+</body>
 
-  </body>
 </html>
