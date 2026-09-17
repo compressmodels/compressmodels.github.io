@@ -1418,81 +1418,185 @@
     </section>
 
 
-    <!-- =====================================================
-         ECONOMIC EXAMPLE
-    ====================================================== -->
 
-    <section class="content-section">
+<!-- =====================================================
+     INFERENCE COMPUTE ECONOMICS
+====================================================== -->
 
-      <div class="container">
+<section class="content-section">
 
-        <div class="section-label">
-          The math
+  <div class="container">
+
+    <div class="section-label">
+      Inference compute economics
+    </div>
+
+    <h2>
+      What does $1 million of inference compute actually buy?
+    </h2>
+
+    <p class="section-intro">
+      Inference cost ultimately comes down to compute-hours.
+      Every classification consumes some amount of GPU capacity.
+      At high enough volume, even a fraction of a cent per
+      decision becomes a significant infrastructure expense.
+    </p>
+
+
+    <div class="equation">
+
+      <span>Objects processed</span>
+
+      ×
+
+      <span>Model executions / object</span>
+
+      ×
+
+      <span>Compute / execution</span>
+
+      =
+
+      <span>GPU-hours required</span>
+
+    </div>
+
+
+    <p class="section-intro">
+      Consider a production inference workload that consumes
+      approximately <strong>$1M of GPU compute per year</strong>.
+      Using an H100 at roughly $5.19 per GPU-hour as a reference,
+      that represents approximately
+      <strong>193,000 H100 GPU-hours</strong>.
+    </p>
+
+
+    <div class="economics">
+
+      <div class="economic-card">
+
+        <div class="economic-number">
+          $5.19
         </div>
 
-
-        <h2>
-          Small efficiency gains compound at scale.
-        </h2>
-
-
-        <div class="economics">
-
-
-          <div class="economic-card">
-
-            <div class="economic-number">
-              1B
-            </div>
-
-            <p>
-              objects processed per year
-            </p>
-
-          </div>
-
-
-          <div class="economic-card">
-
-            <div class="economic-number">
-              5B
-            </div>
-
-            <p>
-              model executions per year
-              at 5 executions/object
-            </p>
-
-          </div>
-
-
-          <div class="economic-card">
-
-            <div class="economic-number">
-              $1M
-            </div>
-
-            <p>
-              annual inference compute cost
-            </p>
-
-          </div>
-
-
-        </div>
-
-
-        <p class="section-intro">
-          If moco reduces required computation by 20%,
-          that workload could require approximately
-          <strong>$800K</strong> of compute instead of $1M,
-          subject to the actual workload, hardware,
-          utilization, and deployment architecture.
+        <p>
+          approximate hourly cost of one H100 GPU
         </p>
 
       </div>
 
-    </section>
+
+      <div class="economic-card">
+
+        <div class="economic-number">
+          193K
+        </div>
+
+        <p>
+          H100 GPU-hours required for $1M
+          of compute
+        </p>
+
+      </div>
+
+
+      <div class="economic-card">
+
+        <div class="economic-number">
+          22
+        </div>
+
+        <p>
+          H100 GPUs running continuously
+          for one year
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <p class="section-intro">
+      The same economics apply whether the model is making a
+      binary classification, ranking an object, detecting fraud,
+      determining whether an image contains prohibited content,
+      or predicting the next token with deterministic decoding.
+      The underlying question is the same:
+      <strong>how much computation is required to produce the decision?</strong>
+    </p>
+
+
+    <div class="path-card" style="margin-top: 42px;">
+
+      <strong>
+        A $1M inference workload
+      </strong>
+
+      <p>
+        Suppose a production system processes billions of
+        decisions per year and requires $1M of GPU compute
+        to execute its current inference pipeline.
+        If moco eliminates 20% of the required computation,
+        the same workload requires approximately $800K of
+        GPU compute.
+      </p>
+
+      <br>
+
+      <strong>
+        $1,000,000 → $800,000
+      </strong>
+
+      <p style="margin-top: 8px;">
+        <strong>$200K/year of compute capacity recovered.</strong>
+      </p>
+
+    </div>
+
+
+    <p class="section-intro">
+
+      There is another way to view the same improvement.
+
+      If the original workload requires 100 GPU-hours per
+      100 decisions, and optimization reduces that requirement
+      to 80 GPU-hours, the system can process approximately
+      <strong>25% more decisions on the same hardware</strong>.
+
+      That is the economic meaning of
+      <strong>more decisions per GPU-hour</strong>.
+
+    </p>
+
+
+    <div class="equation">
+
+      <span>Inference cost</span>
+
+      =
+
+      <span>GPU-hours</span>
+
+      ×
+
+      <span>GPU-hour price</span>
+
+    </div>
+
+
+    <p class="section-intro">
+      Public cloud GPU pricing is only a reference point.
+      Real production economics also include utilization,
+      reserved capacity, networking, storage, orchestration,
+      idle capacity, and the hardware configuration required
+      to serve the model. The important variable for moco is
+      the amount of compute capacity consumed by the workload.
+    </p>
+
+  </div>
+
+</section>
+
 
 
     <!-- =====================================================
