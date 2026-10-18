@@ -75,7 +75,11 @@
 
         <h4>Early-Exiting</h4>
 
-        Note that early-exiting involves an analysis step to do this step intentionally. 
+        The early-exit algorithm involves an initial analysis step to analyze an embedding and a set of corresponding predictions.
+        The analysis algorithm outputs a hyperplane that on one side is homogenous with respect to a certain class. 
+        At runtime, an input comes in and if the input is on the + side of the hyperplane, the corresponding class is outputted otherwise the 
+        original model is executed. 
+        Savings come from the fact that the full model is not always executed. 
 
         <pre><code class="language-python">
         class RoutedModel:
