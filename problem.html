@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="How moco reduces classification inference compute to improve real-time performance on edge devices and increase throughput in the cloud."
+  />
+  <title>Smarter Inference for Real-World Systems — moco</title>
+
+  <style>
+    :root {
+      --ink: #10182b;
+      --muted: #526987;
+      --line: #dce6f1;
+      --blue: #2878f0;
+      --green: #078c7b;
+      --bg: #ffffff;
+      --edge-bg: #f2faf8;
+      --cloud-bg: #f1f7ff;
+      --panel: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Inter, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px max(5%, calc((100% - 1120px) / 2));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 76px 24px 48px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 16px 0;
+      font-size: clamp(38px, 5.5vw, 62px);
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+    }
+
+    .intro {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.65;
+    }
+
+    .meta {
+      margin-top: 24px;
+      color: #71839b;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 0 auto 24px;
+      padding: 48px;
+      border-radius: 10px;
+    }
+
+    .edge {
+      background: var(--edge-bg);
+    }
+
+    .cloud {
+      background: var(--cloud-bg);
+    }
+
+    .section h2 {
+      max-width: 850px;
+      margin: 12px 0 24px;
+      font-size: clamp(28px, 3.5vw, 39px);
+      line-height: 1.2;
+      letter-spacing: -1.2px;
+    }
+
+    .section h3 {
+      margin-top: 0;
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .section p {
+      color: #3e5676;
+      font-size: 15px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .problem-list {
+      margin-top: 24px;
+      padding: 24px;
+      border: 1px solid rgba(80, 120, 160, 0.10);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .problem-list ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: #3e5676;
+      font-size: 14px;
+    }
+
+    .problem-list li {
+      padding: 3px 0;
+    }
+
+    .diagram {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--panel);
+    }
+
+    .diagram-title {
+      margin-bottom: 18px;
+      font-size: 17px;
+      font-weight: 750;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .flow {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .flow h4 {
+      margin: 0 0 14px;
+      font-size: 13px;
+    }
+
+    .node {
+      padding: 12px 8px;
+      border: 1px solid #c8d7e9;
+      border-radius: 6px;
+      background: #f5f8fc;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .node.optimized {
+      border-color: var(--green);
+      background: #e5f7f1;
+    }
+
+    .arrow {
+      color: #71839b;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    .outcomes {
+      margin-top: 18px;
+      text-align: left;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .bad {
+      color: #d9485f;
+    }
+
+    .good {
+      color: #087d65;
+    }
+
+    .explanation {
+      margin-top: 32px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(80, 120, 160, 0.18);
+    }
+
+    .explanation h3 {
+      font-size: 22px;
+    }
+
+    .callout {
+      margin-top: 24px;
+      padding: 22px 26px;
+      border-left: 3px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .callout p {
+      margin-bottom: 0;
+    }
+
+    .closing {
+      max-width: 1200px;
+      margin: 24px auto 60px;
+      padding: 32px;
+      border: 1px solid #e0e6ff;
+      border-radius: 10px;
+      background: #f6f5ff;
+      text-align: center;
+    }
+
+    .closing h2 {
+      margin: 0 0 10px;
+      font-size: 27px;
+      letter-spacing: -0.8px;
+    }
+
+    .closing p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 850px) {
+      .section {
+        margin: 0 12px 20px;
+        padding: 28px 22px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a:nth-child(2),
+      .nav-links a:nth-child(3),
+      .nav-links a:nth-child(4) {
+        display: none;
+      }
+
+      .closing {
+        margin: 20px 12px 40px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .diagram {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <a class="logo" href="/">moco</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/docs.html">Docs</a>
+      <a href="/notebooks.html">Notebooks</a>
+      <a href="/team.html">Team</a>
+      <a href="/blog.html">Blog</a>
+    </nav>
+  </header>
+
+  <main>
+    <header class="hero">
+      <div class="eyebrow">Engineering Blog</div>
+      <h1>Smarter Inference for Real-World Systems</h1>
+      <p class="intro">
+        Every classification decision consumes compute. When a system
+        must make millions of decisions, that cost determines how quickly
+        it can respond, how much hardware it needs, and what it costs to
+        operate. moco explores a different approach: spend less compute on
+        the decisions that do not need a full model evaluation.
+      </p>
+      <div class="meta">October 18, 2026 &nbsp; · &nbsp; Engineering</div>
+    </header>
+
+    <!-- SECTION 1: EDGE AND EMBEDDED SYSTEMS -->
+
+    <article class="section edge">
+      <div class="eyebrow" style="color: #078c7b;">
+        01 / Edge &amp; Embedded Systems
+      </div>
+
+      <h2>
+        The Problem: Real-Time Decisions on Limited Hardware
+      </h2>
+
+      <div class="content-grid">
+        <div>
+          <p>
+            Embedded systems increasingly use machine learning to interpret
+            camera frames, sensor readings, audio, and other incoming data.
+            These systems often run on CPUs or other resource-constrained
+            processors, with strict limits on compute, memory, power, and
+            thermal output.
+          </p>
+
+          <p>
+            The challenge is not simply that inference is expensive. It is
+            that inference must finish before the next deadline.
+          </p>
+
+          <p>
+            Consider a camera processing 30 frames per second. New frames
+            arrive approximately every 33 milliseconds. If the classifier
+            cannot keep pace, frames accumulate in a queue. With bounded
+            buffers, the system may drop frames. With larger buffers, it
+            may process stale information too late to be useful.
+          </p>
+
+          <p>
+            In robotics, industrial inspection, security monitoring, and
+            autonomous systems, delayed or missing classifications can
+            mean missed events, slower reactions, or reduced system
+            reliability.
+          </p>
+
+          <div class="problem-list">
+            <h3>What constrains the system?</h3>
+            <ul>
+              <li>Limited CPU capacity and memory bandwidth</li>
+              <li>Strict per-frame or per-event deadlines</li>
+              <li>Bursts of incoming data and variable inference times</li>
+              <li>Queue growth, deadline misses, and dropped frames</li>
+              <li>Power consumption and thermal limits</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="diagram">
+          <div class="diagram-title">
+            How moco can reduce edge inference latency
+          </div>
+
+          <div class="comparison">
+            <div class="flow">
+              <h4>Without moco</h4>
+              <div class="node">Incoming frame</div>
+              <div class="arrow">↓</div>
+              <div class="node">
+                Queue
+                <br />
+                <small>Waiting for CPU time</small>
+              </div>
+              <div class="arrow">↓</div>
+              <div class="node">Full classifier</div>
+              <div class="arrow">↓</div>
+              <div class="node">Classification</div>
+              <div class="outcomes bad">
+                ✕ Higher compute per frame<br />
+                ✕ Greater queueing risk<br />
+                ✕ Potential deadline misses
+              </div>
+            </div>
+
+            <div class="flow">
+              <h4 class="good">With moco</h4>
+              <div class="node">Incoming frame</div>
+              <div class="arrow">↓</div>
+              <div class="node optimized">
+                Early-exit classifier
+                <br />
+                <small>On the available CPU</small>
+              </div>
+              <div class="arrow">↓</div>
+              <div class="node">Classification</div>
+              <div class="outcomes good">
+                ✓ Less compute for eligible inputs<br />
+                ✓ More processing capacity<br />
+                ✓ Greater chance of meeting deadlines
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explanation">
+        <h3>Why reducing inference compute changes the system</h3>
+
+        <p>
+          moco restructures a classifier so that inputs it can confidently
+          classify using a cheaper computation can exit early, while other
+          inputs continue through the more expensive computation. The goal
+          is to preserve the original classification behavior while
+          reducing the average work required per decision.
+        </p>
+
+        <p>
+          On a CPU-bound embedded device, less work per frame can increase
+          the rate at which the system processes incoming frames. If the
+          original workload is close to the device's processing limit,
+          that additional capacity can reduce queue growth and make it
+          easier to meet real-time deadlines.
+        </p>
+
+        <p>
+          The same reduction can also create room for higher frame rates,
+          more sensors, or more sophisticated downstream processing without
+          immediately requiring a hardware upgrade.
+        </p>
+
+        <div class="callout">
+          <h3>The engineering objective</h3>
+          <p>
+            Process more real-time classification requests on the same
+            hardware, with less compute per decision, while maintaining
+            the required accuracy and deadline guarantees.
+          </p>
+        </div>
+
+        <p>
+          The actual outcome depends on the arrival rate, execution-time
+          distribution, scheduling policy, buffer size, and deadline.
+          Reduced inference time improves the available processing budget;
+          a deployment still needs to validate its worst-case behavior and
+          end-to-end timing.
+        </p>
+      </div>
+    </article>
+
+    <!-- SECTION 2: CLOUD INFRASTRUCTURE -->
+
+    <article class="section cloud">
+      <div class="eyebrow">02 / Cloud Infrastructure</div>
+
+      <h2>
+        The Problem: GPU Costs and Throughput Limits
+      </h2>
+
+      <div class="content-grid">
+        <div>
+          <p>
+            Cloud applications often run classifiers continuously across
+            large volumes of images, video frames, audio segments, or
+            other events. At this scale, inference is an infrastructure
+            expense: every request consumes accelerator time, memory
+            bandwidth, and operational capacity.
+          </p>
+
+          <p>
+            As request volume grows, an operator eventually encounters
+            a capacity limit. A single GPU can process only so many
+            requests within a given time, depending on the model, input
+            size, batching strategy, and latency requirements.
+          </p>
+
+          <p>
+            Beyond that limit, the operator must add GPUs, reduce the
+            incoming workload, or tolerate increasing queueing and
+            latency. Larger deployments can spend substantial amounts
+            simply keeping classification services within their
+            throughput and service-level objectives.
+          </p>
+
+          <div class="problem-list">
+            <h3>What constrains the system?</h3>
+            <ul>
+              <li>High recurring GPU and infrastructure costs</li>
+              <li>Limited throughput per GPU</li>
+              <li>Queueing and rising tail latency at high utilization</li>
+              <li>Additional capacity required for traffic peaks</li>
+              <li>Latency SLAs that constrain batching and scheduling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="diagram">
+          <div class="diagram-title">
+            How moco can improve cloud inference economics
+          </div>
+
+          <div class="comparison">
+            <div class="flow">
+              <h4>Without moco</h4>
+              <div class="node">Incoming requests</div>
+              <div class="arrow">↓</div>
+              <div class="node">Full classifier on GPU</div>
+              <div class="arrow">↓</div>
+              <div class="node">Predictions</div>
+              <div class="outcomes bad">
+                ✕ More GPU time per request<br />
+                ✕ Lower throughput at a fixed capacity<br />
+                ✕ More capacity needed as demand grows
+              </div>
+            </div>
+
+            <div class="flow">
+              <h4 class="good">With moco</h4>
+              <div class="node">Incoming requests</div>
+              <div class="arrow">↓</div>
+              <div class="node optimized">
+                Early-exit classifier on GPU
+              </div>
+              <div class="arrow">↓</div>
+              <div class="node">Predictions</div>
+              <div class="outcomes good">
+                ✓ Less average inference compute<br />
+                ✓ Potentially more decisions per GPU-hour<br />
+                ✓ Potentially fewer GPUs at fixed demand
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explanation">
+        <h3>Two ways to turn compute savings into business value</h3>
+
+        <p>
+          moco targets the computation required to produce a classification,
+          rather than relying exclusively on hardware scaling. By enabling
+          eligible inputs to exit earlier, an optimized model can use less
+          average compute per request.
+        </p>
+
+        <p>
+          That creates two related deployment opportunities.
+        </p>
+
+        <h3>1. Serve the same workload with fewer GPUs</h3>
+
+        <p>
+          Suppose a service must process a fixed number of requests each
+          day. If each request requires less GPU time, the total GPU-hours
+          needed to serve that workload may fall. Once the savings are
+          large enough to cross a capacity threshold, the operator may
+          be able to remove a GPU, delay a hardware purchase, or reduce
+          the number of instances needed to meet the service-level
+          objective.
+        </p>
+
+        <h3>2. Serve more requests with the same GPUs</h3>
+
+        <p>
+          Alternatively, a service can keep its existing hardware and use
+          the additional compute capacity to handle more classification
+          requests. This can increase throughput per GPU-hour, support
+          traffic growth, or create more headroom during traffic spikes.
+        </p>
+
+        <div class="callout">
+          <h3>From inference optimization to infrastructure savings</h3>
+          <p>
+            The economic value depends on the deployed model, traffic
+            distribution, achievable compute reduction, batching, hardware
+            utilization, and latency target. Lower compute per request
+            does not automatically translate into proportional dollar
+            savings, but it creates an opportunity to serve more demand
+            with the same infrastructure.
+          </p>
+        </div>
+
+        <p>
+          Cloud deployments should therefore measure both model-level
+          improvements and system-level outcomes: throughput, p95 and
+          p99 latency, GPU utilization, queue depth, cost per million
+          decisions, and total GPU-hours required for the workload.
+        </p>
+      </div>
+    </article>
+
+    <section class="closing">
+      <h2>Same classification objective. Less compute. More capacity.</h2>
+      <p>
+        moco explores early-exit model transformations that reduce the
+        average computation required for classification, helping edge
+        systems respond within tighter constraints and cloud systems
+        serve more decisions with their available infrastructure.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    moco &nbsp;·&nbsp; Efficient inference for real-world systems
+  </footer>
+</body>
+</html>
