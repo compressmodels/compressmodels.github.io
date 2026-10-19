@@ -314,6 +314,64 @@
         padding: 14px;
       }
     }
+
+    .api-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border-color, #2d333b);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 180ms ease,
+              background-color 180ms ease;
+}
+
+.api-link:hover {
+  border-color: var(--accent-color, #8b9cf6);
+  background-color: var(--surface-hover, rgba(127, 127, 127, 0.06));
+}
+
+.api-link:focus-visible {
+  outline: 2px solid var(--accent-color, #8b9cf6);
+  outline-offset: 4px;
+}
+
+.api-link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.api-link-content strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.api-link-content span {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.72;
+}
+
+.api-link-arrow {
+  font-size: 1.25rem;
+  transition: transform 180ms ease;
+}
+
+.api-link:hover .api-link-arrow {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .api-link,
+  .api-link-arrow {
+    transition: none;
+  }
+}
   </style>
   <script src="./js/load-header.js" defer></script>
 </head>
@@ -329,6 +387,13 @@
       <p class="intro">
         Every classification decision requires computational resources, but not every decision needs the full power of a model. At scale, unnecessary computation increases processing time, hardware requirements, and infrastructure costs. moco takes a different approach: it reduces computational overhead by reserving full model evaluations for decisions that need them, enabling classification systems to operate more efficiently and economically.
       </p>
+      <a href="docs.html" class="api-link">
+    <span class="api-link-content">
+      <strong>Explore the API documentation</strong>
+      <span>Integrate moco into your classification pipeline.</span>
+    </span>
+    <span class="api-link-arrow" aria-hidden="true">→</span>
+  </a>
       <div class="meta">October 18, 2026 &nbsp; · &nbsp; Engineering</div>
     </header>
 
