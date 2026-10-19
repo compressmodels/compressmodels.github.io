@@ -16,7 +16,7 @@
       <a href="/">Home</a>
       <a href="/docs.html">Docs</a>
       <a href="/team.html">Team</a>
-      <a href="/problem.html"> The Engineering Problem</a>
+      <a href="/problem.html"> Background</a>
     </nav>
   </header>
 
@@ -36,12 +36,10 @@
         <p>moco analyzes data to find early-exit strategies to exploit:</p>
         <ul>
             <li>
-                moco analyzes the input data. An example early-exit rule for a fraud detection
-                model (when the features are interpretable) might be:
-                <em>"it's fraud if the user has logged in 4 times in the last 10 minutes."</em> In this case, one would not need to run the fraud-detection classifier.
-            </li>
-            <li>
-                Intermediate representations (often referred to as embeddings, activations, etc.)
+                moco analyzes the input data or the latent representations of the data according to the model.
+                moco cross-correlates the correlations found in the input data/latent representations with the eventual model predictions
+                to find rules; these rules are then used to early-exit the model.
+            
             </li>
         </ul>
 
