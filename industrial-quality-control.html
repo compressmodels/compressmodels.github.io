@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Moco can help industrial quality-control systems increase inspection throughput by identifying early-exit opportunities in classification.">
+  <title>Moco | Higher-throughput industrial quality control</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080d18;
+      --text: #f4f7fb;
+      --muted: #a9b7ca;
+      --line: rgba(177, 198, 226, .17);
+      --accent: #70e1c1;
+      --accent-2: #8db9ff;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(59,117,174,.18), transparent 42%),
+        radial-gradient(ellipse at 5% 48%, rgba(47,177,145,.10), transparent 38%),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    header { padding: 26px 0; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 750; letter-spacing: .02em; }
+    .mark {
+      width: 30px; height: 30px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: inline-grid; place-items: center; color: #07131b; font-weight: 900;
+    }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 750; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 900px; font-size: clamp(2.7rem, 7vw, 5.3rem); line-height: 1.02; letter-spacing: -.055em; margin: 18px 0 24px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.08; letter-spacing: -.04em; margin-bottom: 18px; }
+    h3 { font-size: 1.08rem; margin-bottom: 8px; }
+    .lead { color: #c1ccda; font-size: clamp(1.08rem, 2vw, 1.28rem); max-width: 790px; }
+    .hero { padding: 94px 0 88px; }
+    .hero-note { margin-top: 36px; display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .94rem; }
+    .hero-note::before { content: ""; width: 34px; height: 1px; background: var(--accent); }
+    section { padding: 82px 0; border-top: 1px solid var(--line); }
+    .section-intro { max-width: 790px; margin-bottom: 38px; }
+    .section-intro p { color: var(--muted); font-size: 1.08rem; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card {
+      background: linear-gradient(145deg, rgba(20,34,56,.92), rgba(13,23,39,.92));
+      border: 1px solid var(--line); border-radius: 20px; padding: 26px;
+    }
+    .card p { color: var(--muted); margin-bottom: 0; }
+    .number { color: var(--accent); font-size: .78rem; letter-spacing: .13em; font-weight: 800; margin-bottom: 18px; }
+    .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 30px; }
+    .step {
+      min-height: 94px; padding: 17px 12px; border: 1px solid var(--line);
+      background: rgba(16,26,43,.72); border-radius: 14px; display: flex;
+      align-items: center; justify-content: center; text-align: center;
+      font-weight: 650; font-size: .92rem;
+    }
+    .step:last-child { border-color: rgba(112,225,193,.55); color: var(--accent); }
+    .solution-layout { display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px; align-items: center; }
+    .diagram {
+      border: 1px solid var(--line); border-radius: 22px; padding: 26px;
+      background: linear-gradient(150deg, rgba(20,34,56,.95), rgba(10,18,31,.95));
+    }
+    .diagram-title { color: var(--muted); font-size: .84rem; margin-bottom: 22px; }
+    .input-node, .exit-node, .continue-node {
+      border-radius: 13px; padding: 15px 17px; text-align: center; font-weight: 700;
+      border: 1px solid var(--line); background: rgba(255,255,255,.035);
+    }
+    .input-node { max-width: 280px; margin: 0 auto 22px; }
+    .branches { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; }
+    .branches::before {
+      content: ""; position: absolute; width: 1px; height: 15px; background: var(--accent-2);
+      top: -15px; left: 50%;
+    }
+    .exit-node { border-color: rgba(112,225,193,.5); color: var(--accent); }
+    .continue-node { border-color: rgba(141,185,255,.45); color: var(--accent-2); }
+    .sub { display: block; color: var(--muted); font-size: .78rem; font-weight: 450; margin-top: 5px; }
+    .diagram-foot { color: var(--muted); font-size: .84rem; text-align: center; margin: 18px 0 0; }
+    .benefits { display: grid; gap: 17px; }
+    .benefit { display: flex; gap: 14px; align-items: flex-start; }
+    .check {
+      flex: 0 0 25px; height: 25px; border-radius: 8px; display: grid; place-items: center;
+      background: rgba(112,225,193,.13); color: var(--accent); font-weight: 900;
+    }
+    .benefit p { color: var(--muted); margin: 3px 0 0; }
+    .closing {
+      margin-top: 38px; padding: 25px 27px; border-radius: 18px;
+      border: 1px solid rgba(112,225,193,.28); background: rgba(112,225,193,.055);
+      color: #dce9e8;
+    }
+    footer { border-top: 1px solid var(--line); padding: 25px 0 38px; color: #8392a8; font-size: .84rem; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 34px, var(--max)); }
+      .hero { padding: 70px 0 62px; }
+      section { padding: 62px 0; }
+      .grid, .solution-layout { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .step { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand"><span class="mark" aria-hidden="true">M</span><span>MOCO</span></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <div class="eyebrow">Industrial quality control</div>
+      <h1>Inspect more. Keep quality in focus.</h1>
+      <p class="lead">Advanced manufacturing depends on fast, reliable inspection. As wafer imaging becomes more detailed and defect analysis more demanding, the computing required to classify inspection data can become a constraint on overall throughput. Moco helps address that challenge by finding opportunities to complete classification earlier.</p>
+      <div class="hero-note">More efficient classification for demanding inspection workloads</div>
+    </div>
+
+    <section id="problem">
+      <div class="wrap">
+        <div class="section-intro">
+          <div class="eyebrow">01 / The problem</div>
+          <h2>Inspection throughput is constrained at multiple points.</h2>
+          <p>Wafer inspection brings optics, precision mechanics, image processing, and system controls together in a tightly coordinated workflow. A delay in any one area can limit the rate at which inspection results become available.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="number">01 — OPTICS &amp; MECHANICS</div>
+            <h3>Resolution takes time</h3>
+            <p>High-sensitivity imaging can require longer exposures and substantial data capture. Precise wafer handling and stage movement also add time as the system moves between inspection locations.</p>
+          </article>
+          <article class="card">
+            <div class="number">02 — IMAGE PROCESSING</div>
+            <h3>More data to analyze</h3>
+            <p>High-resolution inspection generates large image volumes. Defect classification and pattern recognition can demand significant computation, potentially making analysis a limiting step in the inspection cycle.</p>
+          </article>
+          <article class="card">
+            <div class="number">03 — SYSTEM INTEGRATION</div>
+            <h3>Subsystems must stay in sync</h3>
+            <p>Illumination, optics, motion control, handling, and processing must operate together. Coordination delays and inefficient resource allocation can prevent multi-beam systems from fully using their parallel capacity.</p>
+          </article>
+          <article class="card">
+            <div class="number">04 — OPERATIONS &amp; COMPLEXITY</div>
+            <h3>Consistency adds overhead</h3>
+            <p>Thermal management, vibration control, and calibration can interrupt inspection. As device structures and defect requirements become more complex, analysis can also take longer.</p>
+          </article>
+        </div>
+        <div class="section-intro" style="margin:42px 0 0">
+          <h3>The opportunity: improve the computational part of the inspection path.</h3>
+          <p>Optical capture, wafer motion, system coordination, and operating conditions all matter. But once inspection data reaches a classifier, not every input necessarily needs the same depth of computation.</p>
+        </div>
+        <div class="flow" aria-label="Simplified wafer inspection workflow">
+          <div class="step">Capture image data</div>
+          <div class="step">Process image</div>
+          <div class="step">Classify defects</div>
+          <div class="step">Review results</div>
+          <div class="step">Inform quality decisions</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution">
+      <div class="wrap">
+        <div class="section-intro">
+          <div class="eyebrow">02 / The solution</div>
+          <h2>Moco helps classifiers do less work when less is enough.</h2>
+          <p>Moco identifies early-exit opportunities in classifiers. When an input can be classified with sufficient confidence at an earlier stage, it can exit without continuing through every subsequent stage. Inputs that need more evaluation continue deeper into the classifier.</p>
+        </div>
+        <div class="solution-layout">
+          <div class="diagram" role="img" aria-label="Illustration of a classifier with an early exit for sufficiently confident inspection inputs and a deeper path for inputs needing more evaluation">
+            <div class="diagram-title">ILLUSTRATIVE CLASSIFICATION FLOW</div>
+            <div class="input-node">Inspection data<span class="sub">Enter classifier</span></div>
+            <div class="branches">
+              <div class="exit-node">Early exit<span class="sub">Sufficient confidence</span></div>
+              <div class="continue-node">Continue analysis<span class="sub">Further evaluation needed</span></div>
+            </div>
+            <p class="diagram-foot">The decision path depends on the classifier and its configured criteria.</p>
+          </div>
+          <div class="benefits">
+            <div class="benefit">
+              <span class="check" aria-hidden="true">✓</span>
+              <div><h3>Increase classifier throughput</h3><p>Reduce avoidable computation so the classifier can process more inspection inputs over time.</p></div>
+            </div>
+            <div class="benefit">
+              <span class="check" aria-hidden="true">✓</span>
+              <div><h3>Use computation more selectively</h3><p>Allow suitable inputs to finish earlier while preserving deeper evaluation for inputs that require it.</p></div>
+            </div>
+            <div class="benefit">
+              <span class="check" aria-hidden="true">✓</span>
+              <div><h3>Target a key software bottleneck</h3><p>Improve classification efficiency within the inspection workflow without implying changes to optical capture or wafer-handling speed.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="closing">
+          <strong>Higher classifier throughput can help inspection systems make better use of their data-processing capacity.</strong>
+          Moco focuses on the computational work inside classification. It is one part of a broader inspection system, alongside optics, mechanics, orchestration, calibration, and process control.
+        </div>
+        <p style="color:var(--muted);font-size:.86rem;margin:18px 0 0">Actual impact depends on the classifier, inspection data, confidence criteria, workload, and system integration. No numerical performance improvement is implied.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© Moco. All rights reserved.</div>
+  </footer>
+</body>
+</html>
